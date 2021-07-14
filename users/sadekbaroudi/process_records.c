@@ -271,6 +271,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode is released
             }
             break;
+        case G_GOD_ON:
+            if (record->event.pressed) {
+                register_code(KC_LSHIFT);
+                SEND_STRING(SS_TAP(X_ENTER));
+                unregister_code(KC_LSHIFT);
+                SEND_STRING("GOD MODE ENGAGED"SS_TAP(X_ENTER));
+            } else {
+                // when keycode is released
+            }
+            break;
+        case G_GOD_OFF:
+            if (record->event.pressed) {
+                register_code(KC_LSHIFT);
+                SEND_STRING(SS_TAP(X_ENTER));
+                unregister_code(KC_LSHIFT);
+                SEND_STRING("GOD MODE DISENGAGED"SS_TAP(X_ENTER));
+            } else {
+                // when keycode is released
+            }
+            break;
+        case G_PULLING:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_ENTER)"I am pulling, play safe"SS_TAP(X_ENTER));
+            } else {
+                // when keycode is released
+            }
+            break;
+        case G_PUSH:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_ENTER)"Push the lane out"SS_TAP(X_ENTER));
+            } else {
+                // when keycode is released
+            }
+            break;
         // COMMENT TO DISABLE MACROS
     }
     return true;
