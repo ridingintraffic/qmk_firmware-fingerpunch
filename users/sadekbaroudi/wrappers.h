@@ -49,6 +49,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_barobordhw
 #endif
 
+// Since barobord uses the name LAYOUT_barobord instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_barobord))
+#    define LAYOUT LAYOUT_barobord
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
