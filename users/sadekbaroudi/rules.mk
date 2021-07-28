@@ -5,7 +5,6 @@ COMMAND_ENABLE   = no  # Commands for debug and configuration
 CONSOLE_ENABLE = no         # Console for debug
 UNICODE_ENABLE   = no  # Unicode
 SWAP_HANDS_ENABLE= no  # Allow swapping hands of keyboard
-MOUSEKEY_ENABLE = yes
 BACKLIGHT_ENABLE = no
 NKRO_ENABLE      = no
 RAW_ENABLE       = no
