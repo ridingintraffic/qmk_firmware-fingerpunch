@@ -11,11 +11,13 @@ __attribute__((weak)) bool process_record_secrets(uint16_t keycode, keyrecord_t 
 // Defines actions tor my global custom keycodes. Defined in sadekbaroudi.h file
 // Then runs the _keymap's record handler if not processed here
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    #ifdef CASEMODES_ENABLE
     // Process case modes
     if (!process_case_modes(keycode, record)) {
         return false;
     }
     // If console is enabled, it will print the matrix position and status of each key pressed
+    #endif
 #ifdef KEYLOGGER_ENABLE
 #    if defined(KEYBOARD_ergodox_ez) || defined(KEYBOARD_keebio_iris_rev2)
     xprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.row, record->event.key.col, record->event.pressed);
@@ -182,23 +184,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case C_CAPSWORD:
             // NOTE: if you change this behavior, may want to update in keymap.c for COMBO behavior
             if (record->event.pressed) {
+                #ifdef CASEMODES_ENABLE
                 enable_caps_word();
+                #endif
             }
             break;
         case C_HYPHENCASE:
+            #ifdef CASEMODES_ENABLE
             if (record->event.pressed) {
                 enable_xcase_with(KC_MINS);
             }
+            #endif
             break;
         case C_ANYCASE:
+            #ifdef CASEMODES_ENABLE
             if (record->event.pressed) {
                 enable_xcase();
             }
+            #endif
             break;            
         case C_UNDERSCORECASE:
+            #ifdef CASEMODES_ENABLE
             if (record->event.pressed) {
                 enable_xcase_with(KC_UNDS);
             }
+            #endif
             break;
         // COMMENT TO DISABLE MACROS
         case L_GREP:

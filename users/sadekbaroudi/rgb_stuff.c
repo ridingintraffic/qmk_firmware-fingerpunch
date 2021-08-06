@@ -2,6 +2,10 @@
 #include "rgb_stuff.h"
 #include "eeprom.h"
 
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#include "pimoroni_trackball.h"
+#endif
+
 bool    has_initialized;
 
 void rgblight_sethsv_default_helper(uint8_t index) { rgblight_sethsv_at(rgblight_get_hue(), rgblight_get_sat(), rgblight_get_val(), index); }
@@ -89,8 +93,14 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
                     caps_lock_rgb_mode = CAPS_LOCK_RGB_MODE;
                     #endif
                     rgblight_set_hsv_and_mode(caps_lock_rgb_hue, 255, 255, caps_lock_rgb_mode);
+                    #ifdef PIMORONI_TRACKBALL_ENABLE
+                    trackball_set_hsv(caps_lock_rgb_hue, 255, 255);
+                    #endif
                 } else if (userspace_config.rgb_base_layer_override) { // If the base layer override is enabled, use that
                     rgblight_set_hsv_and_mode(userspace_config.hue, userspace_config.sat, userspace_config.val, userspace_config.mode);
+                    #ifdef PIMORONI_TRACKBALL_ENABLE
+                    trackball_set_hsv(userspace_config.hue, userspace_config.sat, userspace_config.val);
+                    #endif
                 } else { // if base layer override is disabled, always show the base setting
                     uint8_t base_layer_rgb_hue = 167; // BLUE
                     uint8_t base_layer_rgb_mode = mode;
@@ -101,33 +111,63 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
                     base_layer_rgb_mode = BASE_LAYER_RGB_MODE;
                     #endif
                     rgblight_set_hsv_and_mode(base_layer_rgb_hue, 255, 255, base_layer_rgb_mode);
+                    #ifdef PIMORONI_TRACKBALL_ENABLE
+                    trackball_set_hsv(base_layer_rgb_hue, 255, 255);
+                    #endif
                 }
                 break;
             case _QWERTY:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(10, 10, 255); // white
+                #endif
                 rgblight_set_hsv_and_mode(10, 10, 255, mode); // white
                 break;
             case _WORKMAN:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(HSV_MAGENTA);
+                #endif
                 rgblight_set_hsv_and_mode(HSV_MAGENTA, mode);
                 break;
             case _NAVIGATION:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(HSV_GREEN);
+                #endif
                 rgblight_set_hsv_and_mode(HSV_GREEN, mode);
                 break;
             case _SYMBOLS:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(HSV_PURPLE);
+                #endif
                 rgblight_set_hsv_and_mode(HSV_PURPLE, mode);
                 break;
             case _FUNCTION:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(HSV_YELLOW);
+                #endif
                 rgblight_set_hsv_and_mode(HSV_YELLOW, mode);
                 break;
             case _MOUSE:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(HSV_CYAN);
+                #endif
                 rgblight_set_hsv_and_mode(HSV_CYAN, mode);
                 break;
             case _MEDIA:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(16, 255, 255); // orange
+                #endif
                 rgblight_set_hsv_and_mode(16, 255, 255, mode); // orange
                 break;
             case _WINNAV:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(10, 10, 255);
+                #endif
                 rgblight_set_hsv_and_mode(10, 10, 255, mode); // near-white
                 break;
             default:
+                #ifdef PIMORONI_TRACKBALL_ENABLE
+                trackball_set_hsv(HSV_SPRINGGREEN);
+                #endif
                 rgblight_set_hsv_and_mode(HSV_SPRINGGREEN, mode);
                 break;
         }

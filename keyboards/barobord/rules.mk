@@ -15,7 +15,6 @@ BOOTLOADER = atmel-dfu
 #   change yes to no to disable
 #
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration
-MOUSEKEY_ENABLE = no        # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no        # Console for debug
 COMMAND_ENABLE = no        # Commands for debug and configuration
@@ -31,12 +30,14 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = yes
-OLED_DRIVER_ENABLE = yes
-THUMBSTICK_ENABLE = no
 
-ifeq ($(strip $(THUMBSTICK_ENABLE)), yes)
-    POINTING_DEVICE_ENABLE = yes
-    OPT_DEFS += -DTHUMBSTICK_ENABLE
-	SRC += analog.c
-	SRC += thumbstick.c
-endif
+# If you don't have pimoroni trackball
+OLED_DRIVER_ENABLE = yes # this can be yes or no depending on if you have an OLED
+MOUSEKEY_ENABLE = yes        # Mouse keys
+
+# If you have pimoroni trackball
+#OLED_DRIVER_ENABLE = yes # this must be yes since it uses the I2C for pimoroni
+#PIMORONI_TRACKBALL_ENABLE = yes
+# unfortunately, these two take up a lot of space, so you may need to disable macros :'(
+#EXTRAFLAGS     += -flto
+#MOUSEKEY_ENABLE = no

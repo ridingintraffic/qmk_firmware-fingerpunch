@@ -259,4 +259,3 @@ bool hasAllBitsInMask(uint8_t value, uint8_t mask) {
 
     return (value & mask) == mask;
 }
-

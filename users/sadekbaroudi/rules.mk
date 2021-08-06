@@ -10,14 +10,18 @@ NKRO_ENABLE      = no
 RAW_ENABLE       = no
 CASEMODES_ENABLE = yes
 COMBO_ENABLE     = yes
-LEADER_ENABLE    = yes
 
 # UNCOMMENT TO DISABLE MACROS
-# EXTRAFLAGS     += -flto
+#EXTRAFLAGS     += -flto
 # UNCOMMENT TO DISABLE MACROS
 
 SPACE_CADET_ENABLE    = no
 GRAVE_ESC_ENABLE      = no
+
+# define this in the keyboard's rules.mk
+#PIMORONI_TRACKBALL_ENABLE = yes
+
+
 
 ifneq ($(strip $(NO_SECRETS)), yes)
     ifneq ("$(wildcard $(USER_PATH)/secrets.c)","")
@@ -40,7 +44,6 @@ ifneq ($(strip $(RGB_MATRIX_ENABLE)), no)
     SRC += rgb_matrix_stuff.c
 endif
 
-
 ifdef CONSOLE_ENABLE
     ifeq ($(strip $(KEYLOGGER_ENABLE)), yes)
         OPT_DEFS += -DKEYLOGGER_ENABLE
@@ -57,4 +60,10 @@ endif
 
 ifeq ($(strip $(COMBO_ENABLE)), yes)
     SRC += combos.c
+endif
+
+ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
+    POINTING_DEVICE_ENABLE := yes
+    SRC += pimoroni_trackball.c
+    OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
 endif
