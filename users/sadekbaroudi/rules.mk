@@ -54,6 +54,10 @@ ifeq ($(strip $(RAW_ENABLE)), yes)
     SRC += hid.c
 endif
 
+ifeq ($(strip $(ENCODER_ENABLE)), yes)
+    SRC += encoder.c
+endif
+
 ifeq ($(strip $(CASEMODES_ENABLE)), yes)
     SRC += casemodes.c
 endif

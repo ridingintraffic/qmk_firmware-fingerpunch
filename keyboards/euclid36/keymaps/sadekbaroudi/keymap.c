@@ -255,7 +255,8 @@ void oled_task_user(void) {
 #endif
 
 #ifdef ENCODER_ENABLE
-void encoder_update_user(uint8_t index, bool clockwise) {
+// TODO: Remove this and update the pins to be correct on index 1 encoder, right now clockwise is left... This is because the pins need to be swapped
+bool encoder_update_keymap(uint8_t index, bool clockwise) {
     if (index == 0) {
         // Volume control
         if (clockwise) {
@@ -272,5 +273,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         tap_code16(C(KC_RGHT));
       }
     }
+
+    return false;
 }
 #endif
