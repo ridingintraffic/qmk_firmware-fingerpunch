@@ -18,6 +18,10 @@
 
 #include QMK_KEYBOARD_H
 
+#ifndef CASEMODES_ENABLE
+#define CASEMODES_ENABLE true
+#endif
+
 // Check whether caps word is on
 bool caps_word_enabled(void);
 // Enable caps word

@@ -73,6 +73,18 @@ void rgblight_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mo
     rgblight_sethsv_noeeprom(hue, sat, val);
 }
 
+void rgb_set_user_config_from_current_values() {
+#ifdef RGBLIGHT_ENABLE
+    userspace_config.mode = rgblight_get_mode();
+    userspace_config.hue = rgblight_get_hue();
+    userspace_config.sat = rgblight_get_sat();
+    userspace_config.val = rgblight_get_val();
+    userspace_config.speed = rgblight_get_speed();
+    eeconfig_update_user(userspace_config.raw);
+    xprintf("RGB: mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", userspace_config.mode, userspace_config.hue, userspace_config.sat, userspace_config.val, userspace_config.speed);
+#endif
+}
+
 layer_state_t layer_state_set_rgb_light(layer_state_t state) {
 #ifdef RGBLIGHT_ENABLE
     if (userspace_config.rgb_layer_change) {

@@ -170,24 +170,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             if (!record->event.pressed) {
 #    if defined(RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
-                userspace_config.mode = rgblight_get_mode();
-                userspace_config.hue = rgblight_get_hue();
-                userspace_config.sat = rgblight_get_sat();
-                userspace_config.val = rgblight_get_val();
-                userspace_config.speed = rgblight_get_speed();
-                eeconfig_update_user(userspace_config.raw);
-                xprintf("RGB: mode: %u, hue: %u, sat: %u, val: %u, speed: %u\n", userspace_config.mode, userspace_config.hue, userspace_config.sat, userspace_config.val, userspace_config.speed);
+                rgb_set_user_config_from_current_values();
 #    endif
             }
             break;
 #endif
         case C_CAPSWORD:
             // NOTE: if you change this behavior, may want to update in keymap.c for COMBO behavior
+            #ifdef CASEMODES_ENABLE
             if (record->event.pressed) {
-                #ifdef CASEMODES_ENABLE
                 enable_caps_word();
-                #endif
             }
+            #endif
             break;
         case C_HYPHENCASE:
             #ifdef CASEMODES_ENABLE
