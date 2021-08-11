@@ -55,7 +55,7 @@ ifeq ($(strip $(RAW_ENABLE)), yes)
 endif
 
 ifeq ($(strip $(ENCODER_ENABLE)), yes)
-    SRC += encoder.c
+    SRC += encoder_stuff.c
 endif
 
 ifeq ($(strip $(CASEMODES_ENABLE)), yes)

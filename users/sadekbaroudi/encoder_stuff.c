@@ -1,4 +1,4 @@
-#include "encoder.h"
+#include "encoder_stuff.h"
 
 __attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) { return true; }
 
@@ -37,11 +37,10 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         #endif
       }
       else{
-        tap_code16(C(KC_LEFT));
         #ifdef RGBLIGHT_ENABLE
         rgblight_step_reverse();
         #else
-        tap_code16(C(KC_RGHT));
+        tap_code16(C(KC_LEFT));
         #endif
       }
       #ifdef RGBLIGHT_ENABLE
