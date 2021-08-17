@@ -143,9 +143,9 @@ void keyboard_post_init_user(void) {
 #if defined(RGBLIGHT_ENABLE)
     keyboard_post_init_rgb_light();
 #endif
-#if defined(RGB_MATRIX_ENABLE)
-    keyboard_post_init_rgb_matrix();
-#endif
+// #if defined(RGB_MATRIX_ENABLE)
+//     keyboard_post_init_rgb_matrix();
+// #endif
     keyboard_post_init_keymap();
 }
 
@@ -158,12 +158,11 @@ void shutdown_user(void) {
     rgblight_enable_noeeprom();
     rgblight_mode_noeeprom(1);
     rgblight_setrgb_red();
-#endif  // RGBLIGHT_ENABLE
-#ifdef RGB_MATRIX_ENABLE
-    rgb_matrix_set_color_all(0xFF, 0x00, 0x00);
-    rgb_matrix_update_pwm_buffers();
-
-#endif  // RGB_MATRIX_ENABLE
+#endif
+// #ifdef RGB_MATRIX_ENABLE
+//     rgb_matrix_set_color_all(0xFF, 0x00, 0x00);
+//     rgb_matrix_update_pwm_buffers();
+// #endif
     shutdown_keymap();
 }
 
@@ -198,9 +197,9 @@ void matrix_scan_user(void) {
         handle_caps_lock_change();
     }
 
-#if defined(RGB_MATRIX_ENABLE)
-    matrix_scan_rgb_matrix();
-#endif
+// #if defined(RGB_MATRIX_ENABLE)
+//     matrix_scan_rgb_matrix();
+// #endif
 
 #if defined(LEADER_ENABLE)
     matrix_scan_leader_key();

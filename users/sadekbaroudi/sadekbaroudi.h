@@ -24,9 +24,9 @@
 #if defined(RGBLIGHT_ENABLE)
 #    include "rgb_stuff.h"
 #endif
-#if defined(RGB_MATRIX_ENABLE)
-#    include "rgb_matrix_stuff.h"
-#endif
+// #if defined(RGB_MATRIX_ENABLE)
+// #    include "rgb_matrix_stuff.h"
+// #endif
 
 /* Define layer names */
 enum userspace_layers {

@@ -39,10 +39,10 @@ ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
     endif
 endif
 
-RGB_MATRIX_ENABLE ?= no
-ifneq ($(strip $(RGB_MATRIX_ENABLE)), no)
-    SRC += rgb_matrix_stuff.c
-endif
+# RGB_MATRIX_ENABLE ?= no
+# ifneq ($(strip $(RGB_MATRIX_ENABLE)), no)
+#     SRC += rgb_matrix_stuff.c
+# endif
 
 ifdef CONSOLE_ENABLE
     ifeq ($(strip $(KEYLOGGER_ENABLE)), yes)

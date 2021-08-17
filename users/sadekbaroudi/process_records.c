@@ -27,9 +27,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif  // KEYLOGGER_ENABLE
 
     if (!(process_record_keymap(keycode, record) && process_record_secrets(keycode, record)
-#ifdef RGB_MATRIX_ENABLE
-        && process_record_user_rgb_matrix(keycode, record)
-#endif
+// #ifdef RGB_MATRIX_ENABLE
+//         && process_record_user_rgb_matrix(keycode, record)
+// #endif
 #ifdef RGBLIGHT_ENABLE
         && process_record_user_rgb_light(keycode, record)
 #endif
@@ -92,14 +92,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 xprintf("rgblight layer change [EEPROM]: %u\n", userspace_config.rgb_layer_change);
                 eeconfig_update_user(userspace_config.raw);
                 if (userspace_config.rgb_layer_change) {
-#    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
-                    rgblight_enable_noeeprom();
-#    endif
+// #    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+//                     rgblight_enable_noeeprom();
+// #    endif
                     layer_state_set(layer_state);  // This is needed to immediately set the layer color (looks better)
                 } else {
-#    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
-                    rgblight_disable_noeeprom();
-#    endif
+// #    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+//                     rgblight_disable_noeeprom();
+// #    endif
 #    if defined(RGBLIGHT_ENABLE)
                     rgblight_set_hsv_and_mode(userspace_config.hue, userspace_config.sat, userspace_config.val, userspace_config.mode);
 #    endif
@@ -115,14 +115,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 xprintf("rgblight base layer override change [EEPROM]: %u\n", userspace_config.rgb_base_layer_override);
                 eeconfig_update_user(userspace_config.raw);
                 if (userspace_config.rgb_base_layer_override) {
-#    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
-                    rgblight_enable_noeeprom();
-#    endif
+// #    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+//                     rgblight_enable_noeeprom();
+// #    endif
                     layer_state_set(layer_state);  // This is needed to immediately set the layer color (looks better)
-#    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
-                } else {
-                    rgblight_disable_noeeprom();
-#    endif
+// #    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+//                 } else {
+//                     rgblight_disable_noeeprom();
+// #    endif
                 }
             }
 #endif  // RGBLIGHT_ENABLE
@@ -139,9 +139,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #    if defined(RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
                 rgblight_toggle();
 #    endif
-#    if defined(RGB_MATRIX_ENABLE) && !defined(RGB_MATRIX_DISABLE_KEYCODES)
-                rgb_matrix_toggle();
-#    endif
+// #    if defined(RGB_MATRIX_ENABLE) && !defined(RGB_MATRIX_DISABLE_KEYCODES)
+//                 rgb_matrix_toggle();
+// #    endif
             }
             return false;
             break;
@@ -157,13 +157,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #    endif
                 }
 
-#    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
-                if (userspace_config.rgb_matrix_idle_anim) {
-                    userspace_config.rgb_matrix_idle_anim = false;
-                    xprintf("RGB Matrix Idle Animation [EEPROM]: %u\n", userspace_config.rgb_matrix_idle_anim);
-                    is_eeprom_updated = true;
-                }
-#    endif
+// #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
+//                 if (userspace_config.rgb_matrix_idle_anim) {
+//                     userspace_config.rgb_matrix_idle_anim = false;
+//                     xprintf("RGB Matrix Idle Animation [EEPROM]: %u\n", userspace_config.rgb_matrix_idle_anim);
+//                     is_eeprom_updated = true;
+//                 }
+// #    endif
                 if (is_eeprom_updated) {
                     eeconfig_update_user(userspace_config.raw);
                 }
