@@ -1,6 +1,7 @@
 #include "pimoroni_trackball.h"
 #include "i2c_master.h"
 #include "pointing_device.h"
+#include "sadekbaroudi.h"
 
 #ifndef TRACKBALL_NO_MATH
 #include "math.h"
@@ -279,13 +280,11 @@ __attribute__((weak)) void pointing_device_task(void) {
     // Note that for now, if RGBLIGHT_ENABLE is not set, this won't run, so they are tied together, I can fix later
 
     // If I ever want to use scrolling, set the rules here
-    /*
-    if (false && layer_state_is(_NAVIGATION)) {
+    if (layer_state_is(_NAVIGATION)) {
         trackball_set_scrolling(true);
     } else {
         trackball_set_scrolling(false);
     }
-    */
 
     pointing_device_set_report(mouse_report);
     pointing_device_send();
