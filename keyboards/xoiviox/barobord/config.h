@@ -75,12 +75,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGB_MATRIX_ENABLE
   #define DRIVER_LED_TOTAL 40
+  #define RGB_MATRIX_CENTER {100, 32}
   #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 112  /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
   #define RGB_MATRIX_KEYPRESSES
   #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-  #define DISABLE_RGB_MATRIX_BREATHING
-  #define DISABLE_RGB_MATRIX_HUE_BREATHING
+  #define RGB_MATRIX_KEYREACTIVE_ENABLED
 #endif
 
 #define ENCODERS_PAD_A {B4 , D6}
