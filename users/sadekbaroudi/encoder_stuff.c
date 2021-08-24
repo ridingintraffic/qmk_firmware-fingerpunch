@@ -2,9 +2,9 @@
 
 __attribute__((weak)) bool encoder_update_keymap(uint8_t index, bool clockwise) { return true; }
 
-void encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
     if (!encoder_update_keymap(index, clockwise)) {
-        return;
+        return true;
     }
 
     // default behavior if undefined
@@ -47,4 +47,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
       rgb_set_user_config_from_current_values();
       #endif
     }
+
+    return true;
 }

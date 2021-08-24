@@ -5,9 +5,6 @@ Since our quirky block definitions are basically a list of comma separated
 arguments, we need a wrapper in order for these definitions to be
 expanded before being used as arguments to the LAYOUT_xxx macro.
 */
-#if (!defined(LAYOUT) && defined(KEYMAP))
-#    define LAYOUT KEYMAP
-#endif
 
 // Since Reviung39 uses the name LAYOUT_reviung39 instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_reviung39))
@@ -166,8 +163,8 @@ NOTE: These are all the same length.  If you do a search/replace
 // #define _________________MACROS_3__________________			___________________BLANK___________________
 
 // COMMENT TO DISABLE MACROS
-#define _________________MACROS_1__________________			VRSN,                  L_FIND,                L_GITCOMMIT,           _______,               E_ROBOT
+#define _________________MACROS_1__________________			RGB_SPI,               L_FIND,                L_GITCOMMIT,           _______,               E_ROBOT
 #define _________________MACROS_2__________________			P_ANGBRKT,             P_PAREN,               P_CURLY,               P_BRKT,                P_ARROW
-#define _________________MACROS_3__________________			KC_MAKE,               L_GREP,                _______,               _______,               E_CAT
+#define _________________MACROS_3__________________			RGB_SPD,               L_GREP,                _______,               _______,               E_CAT
 
 // clang-format on

@@ -17,10 +17,6 @@
 #include "sadekbaroudi.h"
 #include QMK_KEYBOARD_H
 
-#ifndef UNICODE_ENABLE
-#    define UC(x) KC_NO
-#endif
-
 #ifdef THUMBSTICK_ENABLE
 #    include "thumbstick.h"
 #endif
