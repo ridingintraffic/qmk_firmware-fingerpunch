@@ -11,13 +11,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         // Volume control
         if (clockwise) {
-            #ifdef RGBLIGHT_ENABLE
+            #if defined(RGBLIGHT_ENABLE) && defined(ENCODERS_FOR_RGB)
             rgblight_increase_hue();
             #else
             tap_code(KC_VOLU);
             #endif
         } else {
-            #ifdef RGBLIGHT_ENABLE
+            #if defined(RGBLIGHT_ENABLE) && defined(ENCODERS_FOR_RGB)
             rgblight_decrease_hue();
             #else
             tap_code(KC_VOLD);
@@ -30,20 +30,20 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     }
     else if (index == 1) {
       if(clockwise) {
-        #ifdef RGBLIGHT_ENABLE
+        #if defined(RGBLIGHT_ENABLE) && defined(ENCODERS_FOR_RGB)
         rgblight_step();
         #else
         tap_code16(C(KC_RGHT));
         #endif
       }
       else{
-        #ifdef RGBLIGHT_ENABLE
+        #if defined(RGBLIGHT_ENABLE) && defined(ENCODERS_FOR_RGB)
         rgblight_step_reverse();
         #else
         tap_code16(C(KC_LEFT));
         #endif
       }
-      #ifdef RGBLIGHT_ENABLE
+      #if defined(RGBLIGHT_ENABLE) && defined(ENCODERS_FOR_RGB)
       rgb_set_user_config_from_current_values();
       #endif
     }
