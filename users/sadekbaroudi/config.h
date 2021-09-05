@@ -1,6 +1,6 @@
 #pragma once
 
-#define COMBO_COUNT 4
+#define COMBO_COUNT 7
 #define COMBO_TERM 75
 
 #ifdef RGBLIGHT_ENABLE
