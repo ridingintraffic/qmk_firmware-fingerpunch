@@ -9,8 +9,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
     // default behavior if undefined
     if (index == 0) {
-        // Volume control
+        // Conditional to reverse the direction of encoder number 1
+        // The reason I have this is that for some of my boards, it supports two different types of encoders, and they may differ in direction
+        #ifdef ENCODERS_A_REVERSE
+        if (!clockwise) {
+        #else
         if (clockwise) {
+        #endif
             #if defined(RGBLIGHT_ENABLE) && defined(ENCODERS_FOR_RGB)
             rgblight_increase_hue();
             #else
@@ -29,7 +34,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         #endif
     }
     else if (index == 1) {
-      if(clockwise) {
+      // Conditional to reverse the direction of encoder number 1
+      // The reason I have this is that for some of my boards, it supports two different types of encoders, and they may differ in direction
+      #ifdef ENCODERS_B_REVERSE
+      if (!clockwise) {
+      #else
+      if (clockwise) {
+      #endif
         #if defined(RGBLIGHT_ENABLE) && defined(ENCODERS_FOR_RGB)
         rgblight_step();
         #else
