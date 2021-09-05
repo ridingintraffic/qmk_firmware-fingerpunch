@@ -1,7 +1,7 @@
 #pragma once
 
-#define COMBO_COUNT 3
-#define COMBO_TERM 30
+#define COMBO_COUNT 4
+#define COMBO_TERM 50
 
 #ifdef RGBLIGHT_ENABLE
 #    undef RGBLIGHT_ANIMATIONS
