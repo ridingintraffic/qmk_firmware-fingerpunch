@@ -10,5 +10,6 @@ enum combo_events {
   APOSTROPHE,
   Q,
   SEMICOLON,
+  TAB,
   //CAPSWORD,
 };

@@ -8,6 +8,7 @@ const uint16_t PROGMEM backspace_combo[] = {KC_K, KC_H, COMBO_END};
 const uint16_t PROGMEM apostrophe_combo[] = {KC_Z, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM q_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM semicolon_combo[] = {KC_COMMA, KC_DOT, COMBO_END};
+const uint16_t PROGMEM tab_combo[] = {KC_COMMA, KC_SLSH, COMBO_END};
 //const uint16_t PROGMEM capsword_combo[] = {KC_X, KC_C, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -18,6 +19,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [APOSTROPHE] = COMBO_ACTION(apostrophe_combo),
   [Q] = COMBO_ACTION(q_combo),
   [SEMICOLON] = COMBO_ACTION(semicolon_combo),
+  [TAB] = COMBO_ACTION(tab_combo),
 //  [CAPSWORD] = COMBO_ACTION(capsword_combo),
 };
 
@@ -62,6 +64,11 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case SEMICOLON:
       if (pressed) {
         tap_code16(KC_SCOLON);
+      }
+      break;
+    case TAB:
+      if (pressed) {
+        tap_code16(KC_TAB);
       }
       break;
     // case CAPSWORD:
