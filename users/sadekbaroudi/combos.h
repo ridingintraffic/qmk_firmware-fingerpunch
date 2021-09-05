@@ -6,5 +6,6 @@ enum combo_events {
   UNDO,
   REDO,
   //CAPSWORD,
-  DELETE
+  DELETE,
+  APOSTROPHE,
 };
