@@ -18,10 +18,6 @@
 #include "casemodes.h"
 #include QMK_KEYBOARD_H
 
-#ifndef UNICODE_ENABLE
-#    define UC(x) KC_NO
-#endif
-
 /*
  * The `LAYOUT_barobordhw_base` macro is a template to allow the use of identical
  * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
