@@ -25,6 +25,10 @@
  * of use. K## is a placeholder to pass through the individual keycodes
  */
 
+// Note: changed the thumb keys from the following, testing out a new layout:
+//                             KC_DEL, LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),           LT(_FUNCTION,KC_BSPC), LT(_SYMBOLS,KC_SPACE), KC_QUOT "\"
+//                                            _______, KC_BSPC, LT(_NAVIGATION,KC_ENT),           LT(_SYMBOLS,KC_SPACE), KC_QUOT, _______ "\"
+
 // clang-format off
 #define LAYOUT_minidox_base( \
     K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
