@@ -11,4 +11,5 @@
 #    define RGBLED_SPLIT \
         { 9, 9 }
 #    define RGBLIGHT_SPLIT
+#    define RGBLIGHT_LED_MAP {0,1,2,3,4,5,6,7,8,17,16,15,14,13,12,11,10,9}
 #endif
