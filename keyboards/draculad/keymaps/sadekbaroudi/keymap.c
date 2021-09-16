@@ -3,10 +3,6 @@
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
-#ifndef UNICODE_ENABLE
-#    define UC(x) KC_NO
-#endif
-
 extern uint8_t is_master;
 
 char wpm_as_str[8];

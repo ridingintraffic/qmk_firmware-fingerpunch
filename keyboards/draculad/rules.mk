@@ -22,7 +22,4 @@ SPLIT_KEYBOARD = yes        # Use shared split_common code
 OLED_DRIVER_ENABLE = no
 WPM_ENABLE = no
 ENCODER_ENABLE = yes
-RGBLIGHT_ENABLE = yes 
-
-OLED_DRIVER_ENABLE = yes
 RGBLIGHT_ENABLE = yes
