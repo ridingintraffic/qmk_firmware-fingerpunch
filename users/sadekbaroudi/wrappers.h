@@ -167,4 +167,29 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _________________MACROS_2__________________			P_ANGBRKT,             P_PAREN,               P_CURLY,               P_BRKT,                P_ARROW
 #define _________________MACROS_3__________________			RGB_SPD,               L_GREP,                _______,               _______,               E_CAT
 
+#define _______________2THUMB_BASE_________________     LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_BSPC)
+#define _______________2THUMB_NAV__________________     _______,                KC_BSPC
+#define _______________2THUMB_SYM__________________     MO(_MEDIA),             KC_BSPC
+#define _______________2THUMB_FUNC_________________     _______,                _______
+#define _______________2THUMB_MEDIA________________     _______,                _______
+#define _______________2THUMB_MOUSE________________     KC_MS_BTN1,             KC_MS_BTN2
+#define _______________2THUMB_WINNAV_______________     _______,                _______
+
+#define _______________4THUMB_BASE_________________     LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),  LT(_FUNCTION,KC_BSPC), LT(_SYMBOLS,KC_SPACE)
+#define _______________4THUMB_NAV__________________     _______,                KC_TAB,                KC_BSPC,               MO(_MEDIA)
+#define _______________4THUMB_SYM__________________     MO(_MEDIA),             KC_TAB,                KC_BSPC,               _______
+#define _______________4THUMB_FUNC_________________     _______,                _______,               _______,               _______
+#define _______________4THUMB_MEDIA________________     _______,                _______,               _______,               _______
+#define _______________4THUMB_MOUSE________________     KC_MS_BTN1,             KC_MS_BTN3,            KC_MS_BTN3,            KC_MS_BTN2
+#define _______________4THUMB_WINNAV_______________     _______,                _______,               _______,               _______
+
+#define _______________6THUMB_BASE_________________     KC_DEL,    _______________4THUMB_BASE_________________, KC_QUOT
+#define _______________6THUMB_NAV__________________     _______,   _______________4THUMB_NAV__________________, KC_DOT
+#define _______________6THUMB_SYM__________________     _______,   _______________4THUMB_SYM__________________, _______
+#define _______________6THUMB_FUNC_________________     _______,   _______________4THUMB_FUNC_________________, _______
+#define _______________6THUMB_MEDIA________________     _______,   _______________4THUMB_MEDIA________________, _______
+#define _______________6THUMB_MOUSE________________     _______,   _______________4THUMB_MOUSE________________, _______
+#define _______________6THUMB_WINNAV_______________     _______,   _______________4THUMB_WINNAV_______________, _______
+
+
 // clang-format on
