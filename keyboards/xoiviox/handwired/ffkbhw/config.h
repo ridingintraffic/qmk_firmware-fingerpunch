@@ -35,7 +35,7 @@
 // #define UNUSED_PINS     { D7, F4, D3 }
 
 /* COL2ROW or ROW2COL */
-#define DIODE_DIRECTION COL2ROW
+#define DIODE_DIRECTION ROW2COL
 
 // #define ENCODERS_PAD_A {F6 , D3}
 // #define ENCODERS_PAD_B {F5 , F4}
