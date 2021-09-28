@@ -25,7 +25,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x5850
 //#define DEVICE_VER      0x0001 // Now defined in the revX/config.h
 #define MANUFACTURER    sadekbaroudi
-#define PRODUCT         barobord
+#define PRODUCT         sadekbaroudi barobord
+#define DESCRIPTION     sadekbaroudi barobord
 
 /* key matrix size */
 /* Rows are doubled up */
@@ -145,3 +146,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // If using encoder type 2, uncomment this
 // #define ENCODERS_B_REVERSE
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
