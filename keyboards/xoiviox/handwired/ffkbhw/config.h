@@ -37,12 +37,12 @@
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION ROW2COL
 
-// #define ENCODERS_PAD_A {F6 , D3}
-// #define ENCODERS_PAD_B {F5 , F4}
+#define ENCODERS_PAD_A {F6 , F4}
+#define ENCODERS_PAD_B {F5 , D3}
 
-// #define ENCODER_RESOLUTION 4
+#define ENCODER_RESOLUTION 4
 // Per encoder settings
-//#define ENCODER_RESOLUTIONS { 4, 4 }
+// #define ENCODER_RESOLUTIONS { 4, 4 }
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5  /* 5 is default */

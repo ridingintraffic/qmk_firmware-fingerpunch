@@ -56,6 +56,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_ortho_4x12
 #endif
 
+// Since ffkbhw uses the name LAYOUT_ffkbhw instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_ffkbhw))
+#    define LAYOUT LAYOUT_ffkbhw
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
@@ -68,6 +73,7 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #define LAYOUT_split_3x6_3_wrapper(...)      LAYOUT_split_3x6_3(__VA_ARGS__)
 #define LAYOUT_reviung39_wrapper(...)        LAYOUT_reviung39(__VA_ARGS__)
 #define LAYOUT_pteron38_wrapper(...)         LAYOUT_pteron38(__VA_ARGS__)
+#define LAYOUT_ffkbhw_wrapper(...)           LAYOUT_ffkbhw(__VA_ARGS__)
 
 /*
 Blocks for each of the four major keyboard layouts
