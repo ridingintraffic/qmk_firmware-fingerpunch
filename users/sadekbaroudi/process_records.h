@@ -17,6 +17,7 @@ enum userspace_custom_keycodes {
     L_GREP,
     L_FIND,
     L_GITCOMMIT,
+    N_DEL_LINE,
     P_ANGBRKT,
     P_PAREN,
     P_CURLY,

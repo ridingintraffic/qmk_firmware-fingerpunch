@@ -226,6 +226,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode is released
             }
             break;
+        case N_DEL_LINE:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_END));
+                register_code(KC_LSHIFT);
+                SEND_STRING(SS_TAP(X_HOME));
+                unregister_code(KC_LSHIFT);
+                SEND_STRING(SS_TAP(X_BSPC));
+            } else {
+                // when keycode is released
+            }
+            break;
         case P_ANGBRKT:
             if (record->event.pressed) {
                 SEND_STRING("<>"SS_TAP(X_LEFT));
