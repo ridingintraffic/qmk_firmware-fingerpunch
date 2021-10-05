@@ -258,3 +258,14 @@ bool hasAllBitsInMask(uint8_t value, uint8_t mask) {
 
     return (value & mask) == mask;
 }
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        // I always type the shift keys too fast, so tapping term of 200 is way too high
+        case LSFT_T(KC_T):
+        case RSFT_T(KC_N):
+            return 75;
+        default:
+            return TAPPING_TERM;
+    }
+}
