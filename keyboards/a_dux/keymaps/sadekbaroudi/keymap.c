@@ -1,4 +1,4 @@
-/* Copyright 2021 Sadek Baroudi
+_______, _______, KC_ENT, KC_DEL, KC_BSPC, _______, _______, _______/* Copyright 2021 Sadek Baroudi
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@
         LCTL_T(K11),     K02,            K03,            LT(_FUNCTION, K04),  K05,            K06,                 LT(_FUNCTION, K07), LT(_WINNAV,K08),  K09,            RCTL_T(K1A), \
         K21,             LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,            LT(_MOUSE, K16),     RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    K2A, \
         K01,             K22,            K23,            K24,                 K25,            K26,                 K27,                K28,              K29,            K0A, \
-                                      LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),           LT(_FUNCTION,KC_BSPC), LT(_SYMBOLS,KC_SPACE) \
+                                      LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),    LT(_MEDIA,KC_BSPC), LT(_SYMBOLS,KC_SPACE) \
     )
 
 /* Re-pass though to allow templates to be used */
@@ -69,14 +69,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ________________NAVIGATION_1_______________, _________________NUMPAD_1__________________,
         ________________NAVIGATION_2_______________, _________________NUMPAD_2__________________,
         ________________NAVIGATION_3_______________, _________________NUMPAD_3__________________,
-                                    _______, KC_TAB, KC_BSPC, LT(_MEDIA,KC_SPACE)
+                                    _______, KC_TAB, KC_BSPC, KC_SPACE
     ),
 
     [_SYMBOLS] = LAYOUT_wrapper(
         ________________SYMBOLS_L1_________________, ________________SYMBOLS_R1_________________,
         ________________SYMBOLS_L2_________________, ________________SYMBOLS_R2_________________,
         ________________SYMBOLS_L3_________________, ________________SYMBOLS_R3_________________,
-                          LT(_MEDIA,KC_ENT), KC_DEL, KC_BSPC, _______
+                                    KC_ENT, KC_DEL, KC_BSPC, _______
     ),
 
     [_FUNCTION] = LAYOUT_wrapper(
