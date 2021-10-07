@@ -28,7 +28,7 @@
 #    define RGBLIGHT_SLEEP
 #    define RGBLIGHT_LAYERS
 #    define RGBLIGHT_MAX_LAYERS 16
-#    define RGBLIGHT_STARTUP_ANIMATION true
+//#    define RGBLIGHT_STARTUP_ANIMATION true
 #endif  // RGBLIGHT_ENABLE
 
 #ifdef RGB_MATRIX_ENABLE

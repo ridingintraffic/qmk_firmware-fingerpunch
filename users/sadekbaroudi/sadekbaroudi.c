@@ -269,3 +269,17 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
+
+// This was added to deal with this issue:
+// * https://www.reddit.com/r/olkb/comments/mwf5re/help_needed_controlling_individual_rgb_leds_on_a/
+// * https://github.com/qmk/qmk_firmware/issues/12037
+#ifdef SPLIT_KEYBOARD
+void housekeeping_task_user(void) {
+    static layer_state_t old_layer_state = 0;
+    if (!is_keyboard_master() && old_layer_state != layer_state) {
+        old_layer_state = layer_state;
+        layer_state_set_user(layer_state);
+    }
+}
+#endif

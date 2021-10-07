@@ -108,3 +108,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 
 };
+
+
+bool rgb_base_layer_keymap(layer_state_t state) {
+    #ifdef RGBLIGHT_ENABLE
+    rgblight_sethsv_range(HSV_PURPLE, 0, 9);
+    rgblight_sethsv_range(16, 255, 255, 9, RGBLED_NUM);
+    #endif
+
+    return true;
+}

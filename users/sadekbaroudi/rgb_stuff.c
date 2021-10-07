@@ -85,6 +85,9 @@ void rgb_set_user_config_from_current_values() {
 #endif
 }
 
+// return false if you want the parent logic to run
+__attribute__((weak)) bool rgb_base_layer_keymap(layer_state_t state) { return false; }
+
 layer_state_t layer_state_set_rgb_light(layer_state_t state) {
 #ifdef RGBLIGHT_ENABLE
     if (userspace_config.rgb_layer_change) {
@@ -114,18 +117,21 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
                     trackball_set_hsv(userspace_config.hue, userspace_config.sat, userspace_config.val);
                     #endif
                 } else { // if base layer override is disabled, always show the base setting
-                    uint8_t base_layer_rgb_hue = 167; // BLUE
-                    uint8_t base_layer_rgb_mode = mode;
-                    #ifdef BASE_LAYER_RGB_HUE
-                    base_layer_rgb_hue = BASE_LAYER_RGB_HUE;
-                    #endif
-                    #ifdef BASE_LAYER_RGB_MODE
-                    base_layer_rgb_mode = BASE_LAYER_RGB_MODE;
-                    #endif
-                    rgblight_set_hsv_and_mode(base_layer_rgb_hue, 255, 255, base_layer_rgb_mode);
-                    #ifdef PIMORONI_TRACKBALL_ENABLE
-                    trackball_set_hsv(base_layer_rgb_hue, 255, 255);
-                    #endif
+                    // This allows you to override the base layer rgb behavior for a given keyboard by defining this function in the keymap.c
+                    if (!rgb_base_layer_keymap(state)) {
+                        uint8_t base_layer_rgb_hue = 167; // BLUE
+                        uint8_t base_layer_rgb_mode = mode;
+                        #ifdef BASE_LAYER_RGB_HUE
+                        base_layer_rgb_hue = BASE_LAYER_RGB_HUE;
+                        #endif
+                        #ifdef BASE_LAYER_RGB_MODE
+                        base_layer_rgb_mode = BASE_LAYER_RGB_MODE;
+                        #endif
+                        rgblight_set_hsv_and_mode(base_layer_rgb_hue, 255, 255, base_layer_rgb_mode);
+                        #ifdef PIMORONI_TRACKBALL_ENABLE
+                        trackball_set_hsv(base_layer_rgb_hue, 255, 255);
+                        #endif
+                    }
                 }
                 break;
             case _QWERTY:
