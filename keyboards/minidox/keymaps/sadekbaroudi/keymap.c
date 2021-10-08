@@ -110,10 +110,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
+// If you don't want to deal with having two versions of the firmware (see config.h), you can use the code below. But, it doesn't work properly.
+// I had to do this because of a qmk issue, see:
+// https://github.com/qmk/qmk_firmware/issues/12037
 bool rgb_base_layer_keymap(layer_state_t state) {
     #ifdef RGBLIGHT_ENABLE
-    rgblight_sethsv_range(HSV_PURPLE, 0, 9);
-    rgblight_sethsv_range(16, 255, 255, 9, RGBLED_NUM);
+    // flash this line onto master, and comment out the the third line down
+    rgblight_sethsv(HSV_PURPLE);
+    // flash this line onto slave, and comment out the line above
+    //rgblight_sethsv(16, 255, 255);
+
+    // Instead of having two separate firmware files, you can use these two lines, but they are a bit buggier
+    //rgblight_sethsv_range(HSV_PURPLE, 0, 9);
+    //rgblight_sethsv_range(16, 255, 255, 9, RGBLED_NUM);
     #endif
 
     return true;

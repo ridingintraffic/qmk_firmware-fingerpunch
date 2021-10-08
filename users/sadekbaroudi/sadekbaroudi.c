@@ -5,7 +5,7 @@ bool is_caps_lock_on;
 
 void handle_caps_lock_change(void) {
 #if defined(RGBLIGHT_ENABLE) // We only do this because we want the layer color to change
-    layer_state_set_user(layer_state);
+    layer_state_set_rgb_light(layer_state);
 #endif  // RGBLIGHT_ENABLE
 }
 
