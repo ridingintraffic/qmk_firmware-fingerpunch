@@ -2,6 +2,8 @@
 
 userspace_config_t userspace_config;
 bool is_caps_lock_on;
+bool is_alt_tab_active = false;
+uint16_t alt_tab_timer = 0;
 
 void handle_caps_lock_change(void) {
 #if defined(RGBLIGHT_ENABLE) // We only do this because we want the layer color to change
@@ -205,7 +207,29 @@ void matrix_scan_user(void) {
     matrix_scan_leader_key();
 #endif
 
+    if (is_alt_tab_active) {
+        if (timer_elapsed(alt_tab_timer) > 1000) {
+            unregister_code(KC_LALT);
+            is_alt_tab_active = false;
+        }
+    }
+
     matrix_scan_keymap();
+}
+
+void press_super_alt_tab(bool shift) {
+    if (shift) {
+        register_code(KC_LSHIFT);
+    }
+    if (!is_alt_tab_active) {
+        is_alt_tab_active = true;
+        register_code(KC_LALT);
+    }
+    alt_tab_timer = timer_read();
+    tap_code(KC_TAB);
+    if (shift) {
+        unregister_code(KC_LSHIFT);
+    }
 }
 
 __attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) { return state; }

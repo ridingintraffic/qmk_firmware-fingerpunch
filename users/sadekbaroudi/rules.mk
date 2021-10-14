@@ -10,7 +10,7 @@ NKRO_ENABLE      = no
 RAW_ENABLE       = no
 CASEMODES_ENABLE = yes
 COMBO_ENABLE     = yes
-LTO_ENABLE       = yes
+#LTO_ENABLE       = yes
 
 # UNCOMMENT TO DISABLE MACROS
 #EXTRAFLAGS     += -flto
@@ -72,3 +72,4 @@ ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
     SRC += pimoroni_trackball.c
     OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
 endif
+

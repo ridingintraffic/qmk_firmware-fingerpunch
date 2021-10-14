@@ -41,6 +41,7 @@ enum userspace_layers {
     _WINNAV
 };
 
+void          press_super_alt_tab(bool shift);
 void          matrix_init_keymap(void);
 void          shutdown_keymap(void);
 void          suspend_power_down_keymap(void);

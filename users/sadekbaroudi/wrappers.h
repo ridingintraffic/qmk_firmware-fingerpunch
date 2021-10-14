@@ -61,6 +61,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_ffkbhw
 #endif
 
+// Since ffkbhw uses the name LAYOUT_ffkb instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_ffkb))
+#    define LAYOUT LAYOUT_ffkb
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)

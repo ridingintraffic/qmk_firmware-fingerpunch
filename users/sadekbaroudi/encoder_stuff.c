@@ -58,6 +58,17 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
       rgb_set_user_config_from_current_values();
       #endif
     }
+    else if (index == 2) {
+      #ifdef ENCODERS_C_REVERSE
+      if (!clockwise) {
+      #else
+      if (clockwise) {
+      #endif
+        press_super_alt_tab(true);
+      } else {
+        press_super_alt_tab(false);
+      }
+    }
 
     return true;
 }
