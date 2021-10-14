@@ -1,4 +1,4 @@
-_______, _______, KC_ENT, KC_DEL, KC_BSPC, _______, _______, _______/* Copyright 2021 Sadek Baroudi
+/* Copyright 2021 Sadek Baroudi
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,9 +36,9 @@ _______, _______, KC_ENT, KC_DEL, KC_BSPC, _______, _______, _______/* Copyright
     K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A  \
   ) \
   LAYOUT_wrapper( \
-        LCTL_T(K11),     K02,            K03,            LT(_FUNCTION, K04),  K05,            K06,                 LT(_FUNCTION, K07), LT(_WINNAV,K08),  K09,            RCTL_T(K1A), \
-        K21,             LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,            LT(_MOUSE, K16),     RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    K2A, \
-        K01,             K22,            K23,            K24,                 K25,            K26,                 K27,                K28,              K29,            K0A, \
+        K01,             K02,            K03,            LT(_FUNCTION, K04),  K05,            K06,                 LT(_FUNCTION, K07), LT(_WINNAV,K08),  K09,            K0A, \
+        LCTL_T(K11),     LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,            LT(_MOUSE, K16),     RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A), \
+        K21,             K22,            K23,            K24,                 K25,            K26,                 K27,                K28,              K29,            K2A, \
                                       LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),    LT(_MEDIA,KC_BSPC), LT(_SYMBOLS,KC_SPACE) \
     )
 

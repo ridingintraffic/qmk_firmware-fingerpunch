@@ -18,10 +18,6 @@
 #include "casemodes.h"
 #include QMK_KEYBOARD_H
 
-#ifndef UNICODE_ENABLE
-#    define UC(x) KC_NO
-#endif
-
 /*
  * The `LAYOUT_euclid36proto_base` macro is a template to allow the use of identical
  * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
@@ -70,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ________________NAVIGATION_1_______________, _________________NUMPAD_1__________________,
         ________________NAVIGATION_2_______________, _________________NUMPAD_2__________________,
         ________________NAVIGATION_3_______________, _________________NUMPAD_3__________________,
-                           _______, _______, KC_TAB, KC_BSPC, KC_SPACE KC_DOT
+                           _______, _______, KC_TAB, KC_BSPC, KC_SPACE, KC_DOT
     ),
 
     [_SYMBOLS] = LAYOUT_wrapper(
