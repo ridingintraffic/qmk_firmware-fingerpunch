@@ -178,29 +178,29 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _________________MACROS_2__________________			P_ANGBRKT,             P_PAREN,               P_CURLY,               P_BRKT,                P_ARROW
 #define _________________MACROS_3__________________			RGB_SPD,               L_GREP,                _______,               _______,               E_CAT
 
-#define ______________2_THUMB_BASE_________________     LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_BSPC)
-#define ______________2_THUMB_NAV__________________     _______,                KC_BSPC
-#define ______________2_THUMB_SYM__________________     MO(_MEDIA),             KC_BSPC
-#define ______________2_THUMB_FUNC_________________     _______,                _______
-#define ______________2_THUMB_MEDIA________________     _______,                _______
-#define ______________2_THUMB_MOUSE________________     KC_MS_BTN1,             KC_MS_BTN2
-#define ______________2_THUMB_WINNAV_______________     _______,                _______
+// #define ______________2_THUMB_BASE_________________     LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_BSPC)
+// #define ______________2_THUMB_NAV__________________     _______,                KC_BSPC
+// #define ______________2_THUMB_SYM__________________     MO(_MEDIA),             KC_BSPC
+// #define ______________2_THUMB_FUNC_________________     _______,                _______
+// #define ______________2_THUMB_MEDIA________________     _______,                _______
+// #define ______________2_THUMB_MOUSE________________     KC_MS_BTN1,             KC_MS_BTN2
+// #define ______________2_THUMB_WINNAV_______________     _______,                _______
 
-#define ______________4_THUMB_BASE_________________     LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),  LT(_FUNCTION,KC_BSPC), LT(_SYMBOLS,KC_SPACE)
-#define ______________4_THUMB_NAV__________________     _______,                KC_TAB,                KC_BSPC,               MO(_MEDIA)
-#define ______________4_THUMB_SYM__________________     MO(_MEDIA),             KC_TAB,                KC_BSPC,               _______
-#define ______________4_THUMB_FUNC_________________     _______,                _______,               _______,               _______
-#define ______________4_THUMB_MEDIA________________     _______,                _______,               _______,               _______
-#define ______________4_THUMB_MOUSE________________     KC_MS_BTN1,             KC_MS_BTN3,            KC_MS_BTN3,            KC_MS_BTN2
-#define ______________4_THUMB_WINNAV_______________     _______,                _______,               _______,               _______
+// #define ______________4_THUMB_BASE_________________     LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),  LT(_FUNCTION,KC_BSPC), LT(_SYMBOLS,KC_SPACE)
+// #define ______________4_THUMB_NAV__________________     _______,                KC_TAB,                KC_BSPC,               MO(_MEDIA)
+// #define ______________4_THUMB_SYM__________________     MO(_MEDIA),             KC_TAB,                KC_BSPC,               _______
+// #define ______________4_THUMB_FUNC_________________     _______,                _______,               _______,               _______
+// #define ______________4_THUMB_MEDIA________________     _______,                _______,               _______,               _______
+// #define ______________4_THUMB_MOUSE________________     KC_MS_BTN1,             KC_MS_BTN3,            KC_MS_BTN3,            KC_MS_BTN2
+// #define ______________4_THUMB_WINNAV_______________     _______,                _______,               _______,               _______
 
-#define ______________6_THUMB_BASE_________________     KC_DEL,    ______________4_THUMB_BASE_________________, KC_QUOT
-#define ______________6_THUMB_NAV__________________     _______,   ______________4_THUMB_NAV__________________, KC_DOT
-#define ______________6_THUMB_SYM__________________     _______,   ______________4_THUMB_SYM__________________, _______
-#define ______________6_THUMB_FUNC_________________     _______,   ______________4_THUMB_FUNC_________________, _______
-#define ______________6_THUMB_MEDIA________________     _______,   ______________4_THUMB_MEDIA________________, _______
-#define ______________6_THUMB_MOUSE________________     _______,   ______________4_THUMB_MOUSE________________, _______
-#define ______________6_THUMB_WINNAV_______________     _______,   ______________4_THUMB_WINNAV_______________, _______
+// #define ______________6_THUMB_BASE_________________     KC_DEL,    ______________4_THUMB_BASE_________________, KC_QUOT
+// #define ______________6_THUMB_NAV__________________     _______,   ______________4_THUMB_NAV__________________, KC_DOT
+// #define ______________6_THUMB_SYM__________________     _______,   ______________4_THUMB_SYM__________________, _______
+// #define ______________6_THUMB_FUNC_________________     _______,   ______________4_THUMB_FUNC_________________, _______
+// #define ______________6_THUMB_MEDIA________________     _______,   ______________4_THUMB_MEDIA________________, _______
+// #define ______________6_THUMB_MOUSE________________     _______,   ______________4_THUMB_MOUSE________________, _______
+// #define ______________6_THUMB_WINNAV_______________     _______,   ______________4_THUMB_WINNAV_______________, _______
 
 
 // clang-format on

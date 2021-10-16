@@ -232,7 +232,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 register_code(KC_LSHIFT);
                 SEND_STRING(SS_TAP(X_HOME));
                 unregister_code(KC_LSHIFT);
-                SEND_STRING(SS_TAP(X_BSPC));
+            } else {
+                // when keycode is released
+            }
+            break;
+        case N_SEL_LINE:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_END));
+                register_code(KC_LSHIFT);
+                SEND_STRING(SS_TAP(X_HOME));
+                unregister_code(KC_LSHIFT);
+            }
+            break;
+        case S_ALT_TAB:
+            if (record->event.pressed) {
+                press_super_alt_tab(false);
             } else {
                 // when keycode is released
             }
