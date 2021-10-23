@@ -1,5 +1,7 @@
 #include "sadekbaroudi.h"
 
+#define USER_SUPER_ALT_TAB_TIMEOUT 500
+
 userspace_config_t userspace_config;
 bool is_caps_lock_on;
 bool is_alt_tab_active = false;
@@ -208,7 +210,7 @@ void matrix_scan_user(void) {
 #endif
 
     if (is_alt_tab_active) {
-        if (timer_elapsed(alt_tab_timer) > 1000) {
+        if (timer_elapsed(alt_tab_timer) > USER_SUPER_ALT_TAB_TIMEOUT) {
             unregister_code(KC_LALT);
             is_alt_tab_active = false;
         }
