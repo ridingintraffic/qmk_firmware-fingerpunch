@@ -20,7 +20,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_GAME] = LAYOUT_halfdash( \
     KC_F4,   KC_F1,   KC_F2,   KC_C,    KC_V,    KC_G,    KC_N, \
     KC_Z,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_D,    KC_Y, \
-    KC_P,    KC_A,    KC_F,    KC_D,    KC_L,    KC_H,    KC_F7, \
+    KC_P,    KC_A,    KC_F,    KC_TAB,    KC_L,    KC_H,    KC_F7, \
     KC_LSFT, KC_T,    KC_COMM, KC_K,    KC_SCLN, KC_DOT,  \
     KC_LCTL, KC_GRV,  MO(_FUNCTION),  KC_LALT,          KC_J,  KC_X, KC_B \
   ),
