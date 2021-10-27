@@ -1,5 +1,6 @@
-#include QMK_KEYBOARD_H
+#include "sadekbaroudi.h"
 
+#include QMK_KEYBOARD_H
 
 #define _GAME 0
 #define _FUNCTION 1
@@ -27,11 +28,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
   [_FUNCTION] = LAYOUT_halfdash( \
-    RESET,   TG(_KICAD), TG(_FUSION), TG(_ALPHA), KC_4,    KC_5,    KC_LBRC, \
-    KC_TAB,  RGB_TOG,   RGB_MOD,    RGB_HUD,     RGB_HUI, KC_T,    KC_MINS, \
-    KC_CAPS, BL_TOGG,   BL_BRTG,    BL_INC,      BL_DEC,  KC_G,    KC_DEL , \
-    KC_LSFT, KC_Z,      KC_X,       KC_C,        KC_V,    KC_B,    \
-    KC_LCTL, KC_LGUI,   _______,    KC_LALT,             KC_BSPC,   KC_SPC, KC_ENT \
+    RESET,   TG(_KICAD), TG(_FUSION),      TG(_ALPHA),        KC_4,     KC_5,       KC_LBRC, \
+    KC_TAB,  RGB_TOG,    RGB_MODE_REVERSE, RGB_MODE_FORWARD,  _______,  RGB_SPI,    KC_MINS, \
+    KC_CAPS, KC_RGB_BLT, RGB_HUI,          RGB_SAI,           RGB_VAI,  RGB_SPI,    KC_DEL , \
+    KC_LSFT, KC_RGB_T,   RGB_HUD,          RGB_SAD,           RGB_VAD,  RGB_SPD,    \
+    KC_LCTL, KC_LGUI,   _______,    KC_LALT,                                KC_BSPC,   KC_SPC, KC_ENT \
   ),
 
   [_KICAD] = LAYOUT_halfdash( \
