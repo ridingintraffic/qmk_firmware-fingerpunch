@@ -51,6 +51,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 
+// Use twinkle as the default rgb mode for the layers
+#define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
+
 #define RGB_DI_PIN F0 // 41
 #ifdef RGBLIGHT_ENABLE
   #define RGBLED_NUM 42
