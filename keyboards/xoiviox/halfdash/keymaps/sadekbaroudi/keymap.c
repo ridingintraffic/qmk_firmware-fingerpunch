@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Z,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_D,    KC_Y, \
     KC_P,    KC_A,    KC_F,    KC_TAB,    KC_L,    KC_H,    KC_F7, \
     KC_LSFT, KC_T,    KC_COMM, KC_K,    KC_SCLN, KC_DOT,  \
-    KC_LCTL, KC_GRV,  MO(_FUNCTION),  KC_LALT,          KC_J,  KC_X, KC_B \
+    KC_LCTL, KC_ESC,  MO(_FUNCTION),  KC_LALT,          KC_J,  KC_X, KC_B \
   ),
 
 
