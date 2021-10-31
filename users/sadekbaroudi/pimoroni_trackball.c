@@ -1,5 +1,6 @@
 #include "pimoroni_trackball.h"
 #include "i2c_master.h"
+#include "i2c_master.c"
 #include "pointing_device.h"
 #include "sadekbaroudi.h"
 
