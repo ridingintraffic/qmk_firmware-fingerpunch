@@ -151,7 +151,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#define TRACKBALL_ORIENTATION 2
+#define PIMORONI_TRACKBALL_ROTATE
+#define PIMORONI_TRACKBALL_CLICK
+#define PIMORONI_TRACKBALL_INVERT_X
 
 // If using encoder type 2, uncomment this
 // #define ENCODERS_B_REVERSE
