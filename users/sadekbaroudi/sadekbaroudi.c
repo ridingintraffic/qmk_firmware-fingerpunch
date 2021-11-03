@@ -2,6 +2,12 @@
 
 #define USER_SUPER_ALT_TAB_TIMEOUT 500
 
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#include "drivers/sensors/pimoroni_trackball.h"
+#include "pointing_device.h"
+#include "color.h"
+#endif
+
 userspace_config_t userspace_config;
 bool is_caps_lock_on;
 bool is_alt_tab_active = false;
@@ -144,6 +150,9 @@ __attribute__((weak)) void keyboard_post_init_keymap(void) {}
 
 void keyboard_post_init_user(void) {
     is_caps_lock_on = false;
+    #if defined(PIMORONI_TRACKBALL_ENABLE) && !defined(RGBLIGHT_ENABLE)
+    trackball_set_rgbw(RGB_BLUE, 0x00);
+    #endif
 #if defined(RGBLIGHT_ENABLE)
     keyboard_post_init_rgb_light();
 #endif
