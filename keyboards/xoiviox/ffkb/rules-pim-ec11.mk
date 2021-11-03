@@ -42,3 +42,10 @@ PIMORONI_TRACKBALL_ENABLE = yes
 # unfortunately, these two take up a lot of space, so you may need to disable macros :'(
 EXTRAFLAGS     += -flto
 MOUSEKEY_ENABLE = no
+
+ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
+    POINTING_DEVICE_ENABLE := yes
+    SRC += drivers/sensors/pimoroni_trackball.c
+    QUANTUM_LIB_SRC += i2c_master.c
+    OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
+endif

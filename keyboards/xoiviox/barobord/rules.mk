@@ -25,7 +25,7 @@ NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
-#RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
+#RGBLIGHT_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
 
@@ -36,4 +36,13 @@ AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = yes
 OLED_DRIVER_ENABLE = yes    # this can be yes or no depending on if you have an OLED
-#EXTRAFLAGS     += -flto
+EXTRAFLAGS     += -flto
+
+PIMORONI_TRACKBALL_ENABLE = yes
+
+ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
+    POINTING_DEVICE_ENABLE := yes
+    SRC += drivers/sensors/pimoroni_trackball.c
+    QUANTUM_LIB_SRC += i2c_master.c
+    OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
+endif

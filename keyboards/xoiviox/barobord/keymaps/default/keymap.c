@@ -1,5 +1,11 @@
 #include QMK_KEYBOARD_H
 
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#include "drivers/sensors/pimoroni_trackball.h"
+#include "pointing_device.h"
+#include "color.h"
+#endif
+
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _QWERTY,
@@ -11,6 +17,8 @@ enum layer_names {
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
+
+bool is_caps_lock_on;
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -134,7 +142,62 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+    #ifdef PIMORONI_TRACKBALL_ENABLE
+    switch(get_highest_layer(state)) {
+        case _QWERTY:
+            if (is_caps_lock_on) {
+                trackball_set_rgbw(RGB_RED, 0x00);
+            } else {
+                trackball_set_rgbw(RGB_BLUE, 0x00);
+            }
+            break;
+        case _COLEMAK:
+            trackball_set_rgbw(RGB_GREEN, 0x00);
+            break;
+        case _LOWER:
+            trackball_set_rgbw(RGB_PURPLE, 0x00);
+            break;
+        case _RAISE:
+            trackball_set_rgbw(RGB_YELLOW, 0x00);
+            break;
+        case _ADJUST:
+            trackball_set_rgbw(RGB_ORANGE, 0x00);
+            break;
+        default: //  for any other layers, or the default layer
+            if (is_caps_lock_on) {
+                trackball_set_rgbw(RGB_RED, 0x00);
+            } else {
+                trackball_set_rgbw(RGB_BLUE, 0x00);
+            }
+            break;
+    }
+    #endif
+    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
+
+void keyboard_post_init_user(void) {
+    is_caps_lock_on = false;
+    #ifdef PIMORONI_TRACKBALL_ENABLE
+    trackball_set_rgbw(RGB_BLUE, 0x00);
+    #endif
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_CAPSLOCK:
+            if (record->event.pressed) {
+                if (is_caps_lock_on) {
+                    is_caps_lock_on = false;
+                } else {
+                    is_caps_lock_on = true;
+                }
+            }
+            break;
+        default:
+            break;
+    }
+
+    return true;
 }
 
 #ifdef ENCODER_ENABLE

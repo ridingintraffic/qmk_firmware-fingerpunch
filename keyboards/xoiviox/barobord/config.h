@@ -57,7 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
-  #define RGBLIGHT_LIMIT_VAL 112 /* The maximum brightness level for RGBLIGHT_ENABLE */
+  #define RGBLIGHT_LIMIT_VAL 60 /* The maximum brightness level for RGBLIGHT_ENABLE */
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
 // /*== all animations enable ==*/
   #define RGBLIGHT_ANIMATIONS
@@ -82,7 +82,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGB_MATRIX_ENABLE
   #define DRIVER_LED_TOTAL 40
   #define RGB_MATRIX_CENTER {100, 32}
-  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 112  /* The maximum brightness level for RGB_MATRIX */
+  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 60  /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
   #define RGB_MATRIX_KEYPRESSES
   #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
@@ -137,14 +137,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define THUMBSTICK_PIN_Y F0
 #endif
 
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#    define PIMORONI_TRACKBALL_ROTATE
+#    define PIMORONI_TRACKBALL_CLICK
+#    define PIMORONI_TRACKBALL_INVERT_X
+#endif
+
+// If using encoder type 2, uncomment this
+#define ENCODERS_B_REVERSE
+
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
-
-#define TRACKBALL_ORIENTATION 2
-
-// If using encoder type 2, uncomment this
-// #define ENCODERS_B_REVERSE
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
