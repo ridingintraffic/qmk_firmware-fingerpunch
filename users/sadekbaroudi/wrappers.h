@@ -125,13 +125,13 @@ NOTE: These are all the same length.  If you do a search/replace
 #define ______________COLEMAK_MOD_DH_R2____________			KC_M,    KC_N,    KC_E,    KC_I,    KC_O
 #define ______________COLEMAK_MOD_DH_R3____________			KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
 
-#define _________________WORKMAN_L1________________			KC_Q,    KC_D,    KC_R,   KC_W,     KC_B
-#define _________________WORKMAN_L2________________			KC_A,    KC_S,    KC_H,   KC_T,     KC_G
-#define _________________WORKMAN_L3________________			KC_Z,    KC_X,    KC_M,   KC_C,     KC_V
+#define _________________ISRT_L1________________			  KC_Y,    KC_C,    KC_L,   KC_M,     KC_K
+#define _________________ISRT_L2________________			  KC_I,    KC_S,    KC_R,   KC_T,     KC_G
+#define _________________ISRT_L3________________			  KC_Q,    KC_V,    KC_W,   KC_D,     KC_J
 
-#define _________________WORKMAN_R1________________			KC_J,    KC_F,    KC_U,    KC_P,    KC_SCLN
-#define _________________WORKMAN_R2________________			KC_Y,    KC_N,    KC_E,    KC_O,    KC_I
-#define _________________WORKMAN_R3________________			KC_K,    KC_L,    KC_COMM, KC_DOT,  KC_SLASH
+#define _________________ISRT_R1________________			  KC_Z,    KC_F,    KC_U,    KC_COMM, KC_SCLN
+#define _________________ISRT_R2________________			  KC_P,    KC_N,    KC_E,    KC_A,    KC_O
+#define _________________ISRT_R3________________			  KC_B,    KC_H,    KC_SLSH, KC_DOT,  KC_X
 
 #define ___________________BLANK___________________			_______, _______, _______, _______, _______
 
@@ -161,7 +161,7 @@ NOTE: These are all the same length.  If you do a search/replace
 
 #define ___________________RGB_1___________________			RGB_TOG,               RGB_MODE_REVERSE,      RGB_MODE_FORWARD,      _______,               TG(_QWERTY)
 #define ___________________RGB_2___________________			KC_RGB_BLT,            RGB_HUI,               RGB_SAI,               RGB_VAI,               TG(_COLEMAK)
-#define ___________________RGB_3___________________			KC_RGB_T,              RGB_HUD,               RGB_SAD,               RGB_VAD,               TG(_WORKMAN)
+#define ___________________RGB_3___________________			KC_RGB_T,              RGB_HUD,               RGB_SAD,               RGB_VAD,               TG(_ISRT)
 
 #define __________________MOUSE_1__________________			RESET,                 KC_MS_WH_UP,           KC_MS_UP,              KC_MS_WH_DOWN,         _______
 #define __________________MOUSE_2__________________			KC_MS_WH_LEFT,         KC_MS_LEFT,            KC_MS_DOWN,            KC_MS_RIGHT,           KC_MS_WH_RIGHT

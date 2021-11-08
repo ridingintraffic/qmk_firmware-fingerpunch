@@ -140,7 +140,7 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
                 #endif
                 rgblight_set_hsv_and_mode(10, 10, 255, mode); // white
                 break;
-            case _WORKMAN:
+            case _ISRT:
                 #ifdef PIMORONI_TRACKBALL_ENABLE
                 trackball_set_hsv(HSV_MAGENTA);
                 #endif

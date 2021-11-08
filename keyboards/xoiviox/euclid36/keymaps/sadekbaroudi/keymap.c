@@ -67,10 +67,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
 
-    [_WORKMAN] = LAYOUT_euclid36_base_wrapper(
-        _________________WORKMAN_L1________________, _________________WORKMAN_R1________________,
-        _________________WORKMAN_L2________________, _________________WORKMAN_R2________________,
-        _________________WORKMAN_L3________________, _________________WORKMAN_R3________________
+    [_ISRT] = LAYOUT_euclid36_base_wrapper(
+        _________________ISRT_L1________________, _________________ISRT_R1________________,
+        _________________ISRT_L2________________, _________________ISRT_R2________________,
+        _________________ISRT_L3________________, _________________ISRT_R3________________
     ),
 
     [_NAVIGATION] = LAYOUT_wrapper(
@@ -215,7 +215,7 @@ static void render_status(void) {
         case _COLEMAK:
             oled_write_P(PSTR("Colemak"), false);
             break;
-        case _WORKMAN:
+        case _ISRT:
             oled_write_P(PSTR("Workman"), false);
             break;
         case _NAVIGATION:
