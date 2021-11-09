@@ -66,6 +66,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_ffkb
 #endif
 
+// Since bgkeeb uses the name LAYOUT_bgkeeb instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_bgkeeb))
+#    define LAYOUT LAYOUT_bgkeeb
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
