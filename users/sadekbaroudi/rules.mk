@@ -19,9 +19,6 @@ COMBO_ENABLE     = yes
 SPACE_CADET_ENABLE    = no
 GRAVE_ESC_ENABLE      = no
 
-# define this in the keyboard's rules.mk
-#PIMORONI_TRACKBALL_ENABLE = yes
-
 
 
 ifneq ($(strip $(NO_SECRETS)), yes)

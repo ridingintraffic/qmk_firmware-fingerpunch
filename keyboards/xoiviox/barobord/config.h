@@ -46,7 +46,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
-
 #define TAP_CODE_DELAY 25
 #define TAPPING_FORCE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
@@ -127,24 +126,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_B {D7 , D4}
 
 #define ENCODER_RESOLUTION 4
-// Per encoder settings
-//#define ENCODER_RESOLUTIONS { 4, 4 }
-
-#ifdef THUMBSTICK_ENABLE
-#    define THUMBSTICK_FLIP_X
-#    define THUMBSTICK_FLIP_Y
-#    define THUMBSTICK_PIN_X F7
-#    define THUMBSTICK_PIN_Y F0
-#endif
 
 #ifdef PIMORONI_TRACKBALL_ENABLE
-#    define PIMORONI_TRACKBALL_ROTATE
-#    define PIMORONI_TRACKBALL_CLICK
-#    define PIMORONI_TRACKBALL_INVERT_X
+#  define PIMORONI_TRACKBALL_ROTATE
+#  define PIMORONI_TRACKBALL_CLICK
+#  define PIMORONI_TRACKBALL_INVERT_X
 #endif
 
-// If using encoder type 2, uncomment this
-#define ENCODERS_B_REVERSE
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE

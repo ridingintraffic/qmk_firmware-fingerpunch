@@ -25,7 +25,7 @@ NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
-#RGBLIGHT_ENABLE = yes
+RGBLIGHT_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
 
@@ -36,7 +36,9 @@ AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = yes
 OLED_DRIVER_ENABLE = yes    # this can be yes or no depending on if you have an OLED
-EXTRAFLAGS     += -flto
+EXTRAFLAGS     += -flto     # macros disabled, as a lot of barobord features require more space, can move this line into all the individual rules.mk, only where needed
+                            # for instance, if you build "no_features", it's very unlikely you'll need to disable macros
+MOUSEKEY_ENABLE = no
 
 PIMORONI_TRACKBALL_ENABLE = yes
 
