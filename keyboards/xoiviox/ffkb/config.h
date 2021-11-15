@@ -53,6 +53,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RGB_DI_PIN F0 // 41
 #ifdef RGBLIGHT_ENABLE
+  // Use twinkle as the default rgb mode for the layers
+  #define DEFAULT_RGB_LAYER_MODE RGBLIGHT_MODE_TWINKLE+2
   #define RGBLED_NUM 42
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
@@ -130,25 +132,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 28, 28, 26
 #define ENCODERS_PAD_B {B4, D6, D0}
 
-#define ENCODERS_B_REVERSE true
-
 #define ENCODER_RESOLUTION 4
 // Per encoder settings
 //#define ENCODER_RESOLUTIONS { 4, 4 }
-
-#ifdef THUMBSTICK_ENABLE
-#    define THUMBSTICK_FLIP_X
-#    define THUMBSTICK_FLIP_Y
-#    define THUMBSTICK_PIN_X F7
-#    define THUMBSTICK_PIN_Y F0
-#endif
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#define TRACKBALL_ORIENTATION 2
+#ifdef PIMORONI_TRACKBALL_ENABLE
+#define PIMORONI_TRACKBALL_ROTATE
+#define PIMORONI_TRACKBALL_CLICK
+#define PIMORONI_TRACKBALL_INVERT_X
+#endif
 
 // If using encoder type 2, uncomment this
 // #define ENCODERS_B_REVERSE
