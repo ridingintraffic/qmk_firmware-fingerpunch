@@ -3,7 +3,7 @@
     "url": "https://github.com/sadekbaroudi/barobord",
     "maintainer": "Sadek Baroudi <sadekbaroudi@gmail.com>",
     "layouts": {
-        "LAYOUT": {
+        "LAYOUT_barobord": {
             "layout": [
                 {"label":"K01", "x":1, "y":1.5}, {"label":"K02", "x":2, "y":1.125}, {"label":"K03", "x":3, "y":1}, {"label":"K04", "x":4, "y":1.125}, {"label":"K05", "x":5, "y":1.25}, {"label":"K06", "x":10.5, "y":1.25}, {"label":"K07", "x":11.5, "y":1.125}, {"label":"K08", "x":12.5, "y":1},    {"label":"K09", "x":13.5, "y":1.125}, {"label":"K10", "x":14.5, "y":1.5},
                 {"label":"K11", "x":1, "y":2.5}, {"label":"K12", "x":2, "y":2.125}, {"label":"K13", "x":3, "y":2}, {"label":"K14", "x":4, "y":2.125}, {"label":"K15", "x":5, "y":2.25}, {"label":"K16", "x":10.5, "y":2.25}, {"label":"K17", "x":11.5, "y":2.125}, {"label":"K18", "x":12.5, "y":2},    {"label":"K19", "x":13.5, "y":2.125}, {"label":"K20", "x":14.5, "y":2.5},

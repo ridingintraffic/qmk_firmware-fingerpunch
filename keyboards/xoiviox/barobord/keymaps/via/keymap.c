@@ -9,7 +9,6 @@
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _QWERTY,
-    _COLEMAK,
     _LOWER,
     _RAISE,
     _ADJUST
@@ -42,31 +41,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,         KC_Y,    KC_U,         KC_I,         KC_O,         KC_P,
   LCTL_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D), LSFT_T(KC_F), KC_G,         KC_H,    RSFT_T(KC_J), RALT_T(KC_K), RGUI_T(KC_L), RCTL_T(KC_SCLN),
   KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,         KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,
-  _______,      _______,      LOWER,        KC_ENT,       KC_QUOT,      KC_BSPC, KC_SPC,       RAISE,      _______,      _______,
-                                                          KC_MUTE,      LCTL(KC_BSPC)  // These are for the rotary encoders
-),
-
-/* Colemak
- *
- * ,----------------------------------.           ,----------------------------------.
- * |   Q  |   W  |   F  |   P  |   B  |           |   J  |   L  |   U  |   Y  |   ;  |
- * |------+------+------+------+------|           |------+------+------+------+------|
- * |   A  |   R  |   S  |   T  |   G  |           |   M  |   N  |   E  |   I  |   O  |
- * |------+------+------+------+------|           |------+------+------+------+------|
- * |   Z  |   X  |   C  |   D  |   V  |           |   K  |   H  |   ,  |   .  |   /  |
- * `-------------+--------------------'           `----------------------------------'
- *        |      |      |                                       |      |      |
- *        `------+------'                                       `------+------'
- *                  ,--------------------.    ,--------------------.
- *                  | LOWER| Enter|   '  |    |BckSpc| Space| RAISE|
- *                  `--------------------'    `--------------------.
- */
-
-// Default config uses home row mods. So hold each of the keys on the home row to use ctrl, gui, alt, or shift
-[_COLEMAK] = LAYOUT_barobord(
-  KC_Q,         KC_W,         KC_F,         KC_P,         KC_B,         KC_J,    KC_L,         KC_U,         KC_Y,         KC_SCLN,
-  LCTL_T(KC_A), LGUI_T(KC_R), LALT_T(KC_S), LSFT_T(KC_T), KC_G,         KC_M,    RSFT_T(KC_N), RALT_T(KC_E), RGUI_T(KC_I), RCTL_T(KC_O),
-  KC_Z,         KC_X,         KC_C,         KC_D,         KC_V,         KC_K,    KC_H,         KC_COMM,      KC_DOT,       KC_SLSH,
   _______,      _______,      LOWER,        KC_ENT,       KC_QUOT,      KC_BSPC, KC_SPC,       RAISE,      _______,      _______,
                                                           KC_MUTE,      LCTL(KC_BSPC)  // These are for the rotary encoders
 ),
@@ -134,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] =  LAYOUT_barobord(
   RGB_TOG, RGB_RMOD, RGB_MOD, _______, TO(_QWERTY),       KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,
-  RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, TO(_COLEMAK),      KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,
+  RGB_SPI, RGB_HUI,  RGB_SAI, RGB_VAI, _______,      KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,
   RGB_SPD, RGB_HUD,  RGB_SAD, RGB_VAD, _______,           KC_F11,  KC_F12,  _______, _______,  RESET,
   _______, _______,  _______, _______, _______,           _______, _______, _______, _______, _______,
                                        _______,           _______
@@ -150,9 +124,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             } else {
                 trackball_set_rgbw(RGB_BLUE, 0x00);
             }
-            break;
-        case _COLEMAK:
-            trackball_set_rgbw(RGB_GREEN, 0x00);
             break;
         case _LOWER:
             trackball_set_rgbw(RGB_PURPLE, 0x00);
