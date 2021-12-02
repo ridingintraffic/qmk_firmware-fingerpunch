@@ -15,8 +15,13 @@ See [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools)
 
 ## Build Guide
 
-To be built
+See:
+https://github.com/sadekbaroudi/bgkeeb/blob/master/BUILDGUIDE.md
 
+## Notes
+
+IMPORTANT: Please read the firmware section on this page to determine which version of bgkeeb that you have, and how to build the firmware based on that:
+https://github.com/sadekbaroudi/bgkeeb/blob/master/README.md
 
 ## Choosing which board to plug the USB cable into (choosing Master)
 
