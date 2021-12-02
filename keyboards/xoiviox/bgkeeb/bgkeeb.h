@@ -20,3 +20,5 @@
     { ___, K72, K73, K74, K75 } \
   }
 
+#define LAYOUT LAYOUT_split_3x5_4
+
