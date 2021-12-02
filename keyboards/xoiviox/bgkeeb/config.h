@@ -33,10 +33,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COLS 10
 
 /* COL2ROW or ROW2COL */
-// right side
 #define DIODE_DIRECTION COL2ROW
-// left side
-//#define DIODE_DIRECTION COL2ROW
 
 // wiring of each half
 #define MATRIX_ROW_PINS { F6, D7, B3, E6 }

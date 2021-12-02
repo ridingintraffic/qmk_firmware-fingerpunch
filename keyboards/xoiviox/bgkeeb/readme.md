@@ -5,11 +5,11 @@
 
 Make example for this keyboard (after setting up your build environment):
 
-    make bgkeeb:default
+    make xoiviox/bgkeeb:default
 
 Flashing example for this keyboard ([using the command line](https://docs.qmk.fm/#/newbs_flashing?id=flash-your-keyboard-from-the-command-line)):
 
-    make bgkeeb:default:flash
+    make xoiviox/bgkeeb:default:flash
 
 See [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) then the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information.
 
@@ -17,11 +17,6 @@ See [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools)
 
 See:
 https://github.com/sadekbaroudi/bgkeeb/blob/master/BUILDGUIDE.md
-
-## Notes
-
-IMPORTANT: Please read the firmware section on this page to determine which version of bgkeeb that you have, and how to build the firmware based on that:
-https://github.com/sadekbaroudi/bgkeeb/blob/master/README.md
 
 ## Choosing which board to plug the USB cable into (choosing Master)
 
