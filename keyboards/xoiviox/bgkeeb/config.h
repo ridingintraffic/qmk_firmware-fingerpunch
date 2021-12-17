@@ -79,9 +79,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_A {B5}
 #define ENCODERS_PAD_B {B4}
 
-#define ENCODER_RESOLUTION 4
+#define ENCODER_RESOLUTION 2
 // Per encoder settings
-//#define ENCODER_RESOLUTIONS { 4, 4 }
+//#define ENCODER_RESOLUTIONS { 2, 2 }
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST

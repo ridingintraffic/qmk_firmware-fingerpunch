@@ -132,9 +132,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 28, 28, 26
 #define ENCODERS_PAD_B {B4, D6, D0}
 
-#define ENCODER_RESOLUTION 4
+#define ENCODER_RESOLUTION 2
 // Per encoder settings
-//#define ENCODER_RESOLUTIONS { 4, 4 }
+//#define ENCODER_RESOLUTIONS { 2, 2 }
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE

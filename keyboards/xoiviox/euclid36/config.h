@@ -76,9 +76,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_A {C6 , B4}
 #define ENCODERS_PAD_B {B6 , B5}
 
-#define ENCODER_RESOLUTION 4
+#define ENCODER_RESOLUTION 2
 // Per encoder settings
-//#define ENCODER_RESOLUTIONS { 4, 4 }
+//#define ENCODER_RESOLUTIONS { 2, 2 }
 
 #ifdef THUMBSTICK_ENABLE
 #    define THUMBSTICK_FLIP_X

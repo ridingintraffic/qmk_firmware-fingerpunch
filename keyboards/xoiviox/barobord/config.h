@@ -125,7 +125,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODERS_PAD_A {B4 , D6}
 #define ENCODERS_PAD_B {D7 , D4}
 
-#define ENCODER_RESOLUTION 4
+#define ENCODER_RESOLUTION 2
 
 #ifdef PIMORONI_TRACKBALL_ENABLE
 #  define PIMORONI_TRACKBALL_ROTATE

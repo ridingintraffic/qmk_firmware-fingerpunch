@@ -40,9 +40,9 @@
 #define ENCODERS_PAD_A {F6 , D3}
 #define ENCODERS_PAD_B {F5 , F4}
 
-#define ENCODER_RESOLUTION 4
+#define ENCODER_RESOLUTION 2
 // Per encoder settings
-//#define ENCODER_RESOLUTIONS { 4, 4 }
+//#define ENCODER_RESOLUTIONS { 2, 2 }
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5  /* 5 is default */
