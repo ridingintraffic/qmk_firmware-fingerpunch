@@ -71,6 +71,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_bgkeeb
 #endif
 
+// Since absolem uses the name LAYOUT_absolem instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_absolem))
+#    define LAYOUT LAYOUT_absolem
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
