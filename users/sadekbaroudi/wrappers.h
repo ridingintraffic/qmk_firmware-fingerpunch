@@ -164,13 +164,13 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __NUMPAD_1_K2__ KC_7
 #define __NUMPAD_1_K3__ KC_8
 #define __NUMPAD_1_K4__ KC_9
-#define __NUMPAD_1_K5__ KC_PLUS
+#define __NUMPAD_1_K5__ KC_MINS
 
 #define __NUMPAD_2_K1__ KC_SLSH
 #define __NUMPAD_2_K2__ KC_4
 #define __NUMPAD_2_K3__ KC_5
 #define __NUMPAD_2_K4__ KC_6
-#define __NUMPAD_2_K5__ KC_MINS
+#define __NUMPAD_2_K5__ KC_PLUS
 
 #define __NUMPAD_3_K1__ KC_EQL
 #define __NUMPAD_3_K2__ KC_1
