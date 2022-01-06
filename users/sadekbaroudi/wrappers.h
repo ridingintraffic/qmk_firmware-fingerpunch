@@ -76,6 +76,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_absolem
 #endif
 
+// Since pinkiesout uses the name LAYOUT_pinkiesout instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_pinkiesout))
+#    define LAYOUT LAYOUT_pinkiesout
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
