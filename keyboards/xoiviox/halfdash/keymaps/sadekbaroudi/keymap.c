@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  |---------------|---------------|---------------|---------------|---------------|---------------|---------------/
    *  |     Paste     |     Redo      | Create Track  |   End Track   |    Add Via    | Front<->Back  |
    *  |---------------|---------------|---------------|---------v-----^---------v-----|---------------|---------------|---------------\
-   *  |    Measure    |       X       |  TG(_KICAD)   |         |   3D Viewer   |     |    Delete     |     Enter     | Delete Track  |
+   *  |    Measure    | Edit Footprint|  TG(_KICAD)   |         |   3D Viewer   |     |    Delete     |     Enter     | Delete Track  |
    *  \---------------|---------------|---------------|         \---------------/     \---------------|---------------|---------------/
    * 
    *                                                   // Note that Delete Track only deletes the current copper line up to pads or vias
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_G,                  KC_D,               LSFT(KC_M),         KC_F,              LSFT(KC_P),         KC_GRV,             LSFT(KC_GRV), \
     LCTL(KC_C),            LCTL(KC_Z),         KC_R,               KC_E,              KC_M,               KC_B,               LCTL(KC_B), \
     LCTL(KC_V),            LCTL(KC_Y),         KC_X,               KC_END,            LCTL(LSFT(KC_V)),   KC_V, \
-    LCTL(LSFT(KC_M)),      KC_NO,              TG(_KICAD),                     LALT(KC_3),                      KC_DEL,       KC_ENT,           LSFT(KC_DEL) \
+    LCTL(LSFT(KC_M)),      LCTL(KC_E),         TG(_KICAD),                     LALT(KC_3),                      KC_DEL,       KC_ENT,           LSFT(KC_DEL) \
   ),
 
   /**
