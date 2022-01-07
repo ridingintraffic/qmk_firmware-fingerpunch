@@ -51,21 +51,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  /---------------v---------------v---------------v---------------v---------------v---------------v---------------\
    *  |    Escape     |   Zoom Home   |   Add Line    |    Add Arc    |  Add Polygon  |  Add Circle   |   Add Text    |
    *  |---------------|---------------|---------------|---------------|---------------|---------------|---------------|
-   *  |  Select Net   |    Measure    |  Move Dialog  |     Flip      |   Fill Zones  |  Unfill Zones |   3D Viewer   |
+   *  | Drag free angl| Drag 45 degree|  Move Dialog  |     Flip      |  Pos Relative |   Select Net  | Stop SelctNet |
    *  |---------------|---------------|---------------|---------------|---------------|---------------|---------------|
-   *  |     Copy      |     Undo      |    Rotate     | Edit Property |     Move      |      X        |      X        |
+   *  |     Copy      |     Undo      |    Rotate     | Edit Property |     Move      |   Fill Zones  |  Unfill Zones |
    *  |---------------|---------------|---------------|---------------|---------------|---------------|---------------/
-   *  |     Paste     |     Redo      | Create Track  |       X       |    Add Via    | Front<->Back  |
+   *  |     Paste     |     Redo      | Create Track  |   End Track   |    Add Via    | Front<->Back  |
    *  |---------------|---------------|---------------|---------v-----^---------v-----|---------------|---------------|---------------\
-   *  |       X       |       X       |  TG(_KICAD)   |         |       X       |     |    Delete     |     Enter     |       X       |
+   *  |    Measure    |       X       |  TG(_KICAD)   |         |   3D Viewer   |     |    Delete     |     Enter     | Delete Track  |
    *  \---------------|---------------|---------------|         \---------------/     \---------------|---------------|---------------/
+   * 
+   *                                                   // Note that Delete Track only deletes the current copper line up to pads or vias
    */
   [_KICAD] = LAYOUT_halfdash( \
-    KC_ESC,     KC_HOME,            LCTL(LSFT(KC_L)),   LCTL(LSFT(KC_A)),  LCTL(LSFT(KC_P)),   LCTL(LSFT(KC_C)),   LCTL(LSFT(KC_T)), \
-    KC_GRV,     LCTL(LSFT(KC_M)),   LSFT(KC_M),         KC_F,              KC_B,               LCTL(KC_B),         LALT(KC_3), \
-    LCTL(KC_C), LCTL(KC_Z),         KC_R,               KC_E,              KC_M,         KC_G,               KC_NO, \
-    LCTL(KC_V), LCTL(KC_Y),         KC_X,               KC_NO,             LCTL(LSFT(KC_V)),   KC_V, \
-    KC_NO,      KC_NO,              TG(_KICAD),                     KC_NO,                KC_DEL,   KC_ENT, KC_NO \
+    KC_ESC,                KC_HOME,            LCTL(LSFT(KC_L)),   LCTL(LSFT(KC_A)),  LCTL(LSFT(KC_P)),   LCTL(LSFT(KC_C)),   LCTL(LSFT(KC_T)), \
+    KC_G,                  KC_D,               LSFT(KC_M),         KC_F,              LSFT(KC_P),         KC_GRV,             LSFT(KC_GRV), \
+    LCTL(KC_C),            LCTL(KC_Z),         KC_R,               KC_E,              KC_M,               KC_B,               LCTL(KC_B), \
+    LCTL(KC_V),            LCTL(KC_Y),         KC_X,               KC_END,            LCTL(LSFT(KC_V)),   KC_V, \
+    LCTL(LSFT(KC_M)),      KC_NO,              TG(_KICAD),                     LALT(KC_3),                      KC_DEL,       KC_ENT,           LSFT(KC_DEL) \
   ),
 
   /**
