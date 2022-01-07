@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  /---------------v---------------v---------------v---------------v---------------v---------------v---------------\
    *  |    Escape     |   Zoom Home   |   Add Line    |    Add Arc    |  Add Polygon  |  Add Circle   |   Add Text    |
    *  |---------------|---------------|---------------|---------------|---------------|---------------|---------------|
-   *  |  Select Net   |    Measure    |       X       |     Flip      |   Fill Zones  |  Unfill Zones |   3D Viewer   |
+   *  |  Select Net   |    Measure    |  Move Dialog  |     Flip      |   Fill Zones  |  Unfill Zones |   3D Viewer   |
    *  |---------------|---------------|---------------|---------------|---------------|---------------|---------------|
    *  |     Copy      |     Undo      |    Rotate     | Edit Property |     Move      |      X        |      X        |
    *  |---------------|---------------|---------------|---------------|---------------|---------------|---------------/
@@ -62,8 +62,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_KICAD] = LAYOUT_halfdash( \
     KC_ESC,     KC_HOME,            LCTL(LSFT(KC_L)),   LCTL(LSFT(KC_A)),  LCTL(LSFT(KC_P)),   LCTL(LSFT(KC_C)),   LCTL(LSFT(KC_T)), \
-    KC_GRV,     LCTL(LSFT(KC_M)),   KC_NO,              KC_F,              KC_B,               LCTL(KC_B),         LALT(KC_3), \
-    LCTL(KC_C), LCTL(KC_Z),         KC_R,               KC_E,              LSFT(KC_M),         KC_G,               KC_NO, \
+    KC_GRV,     LCTL(LSFT(KC_M)),   LSFT(KC_M),         KC_F,              KC_B,               LCTL(KC_B),         LALT(KC_3), \
+    LCTL(KC_C), LCTL(KC_Z),         KC_R,               KC_E,              KC_M,         KC_G,               KC_NO, \
     LCTL(KC_V), LCTL(KC_Y),         KC_X,               KC_NO,             LCTL(LSFT(KC_V)),   KC_V, \
     KC_NO,      KC_NO,              TG(_KICAD),                     KC_NO,                KC_DEL,   KC_ENT, KC_NO \
   ),
