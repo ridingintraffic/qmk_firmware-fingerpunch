@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROW_PINS \
     { B6, F4, B5, B4, B2, B3, B7, D5 }
 #define MATRIX_COL_PINS \
-    { D2, D4, C6, C7, E6, F5, F6, F7, B1 }
+    { D2, D4, C6, D7, E6, F5, F6, F7, B1 }
 #define UNUSED_PINS
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
