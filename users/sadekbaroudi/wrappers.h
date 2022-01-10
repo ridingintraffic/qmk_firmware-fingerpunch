@@ -56,6 +56,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_ortho_4x12
 #endif
 
+// Since halfdash uses the name LAYOUT_halfdash instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_halfdash))
+#    define LAYOUT LAYOUT_halfdash
+#endif
+
 // Since ffkbhw uses the name LAYOUT_ffkbhw instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_ffkbhw))
 #    define LAYOUT LAYOUT_ffkbhw
@@ -376,5 +381,48 @@ NOTE: These are all the same length.  If you do a search/replace
 
 #define __________________WIN_NAV_1________________     __WIN_NAV_1_K1__, __WIN_NAV_1_K2__, __WIN_NAV_1_K3__, __WIN_NAV_1_K4__, __WIN_NAV_1_K5__
 #define __________________WIN_NAV_2________________     __WIN_NAV_2_K1__, __WIN_NAV_2_K2__, __WIN_NAV_2_K3__, __WIN_NAV_2_K4__, __WIN_NAV_2_K5__
+
+//                                                      Zoom Home           Add Line            Add Arc            Add Polygon         Add Circle
+#define ___________________KICAD_0_________________     KC_HOME,            LCTL(LSFT(KC_L)),   LCTL(LSFT(KC_A)),  LCTL(LSFT(KC_P)),   LCTL(LSFT(KC_C))
+//                                                      Drag 45 degree      Move Dialog         Flip               Pos Relative        Select Net
+#define ___________________KICAD_1_________________     KC_D,               LSFT(KC_M),         KC_F,              LSFT(KC_P),         KC_GRV
+//                                                      Undo                Rotate              Edit Property      Move                Fill Zones
+#define ___________________KICAD_2_________________     LCTL(KC_Z),         KC_R,               KC_E,              KC_M,               KC_B
+//                                                      Redo                Create Track        End Track          Add Via             Front<->Back
+#define ___________________KICAD_3_________________     LCTL(KC_Y),         KC_X,               KC_END,            LCTL(LSFT(KC_V)),   KC_V
+#define __KICAD_R0_L__ KC_ESC
+#define __KICAD_R1_L__ KC_G              // Drag free angl
+#define __KICAD_R2_L__ LCTL(KC_C)        // Copy
+#define __KICAD_R3_L__ LCTL(KC_V)        // Paste
+#define __KICAD_R0_R__ LCTL(LSFT(KC_T))  // Add Text
+#define __KICAD_R1_R__ LSFT(KC_GRV)      // Stop SelctNet
+#define __KICAD_R2_R__ LCTL(KC_B)        // Unfill Zones
+#define __KICAD_R3_R__ LCTL(LSFT(KC_M))  // Measure
+#define __KICAD_TH_L__ KC_DEL            // Delete
+#define __KICAD_TH_C__ KC_ENT            // Enter
+#define __KICAD_TH_R__ LSFT(KC_DEL)      // Delete track, note that this only deletes the current copper line up to pads or vias
+#define __KICAD_R4_1__ __KICAD_R3_R__
+#define __KICAD_R4_2__ LALT(KC_3)        // 3D Viewer
+#define __KICAD_R4_3__ LCTL(KC_E)        // Edit Footprint
+
+#define ___________________GAMES_0_________________     KC_F1,   KC_F2,   KC_C,    KC_V,    KC_G
+#define ___________________GAMES_1_________________     KC_Q,    KC_W,    KC_E,    KC_R,    KC_D
+#define ___________________GAMES_2_________________     KC_A,    KC_F,    KC_TAB,  KC_L,    KC_H
+#define ___________________GAMES_3_________________     KC_T,    KC_COMM, KC_K,    KC_SCLN, KC_DOT
+#define __GAMES_R0_L__ KC_F4
+#define __GAMES_R1_L__ KC_Z
+#define __GAMES_R2_L__ KC_P
+#define __GAMES_R3_L__ KC_LSFT
+#define __GAMES_R0_R__ KC_N
+#define __GAMES_R1_R__ KC_Y
+#define __GAMES_R2_R__ KC_F7
+#define __GAMES_R3_R__ _______
+#define __GAMES_TH_L__ KC_J
+#define __GAMES_TH_C__ KC_X
+#define __GAMES_TH_R__ KC_B
+#define __GAMES_R4_1__ KC_LCTL
+#define __GAMES_R4_2__ KC_ESC
+#define __GAMES_R4_3__ KC_LALT
+
 
 // clang-format on
