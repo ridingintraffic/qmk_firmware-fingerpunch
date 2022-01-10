@@ -36,7 +36,6 @@ AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = no
 OLED_ENABLE = yes
-OLED_DRIVER_ENABLE = yes    # this can be yes or no depending on if you have an OLED
 # EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
 MOUSEKEY_ENABLE = no
 
