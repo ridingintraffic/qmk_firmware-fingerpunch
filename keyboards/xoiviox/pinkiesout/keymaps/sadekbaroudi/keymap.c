@@ -20,6 +20,9 @@
 // Uncomment to set up WPM
 //char wpm_as_str[8];
 
+#define _GAME 8
+#define _KICAD 9
+
 /*
  * The `LAYOUT_pinkiesout_base` macro is a template to allow the use of identical
  * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
@@ -36,9 +39,9 @@
   ) \
   LAYOUT_wrapper( \
     KC_ESC,    KC_1,           KC_2,           KC_3,           KC_4,                KC_5,                   KC_LPRN,               KC_RPRN,            KC_6,                  KC_7,               KC_8,             KC_9,           KC_0,            KC_BSPC, \
-    KC_TAB,    K01,            K02,            K03,            LT(_FUNCTION, K04),  K05,                    ywfulp,                wyfupl,             K06,                   LT(_FUNCTION, K07), LT(_WINNAV,K08),  K09,            K0A,             KC_BSLS, \
-    KC_CAPS,   LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,                    ywfulp,                wyfupl,             LT(_MOUSE, K16),       RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A),     KC_QUOT, \
-    KC_LSFT,   K21,            K22,            K23,            K24,                 K25,                    ywfulp,                wyfupl,             K26,                   K27,                K28,              K29,            K2A,             KC_ENT, \
+    KC_TAB,    K01,            K02,            K03,            LT(_FUNCTION, K04),  K05,                    _______,               TG(_GAME),          K06,                   LT(_FUNCTION, K07), LT(_WINNAV,K08),  K09,            K0A,             KC_BSLS, \
+    KC_CAPS,   LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,                    _______,               TG(_KICAD),         LT(_MOUSE, K16),       RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A),     KC_QUOT, \
+    KC_LSFT,   K21,            K22,            K23,            K24,                 K25,                    _______,               _______,            K26,                   K27,                K28,              K29,            K2A,             KC_ENT, \
                                KC_LCTL,        KC_LGUI,        KC_DEL,              LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),  LT(_MEDIA,KC_BSPC), LT(_SYMBOLS,KC_SPACE), KC_QUOT,            KC_RGUI,          KC_RCTL \
     )
 
@@ -57,12 +60,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ______________COLEMAK_MOD_DH_L1____________, ______________COLEMAK_MOD_DH_R1____________,
         ______________COLEMAK_MOD_DH_L2____________, ______________COLEMAK_MOD_DH_R2____________,
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
-    ),
-
-    [_ISRT] = LAYOUT_pinkiesout_base_wrapper(
-        _________________ISRT_L1________________, _________________ISRT_R1________________,
-        _________________ISRT_L2________________, _________________ISRT_R2________________,
-        _________________ISRT_L3________________, _________________ISRT_R3________________
     ),
 
     [_NAVIGATION] = LAYOUT_wrapper(
@@ -111,8 +108,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,                   __________________WIN_NAV_2________________,                   _______,                 _______,                   ___________________BLANK___________________,                   _______,
         _______,                   ___________________BLANK___________________,                   _______,                 _______,                   ___________________BLANK___________________,                   _______,
                                       _______,       _______,       _______,       _______,       _______,                 _______,       _______,       _______,       _______,       _______
-    )
+    ),
 
+    [_GAME] = LAYOUT_wrapper(
+        __GAMES_R0_L__,     ___________________GAMES_0_________________,     __GAMES_R0_R__,                               _______,       _______,       _______,       _______,       _______,       _______,       _______, \
+        __GAMES_R1_L__,     ___________________GAMES_1_________________,     __GAMES_R1_R__,                               TG(_GAME),                 ___________________BLANK___________________,                   _______, \
+        __GAMES_R2_L__,     ___________________GAMES_2_________________,     __GAMES_R2_R__,                               _______,                   ___________________BLANK___________________,                   _______, \
+        __GAMES_R3_L__,     ___________________GAMES_3_________________,     __GAMES_R3_R__,                               _______,                   ___________________BLANK___________________,                   _______, \
+                       __GAMES_R4_1__, __GAMES_R4_3__, __GAMES_TH_L__, __GAMES_TH_C__, __GAMES_TH_R__,              _______,       _______,       _______,       _______,       _______ \
+    ),
+
+    [_KICAD] = LAYOUT_wrapper(
+        __KICAD_R0_L__,     ___________________KICAD_0_________________,     __KICAD_R0_R__,                               _______,       _______,       _______,       _______,       _______,       _______,       _______, \
+        __KICAD_R1_L__,     ___________________KICAD_1_________________,     __KICAD_R1_R__,                               _______,                   ___________________BLANK___________________,                   _______, \
+        __KICAD_R2_L__,     ___________________KICAD_2_________________,     __KICAD_R2_R__,                               TG(_KICAD),                ___________________BLANK___________________,                   _______, \
+        __KICAD_R3_L__,     ___________________KICAD_3_________________,     __GAMES_R3_R__,                               _______,                   ___________________BLANK___________________,                   _______, \
+                       __KICAD_R4_1__, __KICAD_R4_3__, __KICAD_TH_L__, __KICAD_TH_C__, __KICAD_TH_R__,              _______,       _______,       _______,       _______,       _______ \
+    )
 };
 
 
@@ -183,9 +195,6 @@ static void render_status(void) {
             break;
         case _COLEMAK:
             oled_write_P(PSTR("Colemak"), false);
-            break;
-        case _ISRT:
-            oled_write_P(PSTR("Workman"), false);
             break;
         case _NAVIGATION:
             oled_write_P(PSTR("Nav    "), false);

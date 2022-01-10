@@ -61,12 +61,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
     ),
 
-    [_ISRT] = LAYOUT_ffkb_base_wrapper(
-        _________________ISRT_L1________________, _________________ISRT_R1________________,
-        _________________ISRT_L2________________, _________________ISRT_R2________________,
-        _________________ISRT_L3________________, _________________ISRT_R3________________
-    ),
-
     [_NAVIGATION] = LAYOUT_wrapper(
         _______, ________________NAVIGATION_1_______________, _________________NUMPAD_1__________________, _______, 
         _______, ________________NAVIGATION_2_______________, _________________NUMPAD_2__________________, _______, 
@@ -185,9 +179,6 @@ static void render_status(void) {
             break;
         case _COLEMAK:
             oled_write_P(PSTR("Colemak"), false);
-            break;
-        case _ISRT:
-            oled_write_P(PSTR("ISRT"), false);
             break;
         case _NAVIGATION:
             oled_write_P(PSTR("Nav    "), false);

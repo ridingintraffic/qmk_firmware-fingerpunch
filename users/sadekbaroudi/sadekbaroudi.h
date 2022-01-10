@@ -32,7 +32,6 @@
 enum userspace_layers {
     _COLEMAK  = 0,
     _QWERTY,
-    _ISRT,
     _NAVIGATION,
     _SYMBOLS,
     _FUNCTION,

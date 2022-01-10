@@ -131,15 +131,6 @@ NOTE: These are all the same length.  If you do a search/replace
 #define ______________COLEMAK_MOD_DH_R2____________			KC_M,    KC_N,    KC_E,    KC_I,    KC_O
 #define ______________COLEMAK_MOD_DH_R3____________			KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
 
-// ISRT
-#define _________________ISRT_L1________________			  KC_Y,    KC_C,    KC_L,   KC_M,     KC_K
-#define _________________ISRT_L2________________			  KC_I,    KC_S,    KC_R,   KC_T,     KC_G
-#define _________________ISRT_L3________________			  KC_Q,    KC_V,    KC_W,   KC_D,     KC_J
-
-#define _________________ISRT_R1________________			  KC_Z,    KC_F,    KC_U,    KC_COMM, KC_SCLN
-#define _________________ISRT_R2________________			  KC_P,    KC_N,    KC_E,    KC_A,    KC_O
-#define _________________ISRT_R3________________			  KC_B,    KC_H,    KC_SLSH, KC_DOT,  KC_X
-
 // BLANK FULL LINE
 #define ___________________BLANK___________________			_______, _______, _______, _______, _______
 
@@ -306,7 +297,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __RGB_3_K2__ RGB_HUD
 #define __RGB_3_K3__ RGB_SAD
 #define __RGB_3_K4__ RGB_VAD
-#define __RGB_3_K5__ TG(_ISRT)
+#define __RGB_3_K5__ _______
 
 #define ___________________RGB_1___________________			__RGB_1_K1__, __RGB_1_K2__, __RGB_1_K3__, __RGB_1_K4__, __RGB_1_K5__
 #define ___________________RGB_2___________________			__RGB_2_K1__, __RGB_2_K2__, __RGB_2_K3__, __RGB_2_K4__, __RGB_2_K5__
@@ -416,12 +407,12 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __GAMES_R0_R__ KC_N
 #define __GAMES_R1_R__ KC_Y
 #define __GAMES_R2_R__ KC_F7
-#define __GAMES_R3_R__ _______
+#define __GAMES_R3_R__ KC_ESC
 #define __GAMES_TH_L__ KC_J
 #define __GAMES_TH_C__ KC_X
 #define __GAMES_TH_R__ KC_B
 #define __GAMES_R4_1__ KC_LCTL
-#define __GAMES_R4_2__ KC_ESC
+#define __GAMES_R4_2__ __GAMES_R3_R__
 #define __GAMES_R4_3__ KC_LALT
 
 

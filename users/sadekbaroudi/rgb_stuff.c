@@ -142,12 +142,6 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
                 #endif
                 rgblight_set_hsv_and_mode(10, 10, 255, mode); // white
                 break;
-            case _ISRT:
-                #ifdef PIMORONI_TRACKBALL_ENABLE
-                trackball_set_rgbw(RGB_MAGENTA, 0x00);
-                #endif
-                rgblight_set_hsv_and_mode(HSV_MAGENTA, mode);
-                break;
             case _NAVIGATION:
                 #ifdef PIMORONI_TRACKBALL_ENABLE
                 trackball_set_rgbw(RGB_GREEN, 0x00);
