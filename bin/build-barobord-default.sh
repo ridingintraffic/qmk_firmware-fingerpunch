@@ -2,5 +2,5 @@
 
 # TODO: consolidate all the build files into one
 
-make xoiviox/barobord:default
-cp .build/xoiviox_barobord_default* /mnt/g/My\ Drive/qmk-keyboards/barobord-default/
+make fingerpunch/barobord:default
+cp .build/fingerpunch_barobord_default* /mnt/g/My\ Drive/qmk-keyboards/barobord-default/
