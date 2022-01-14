@@ -377,12 +377,12 @@ NOTE: These are all the same length.  If you do a search/replace
 #define ___________________KICAD_0_________________     KC_HOME,            LCTL(LSFT(KC_L)),   LCTL(LSFT(KC_A)),  LCTL(LSFT(KC_P)),   LCTL(LSFT(KC_C))
 //                                                      Drag 45 degree      Move Dialog         Flip               Pos Relative        Select Net
 #define ___________________KICAD_1_________________     KC_D,               LSFT(KC_M),         KC_F,              LSFT(KC_P),         KC_GRV
-//                                                      Undo                Rotate              Edit Property      Move                Fill Zones
-#define ___________________KICAD_2_________________     LCTL(KC_Z),         KC_R,               KC_E,              KC_M,               KC_B
-//                                                      Redo                Create Track        End Track          Add Via             Front<->Back
-#define ___________________KICAD_3_________________     LCTL(KC_Y),         KC_X,               KC_END,            LCTL(LSFT(KC_V)),   KC_V
+//                                                      Create Track        End Track           Edit Property      Move                Fill Zones
+#define ___________________KICAD_2_________________     LCTL_T(KC_X),       LGUI_T(KC_END),     LALT_T(KC_E),      LSFT_T(KC_M),       KC_B
+//                                                      Undo                Redo                Rotate             Add Via             Front<->Back
+#define ___________________KICAD_3_________________     LCTL(KC_X),         LCTL(KC_Y),         KC_R,              LCTL(LSFT(KC_V)),   KC_V
 #define __KICAD_R0_L__ KC_ESC
-#define __KICAD_R1_L__ KC_G              // Drag free angl
+#define __KICAD_R1_L__ KC_TAB            // Drag free angl
 #define __KICAD_R2_L__ LCTL(KC_C)        // Copy
 #define __KICAD_R3_L__ LCTL(KC_V)        // Paste
 #define __KICAD_R0_R__ LCTL(LSFT(KC_T))  // Add Text
