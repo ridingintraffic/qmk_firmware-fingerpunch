@@ -408,12 +408,12 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __GAMES_R1_R__ KC_Y
 #define __GAMES_R2_R__ KC_F7
 #define __GAMES_R3_R__ KC_ESC
-#define __GAMES_TH_L__ KC_J
+#define __GAMES_TH_L__ KC_LALT
 #define __GAMES_TH_C__ KC_X
 #define __GAMES_TH_R__ KC_B
-#define __GAMES_R4_1__ KC_LCTL
+#define __GAMES_R4_1__ KC_J
 #define __GAMES_R4_2__ __GAMES_R3_R__
-#define __GAMES_R4_3__ KC_LALT
+#define __GAMES_R4_3__ KC_LCTL
 
 
 // clang-format on
