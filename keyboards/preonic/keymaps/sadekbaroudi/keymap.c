@@ -18,23 +18,19 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
-#ifndef UNICODE_ENABLE
-#    define UC(x) KC_NO
-#endif
-
-
 // clang-format off
 #define LAYOUT_ortho_5x12_base( \
     K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
     K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, \
-    K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A  \
+    K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, \
+              K33, K34, K35, K36, K37, K38 \
   ) \
   LAYOUT_ortho_5x12_wrapper( \
         _______,        KC_1,           KC_2,           KC_3,           KC_4,                   KC_5,                 KC_6,                  KC_7,                  KC_8,              KC_9,           KC_0,            _______, \
         _______,        K01,            K02,            K03,            LT(_FUNCTION, K04),     K05,                  K06,                   LT(_FUNCTION, K07),    LT(_WINNAV,K08),   K09,            K0A,             _______, \
         _______,        LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),            K15,                  LT(_MOUSE, K16),       RSFT_T(K17),           RALT_T(K18),       RGUI_T(K19),    RCTL_T(K1A),     _______, \
         _______,        K21,            K22,            K23,            K24,                    K25,                  K26,                   K27,                   K28,               K29,            K2A,             _______, \
-        _______,        _______,        _______,        KC_DEL,         LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB), LT(_MEDIA,KC_BSPC), LT(_SYMBOLS,KC_SPACE),    KC_QUOT,           _______,        _______,         _______ \
+        _______,        _______,        _______,        K33,            LT(_NAVIGATION,K34),    LT(_FUNCTION,K35),    LT(_MEDIA,K36),        LT(_SYMBOLS,K37),      K38,               _______,        _______,         _______ \
     )
 
 /* Re-pass though to allow templates to be used */
@@ -45,13 +41,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ALPHA_ALT] = LAYOUT_ortho_5x12_base_wrapper(
         _________________ALPHA_ALT_L1_________________, _________________ALPHA_ALT_R1_________________,
         _________________ALPHA_ALT_L2_________________, _________________ALPHA_ALT_R2_________________,
-        _________________ALPHA_ALT_L3_________________, _________________ALPHA_ALT_R3_________________
+        _________________ALPHA_ALT_L3_________________, _________________ALPHA_ALT_R3_________________,
+                                             __ALPHA_ALT_THUMBS_6__
     ),
 
     [_ALPHA] = LAYOUT_ortho_5x12_base_wrapper(
         __________________ALPHA_L1____________________, __________________ALPHA_R1____________________,
         __________________ALPHA_L2____________________, __________________ALPHA_R2____________________,
-        __________________ALPHA_L3____________________, __________________ALPHA_R3____________________
+        __________________ALPHA_L3____________________, __________________ALPHA_R3____________________,
+                                              __ALPHA_THUMBS_6__
     ),
 
     [_NAVIGATION] = LAYOUT_wrapper(

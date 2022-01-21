@@ -29,13 +29,14 @@
 #define LAYOUT_osprette_base( \
       K01, K02, K03, K04, K05, K06, K07, K08, K09, K0A, \
       K11, K12, K13, K14, K15, K16, K17, K18, K19, K1A, \
-      K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A  \
+      K21, K22, K23, K24, K25, K26, K27, K28, K29, K2A, \
+                     K34, K35, K36, K37 \
   ) \
   LAYOUT_wrapper( \
                                  K02,            K03,            LT(_FUNCTION, K04),     K05,                      K06,                   LT(_FUNCTION, K07),    LT(_WINNAV,K08),  K09, \
         K01,     LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),            K15,                      LT(_MOUSE, K16),       RSFT_T(K17),           RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A),   K0A, \
                  K21,            K22,            K23,            K24,                    K25,                      K26,                   K27,                   K28,              K29,            K2A, \
-                                                       LT(_FUNCTION,KC_TAB),   LT(_NAVIGATION,KC_ENT), LT(_SYMBOLS,KC_SPACE), LT(_MEDIA,KC_QUOT) \
+                                                                 LT(_FUNCTION,K34),      LT(_NAVIGATION,K35),      LT(_SYMBOLS,K36),      LT(_MEDIA,K37) \
     )
 
 /* Re-pass though to allow templates to be used */
@@ -46,13 +47,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ALPHA_ALT] = LAYOUT_osprette_base_wrapper(
         _________________ALPHA_ALT_L1_________________, _________________ALPHA_ALT_R1_________________,
         _________________ALPHA_ALT_L2_________________, _________________ALPHA_ALT_R2_________________,
-        _________________ALPHA_ALT_L3_________________, _________________ALPHA_ALT_R3_________________
+        _________________ALPHA_ALT_L3_________________, _________________ALPHA_ALT_R3_________________,
+        __ALPHA_ALT_THUMB_L3__, __ALPHA_ALT_THUMB_L2__, __ALPHA_ALT_THUMB_R2__, __ALPHA_ALT_THUMB_R3__
+
     ),
 
     [_ALPHA] = LAYOUT_osprette_base_wrapper(
         __________________ALPHA_L1____________________, __________________ALPHA_R1____________________,
         __________________ALPHA_L2____________________, __________________ALPHA_R2____________________,
-        __________________ALPHA_L3____________________, __________________ALPHA_R3____________________
+        __________________ALPHA_L3____________________, __________________ALPHA_R3____________________,
+              __ALPHA_THUMB_L3__, __ALPHA_THUMB_L2__, __ALPHA_THUMB_R2__, __ALPHA_THUMB_R3__
     ),
 
     [_NAVIGATION] = LAYOUT_wrapper(

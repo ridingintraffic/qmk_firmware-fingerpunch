@@ -113,14 +113,47 @@ NOTE: These are all the same length.  If you do a search/replace
 */
 
 
-// ALPHA_ALT
-#define _________________ALPHA_ALT_L1_________________			KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
-#define _________________ALPHA_ALT_L2_________________			KC_A,    KC_S,    KC_D,    KC_F,    KC_G
-#define _________________ALPHA_ALT_L3_________________			KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
+#define __ALPHA_THUMB_L1__ KC_DEL
+#define __ALPHA_THUMB_L2__ KC_ENT
+#define __ALPHA_THUMB_L3__ KC_TAB
+#define __ALPHA_THUMB_R1__ KC_BSPC
+#define __ALPHA_THUMB_R2__ KC_SPACE
+#define __ALPHA_THUMB_R3__ KC_QUOT
 
-#define _________________ALPHA_ALT_R1_________________			KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _________________ALPHA_ALT_R2_________________			KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
-#define _________________ALPHA_ALT_R3_________________			KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH
+#define __ALPHA_THUMBS_LEFT_2__                             __ALPHA_THUMB_L2__, __ALPHA_THUMB_L3__
+#define __ALPHA_THUMBS_RIGHT_2__                            __ALPHA_THUMB_R1__, __ALPHA_THUMB_R2__
+
+#define __ALPHA_THUMBS_LEFT_3__                             __ALPHA_THUMB_L1__, __ALPHA_THUMB_L2__, __ALPHA_THUMB_L3__
+#define __ALPHA_THUMBS_RIGHT_3__                            __ALPHA_THUMB_R1__, __ALPHA_THUMB_R2__, __ALPHA_THUMB_R3__
+
+#define __ALPHA_THUMBS_4__                                  __ALPHA_THUMBS_LEFT_2__, __ALPHA_THUMBS_RIGHT_2__
+#define __ALPHA_THUMBS_5__                                  __ALPHA_THUMB_L1__, __ALPHA_THUMB_L2__, __ALPHA_THUMB_R1__, __ALPHA_THUMB_R2__, __ALPHA_THUMB_R3__
+#define __ALPHA_THUMBS_6__                                  __ALPHA_THUMBS_LEFT_3__, __ALPHA_THUMBS_RIGHT_3__
+
+#define __ALPHA_ALT_THUMB_L1__ __ALPHA_THUMB_L1__
+#define __ALPHA_ALT_THUMB_L2__ KC_O
+#define __ALPHA_ALT_THUMB_L3__ __ALPHA_THUMB_L3__
+#define __ALPHA_ALT_THUMB_R1__ __ALPHA_THUMB_R1__
+#define __ALPHA_ALT_THUMB_R2__ __ALPHA_THUMB_R2__
+#define __ALPHA_ALT_THUMB_R3__ __ALPHA_THUMB_R3__
+
+#define __ALPHA_ALT_THUMBS_LEFT_2__                         __ALPHA_ALT_THUMB_L2__, __ALPHA_ALT_THUMB_L3__
+#define __ALPHA_ALT_THUMBS_RIGHT_2__                        __ALPHA_ALT_THUMB_R1__, __ALPHA_ALT_THUMB_R2__
+
+#define __ALPHA_ALT_THUMBS_LEFT_3__                         __ALPHA_ALT_THUMB_L1__, __ALPHA_ALT_THUMB_L2__, __ALPHA_ALT_THUMB_L3__
+#define __ALPHA_ALT_THUMBS_RIGHT_3__                        __ALPHA_ALT_THUMB_R1__, __ALPHA_ALT_THUMB_R2__, __ALPHA_ALT_THUMB_R3__
+
+#define __ALPHA_ALT_THUMBS_4__                              __ALPHA_ALT_THUMBS_LEFT_2__, __ALPHA_ALT_THUMBS_RIGHT_2__
+#define __ALPHA_ALT_THUMBS_5__                              __ALPHA_ALT_THUMB_L1__, __ALPHA_ALT_THUMB_L2__, __ALPHA_ALT_THUMB_R1__, __ALPHA_ALT_THUMB_R2__, __ALPHA_ALT_THUMB_R3__
+#define __ALPHA_ALT_THUMBS_6__                              __ALPHA_ALT_THUMBS_LEFT_3__, __ALPHA_ALT_THUMBS_RIGHT_3__
+
+#define _________________ALPHA_ALT_L1_________________			KC_ENT,  KC_Q,    KC_W,    KC_P,    KC_B
+#define _________________ALPHA_ALT_L2_________________			KC_A,    KC_R,    KC_S,    KC_T,    KC_G
+#define _________________ALPHA_ALT_L3_________________			KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
+
+#define _________________ALPHA_ALT_R1_________________			KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
+#define _________________ALPHA_ALT_R2_________________			KC_F,    KC_N,    KC_E,    KC_I,    KC_H
+#define _________________ALPHA_ALT_R3_________________			KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH
 
 // ALPHA
 #define __________________ALPHA_L1____________________			KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
