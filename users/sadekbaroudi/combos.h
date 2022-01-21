@@ -4,7 +4,8 @@
 
 enum combo_events {
   UNDO,
-  REDO,
+//  REDO,
+  ENTER,
   DELETE,
   BACKSPACE,
   APOSTROPHE,
