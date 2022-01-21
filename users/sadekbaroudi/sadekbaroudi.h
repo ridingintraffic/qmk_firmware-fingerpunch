@@ -30,8 +30,8 @@
 
 /* Define layer names */
 enum userspace_layers {
-    _COLEMAK  = 0,
-    _QWERTY,
+    _ALPHA  = 0,
+    _ALPHA_ALT,
     _NAVIGATION,
     _SYMBOLS,
     _FUNCTION,

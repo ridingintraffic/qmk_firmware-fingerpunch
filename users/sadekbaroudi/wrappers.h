@@ -113,23 +113,23 @@ NOTE: These are all the same length.  If you do a search/replace
 */
 
 
-// QWERTY
-#define _________________QWERTY_L1_________________			KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
-#define _________________QWERTY_L2_________________			KC_A,    KC_S,    KC_D,    KC_F,    KC_G
-#define _________________QWERTY_L3_________________			KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
+// ALPHA_ALT
+#define _________________ALPHA_ALT_L1_________________			KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
+#define _________________ALPHA_ALT_L2_________________			KC_A,    KC_S,    KC_D,    KC_F,    KC_G
+#define _________________ALPHA_ALT_L3_________________			KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
 
-#define _________________QWERTY_R1_________________			KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
-#define _________________QWERTY_R2_________________			KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
-#define _________________QWERTY_R3_________________			KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH
+#define _________________ALPHA_ALT_R1_________________			KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
+#define _________________ALPHA_ALT_R2_________________			KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
+#define _________________ALPHA_ALT_R3_________________			KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH
 
-// COLEMAK
-#define ______________COLEMAK_MOD_DH_L1____________			KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
-#define ______________COLEMAK_MOD_DH_L2____________			KC_A,    KC_R,    KC_S,    KC_T,    KC_G
-#define ______________COLEMAK_MOD_DH_L3____________			KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
+// ALPHA
+#define __________________ALPHA_L1____________________			KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
+#define __________________ALPHA_L2____________________			KC_A,    KC_R,    KC_S,    KC_T,    KC_G
+#define __________________ALPHA_L3____________________			KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
 
-#define ______________COLEMAK_MOD_DH_R1____________			KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
-#define ______________COLEMAK_MOD_DH_R2____________			KC_M,    KC_N,    KC_E,    KC_I,    KC_O
-#define ______________COLEMAK_MOD_DH_R3____________			KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
+#define __________________ALPHA_R1____________________			KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
+#define __________________ALPHA_R2____________________			KC_M,    KC_N,    KC_E,    KC_I,    KC_O
+#define __________________ALPHA_R3____________________			KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH
 
 // BLANK FULL LINE
 #define ___________________BLANK___________________			_______, _______, _______, _______, _______
@@ -285,13 +285,13 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __RGB_1_K2__ RGB_MODE_REVERSE
 #define __RGB_1_K3__ RGB_MODE_FORWARD
 #define __RGB_1_K4__ _______
-#define __RGB_1_K5__ TG(_QWERTY)
+#define __RGB_1_K5__ TG(_ALPHA_ALT)
 
 #define __RGB_2_K1__ KC_RGB_BLT
 #define __RGB_2_K2__ RGB_HUI
 #define __RGB_2_K3__ RGB_SAI
 #define __RGB_2_K4__ RGB_VAI
-#define __RGB_2_K5__ TG(_COLEMAK)
+#define __RGB_2_K5__ TG(_ALPHA)
 
 #define __RGB_3_K1__ KC_RGB_T
 #define __RGB_3_K2__ RGB_HUD

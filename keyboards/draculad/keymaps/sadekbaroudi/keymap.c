@@ -9,7 +9,7 @@ char wpm_as_str[8];
 
 /*
  * The `LAYOUT_draculad_base` macro is a template to allow the use of identical
- * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
+ * modifiers for the default layouts (eg ALPHA_ALT, Colemak, Dvorak, etc), so
  * that there is no need to set them up for each layout, and modify all of
  * them if I want to change them.  This helps to keep consistency and ease
  * of use. K## is a placeholder to pass through the individual keycodes
@@ -33,16 +33,16 @@ char wpm_as_str[8];
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_QWERTY] = LAYOUT_draculad_base_wrapper(
-        _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,
-        _________________QWERTY_L2_________________, _________________QWERTY_R2_________________,
-        _________________QWERTY_L3_________________, _________________QWERTY_R3_________________
+    [_ALPHA_ALT] = LAYOUT_draculad_base_wrapper(
+        _________________ALPHA_ALT_L1_________________, _________________ALPHA_ALT_R1_________________,
+        _________________ALPHA_ALT_L2_________________, _________________ALPHA_ALT_R2_________________,
+        _________________ALPHA_ALT_L3_________________, _________________ALPHA_ALT_R3_________________
     ),
 
-    [_COLEMAK] = LAYOUT_draculad_base_wrapper(
-        ______________COLEMAK_MOD_DH_L1____________, ______________COLEMAK_MOD_DH_R1____________,
-        ______________COLEMAK_MOD_DH_L2____________, ______________COLEMAK_MOD_DH_R2____________,
-        ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
+    [_ALPHA] = LAYOUT_draculad_base_wrapper(
+        __________________ALPHA_L1____________________, __________________ALPHA_R1____________________,
+        __________________ALPHA_L2____________________, __________________ALPHA_R2____________________,
+        __________________ALPHA_L3____________________, __________________ALPHA_R3____________________
     ),
 
     [_NAVIGATION] = LAYOUT_wrapper(
@@ -191,11 +191,11 @@ static void render_status(void) {
   oled_write_P(led_state.caps_lock ? PSTR("on ") : PSTR("off"), false);
   oled_write_P(PSTR("\n"),false);
   switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
-            oled_write_P(PSTR("Qwerty "), false);
+        case _ALPHA_ALT:
+            oled_write_P(PSTR("Alphalt"), false);
             break;
-        case _COLEMAK:
-            oled_write_P(PSTR("Colemak"), false);
+        case _ALPHA:
+            oled_write_P(PSTR("Alpha  "), false);
             break;
         case _NAVIGATION:
             oled_write_P(PSTR("Nav    "), false);

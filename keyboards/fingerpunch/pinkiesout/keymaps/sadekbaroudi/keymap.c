@@ -25,7 +25,7 @@
 
 /*
  * The `LAYOUT_pinkiesout_base` macro is a template to allow the use of identical
- * modifiers for the default layouts (eg QWERTY, Colemak, Dvorak, etc), so
+ * modifiers for the default layouts (eg ALPHA_ALT, Alpha, Dvorak, etc), so
  * that there is no need to set them up for each layout, and modify all of
  * them if I want to change them.  This helps to keep consistency and ease
  * of use. K## is a placeholder to pass through the individual keycodes
@@ -40,7 +40,7 @@
   LAYOUT_wrapper( \
     KC_ESC,    KC_1,           KC_2,           KC_3,           KC_4,                KC_5,                   _______,               TO(_KICAD),         KC_6,                  KC_7,               KC_8,             KC_9,           KC_0,            KC_BSPC, \
     KC_TAB,    K01,            K02,            K03,            LT(_FUNCTION, K04),  K05,                    _______,               TO(_NAVIGATION),    K06,                   LT(_FUNCTION, K07), LT(_WINNAV,K08),  K09,            K0A,             KC_BSLS, \
-    KC_CAPS,   LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,                    _______,               TO(_COLEMAK),       LT(_MOUSE, K16),       RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A),     KC_QUOT, \
+    KC_CAPS,   LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,                    _______,               TO(_ALPHA),       LT(_MOUSE, K16),       RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A),     KC_QUOT, \
     KC_LSFT,   K21,            K22,            K23,            K24,                 K25,                    _______,               _______,            K26,                   K27,                K28,              K29,            K2A,             KC_ENT, \
                                KC_LCTL,        KC_LGUI,        KC_DEL,              LT(_NAVIGATION,KC_ENT), LT(_FUNCTION,KC_TAB),  LT(_MEDIA,KC_BSPC), LT(_SYMBOLS,KC_SPACE), KC_QUOT,            KC_RGUI,          KC_RCTL \
     )
@@ -50,20 +50,20 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_QWERTY] = LAYOUT_pinkiesout_base_wrapper(
-        _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,
-        _________________QWERTY_L2_________________, _________________QWERTY_R2_________________,
-        _________________QWERTY_L3_________________, _________________QWERTY_R3_________________
+    [_ALPHA_ALT] = LAYOUT_pinkiesout_base_wrapper(
+        _________________ALPHA_ALT_L1_________________, _________________ALPHA_ALT_R1_________________,
+        _________________ALPHA_ALT_L2_________________, _________________ALPHA_ALT_R2_________________,
+        _________________ALPHA_ALT_L3_________________, _________________ALPHA_ALT_R3_________________
     ),
 
-    [_COLEMAK] = LAYOUT_pinkiesout_base_wrapper(
-        ______________COLEMAK_MOD_DH_L1____________, ______________COLEMAK_MOD_DH_R1____________,
-        ______________COLEMAK_MOD_DH_L2____________, ______________COLEMAK_MOD_DH_R2____________,
-        ______________COLEMAK_MOD_DH_L3____________, ______________COLEMAK_MOD_DH_R3____________
+    [_ALPHA] = LAYOUT_pinkiesout_base_wrapper(
+        __________________ALPHA_L1____________________, __________________ALPHA_R1____________________,
+        __________________ALPHA_L2____________________, __________________ALPHA_R2____________________,
+        __________________ALPHA_L3____________________, __________________ALPHA_R3____________________
     ),
 
     [_NAVIGATION] = LAYOUT_wrapper(
-        _______,       _______,       _______,       _______,       _______,       _______,       _______,                 TO(_COLEMAK),  _______,       _______,       _______,       _______,       _______,       _______,
+        _______,       _______,       _______,       _______,       _______,       _______,       _______,                 TO(_ALPHA),  _______,       _______,       _______,       _______,       _______,       _______,
         _______,                   ________________NAVIGATION_1_______________,                   _______,                 TO(_SYMBOLS),              _________________NUMPAD_1__________________,                   _______,
         _______,                   ________________NAVIGATION_2_______________,                   _______,                 _______,                   _________________NUMPAD_2__________________,                   _______,
         _______,                   ________________NAVIGATION_3_______________,                   _______,                 _______,                   _________________NUMPAD_3__________________,                   _______,
@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_KICAD] = LAYOUT_wrapper(
         __KICAD_R0_L__,     ___________________KICAD_0_________________,     __KICAD_R0_R__,                               TO(_GAME),     _______,       _______,       _______,       _______,       _______,       _______, \
-        __KICAD_R1_L__,     ___________________KICAD_1_________________,     __KICAD_R1_R__,                               TO(_COLEMAK),              _________________NUMPAD_1__________________,                   _______, \
+        __KICAD_R1_L__,     ___________________KICAD_1_________________,     __KICAD_R1_R__,                               TO(_ALPHA),              _________________NUMPAD_1__________________,                   _______, \
         __KICAD_R2_L__,     ___________________KICAD_2_________________,     __KICAD_R2_R__,                               _______,                   _________________NUMPAD_2__________________,                   _______, \
         __KICAD_R3_L__,     ___________________KICAD_3_________________,     __GAMES_R3_R__,                               _______,                   _________________NUMPAD_3__________________,                   _______, \
                        __KICAD_R4_1__, __KICAD_R4_3__, __KICAD_TH_L__, __KICAD_TH_C__, __KICAD_TH_R__,              KC_BSPC,       KC_SPACE,      KC_DOT,       _______,       _______ \
@@ -212,11 +212,11 @@ void render_status(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state|default_layer_state)) {
-        case _QWERTY:
-            oled_write_P(PSTR("Qwerty\n"), false);
+        case _ALPHA_ALT:
+            oled_write_P(PSTR("Alphalt\n"), false);
             break;
-        case _COLEMAK:
-            oled_write_P(PSTR("Colemak\n"), false);
+        case _ALPHA:
+            oled_write_P(PSTR("Alpha\n"), false);
             break;
         case _NAVIGATION:
             oled_write_P(PSTR("Nav\n"), false);

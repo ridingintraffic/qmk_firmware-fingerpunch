@@ -99,7 +99,7 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
         mode = DEFAULT_RGB_LAYER_MODE;
         #endif
         switch (get_highest_layer(state|default_layer_state)) {
-            case _COLEMAK:
+            case _ALPHA:
                 if (is_caps_lock_on) { // If caps lock is enabled, force this setting
                     uint8_t caps_lock_rgb_hue = 0; // RED
                     uint8_t caps_lock_rgb_mode = mode;
@@ -136,7 +136,7 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
                     }
                 }
                 break;
-            case _QWERTY:
+            case _ALPHA_ALT:
                 #ifdef PIMORONI_TRACKBALL_ENABLE
                 trackball_set_rgbw(RGB_WHITE, 0x00);
                 #endif
