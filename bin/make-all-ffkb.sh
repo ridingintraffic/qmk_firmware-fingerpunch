@@ -29,3 +29,5 @@ make fingerpunch/ffkb/rgbmatrix_oled_evq:sadekbaroudi
 make fingerpunch/ffkb/oled_evq:sadekbaroudi
 make fingerpunch/ffkb/ec11_evq:sadekbaroudi
 make fingerpunch/ffkb/rgblight_oled_ec11:sadekbaroudi
+
+cp fingerpunch_ffkb_*_sadekbaroudi.hex /mnt/g/My\ Drive/qmk-keyboards/ffkb/sadekbaroudi/
