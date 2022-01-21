@@ -154,7 +154,7 @@ NOTE: These are all the same length.  If you do a search/replace
 
 #define _________________ALPHA_ALT_R1_________________			KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
 #define _________________ALPHA_ALT_R2_________________			KC_M,    KC_N,    KC_E,    KC_I,    KC_H
-#define _________________ALPHA_ALT_R3_________________			KC_K,    _______, KC_COMM, KC_DOT,  KC_SLASH
+#define _________________ALPHA_ALT_R3_________________			KC_K,    KC_NO,   KC_COMM, KC_DOT,  KC_SLASH
 
 /* This is the target
 #define _________________ALPHA_ALT_L1_________________			KC_ENT,  KC_Q,    KC_W,    KC_P,    KC_B
