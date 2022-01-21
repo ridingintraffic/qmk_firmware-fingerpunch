@@ -149,7 +149,16 @@ bool process_rgb(const uint16_t keycode, const keyrecord_t *record) {
                 handleKeycodeRGB(shifted, rgb_matrix_decrease_speed, rgb_matrix_increase_speed);
 #endif
                 return false;
-            case RGB_MODE_PLAIN:
+/* error I'm seeing:
++Linking: .build/xoiviox_barobord_rgblight_pimoroni_ec11_sadekbaroudi.elf                            [ERRORS]
++ |
++ | /tmp/ccBHLnbF.ltrans0.ltrans.o: In function `process_rgb':
++ | /home/sadek/vial-qmk/quantum/process_keycode/process_rgb.c:63:(.text.process_record+0xe50): relocation truncated to fit: R_AVR_7_PCREL against `no symbol'
++ | collect2: error: ld returned 1 exit status
++ |
++ */
+/* SADEK: Commenting out to reduce the number of items in this switch statement:
+	    case RGB_MODE_PLAIN:
 #if defined(RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
                 rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
 #endif
@@ -211,6 +220,7 @@ bool process_rgb(const uint16_t keycode, const keyrecord_t *record) {
                 handleKeycodeRGBMode(RGBLIGHT_MODE_TWINKLE, RGBLIGHT_MODE_TWINKLE_end);
 #endif
                 return false;
+*/
         }
     }
 
