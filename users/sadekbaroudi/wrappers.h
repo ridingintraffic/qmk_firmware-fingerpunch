@@ -86,6 +86,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_pinkiesout
 #endif
 
+// Since rockon uses the name LAYOUT_rockon instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_rockon))
+#    define LAYOUT LAYOUT_rockon
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
