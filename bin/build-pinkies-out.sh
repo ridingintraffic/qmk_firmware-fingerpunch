@@ -10,3 +10,6 @@
 
 make fingerpunch/pinkiesout/rgbmatrix_oled:sadekbaroudi
 cp .build/fingerpunch_pinkiesout_rgbmatrix_oled_sadekbaroudi* /mnt/g/My\ Drive/qmk-keyboards/pinkiesout/rgbmatrix/
+
+make fingerpunch/pinkiesout/rgblight_oled:sadekbaroudi
+cp .build/fingerpunch_pinkiesout_rgblight_oled_sadekbaroudi* /mnt/g/My\ Drive/qmk-keyboards/pinkiesout/rgblight/

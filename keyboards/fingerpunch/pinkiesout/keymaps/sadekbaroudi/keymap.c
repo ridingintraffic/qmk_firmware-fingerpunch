@@ -20,9 +20,6 @@
 // Uncomment to set up WPM
 //char wpm_as_str[8];
 
-#define _GAME 8
-#define _KICAD 9
-
 /*
  * The `LAYOUT_pinkiesout_base` macro is a template to allow the use of identical
  * modifiers for the default layouts (eg ALPHA_ALT, Alpha, Dvorak, etc), so
