@@ -101,7 +101,7 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
         switch (get_highest_layer(state|default_layer_state)) {
             case _ALPHA:
                 if (is_caps_lock_on) { // If caps lock is enabled, force this setting
-                    uint8_t caps_lock_rgb_hue = 180; // CYAN
+                    uint8_t caps_lock_rgb_hue = 127; // CYAN
                     uint8_t caps_lock_rgb_mode = mode;
                     #ifdef CAPS_LOCK_RGB_HUE
                     caps_lock_rgb_hue = CAPS_LOCK_RGB_HUE;
@@ -171,12 +171,6 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
                 trackball_set_rgbw(RGB_ORANGE, 0x00);
                 #endif
                 rgblight_set_hsv_and_mode(16, 255, 255, mode); // orange
-                break;
-            case _WINNAV:
-                #ifdef PIMORONI_TRACKBALL_ENABLE
-                trackball_set_rgbw(RGB_WHITE, 0x00);
-                #endif
-                rgblight_set_hsv_and_mode(10, 10, 255, mode); // near-white
                 break;
             case _GAME:
                 #ifdef PIMORONI_TRACKBALL_ENABLE

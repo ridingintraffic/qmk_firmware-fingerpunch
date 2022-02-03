@@ -404,24 +404,6 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __________________MOUSE_2__________________     __MOUSE_2_K1__, __MOUSE_2_K2__, __MOUSE_2_K3__, __MOUSE_2_K4__, __MOUSE_2_K5__
 #define __________________MOUSE_3__________________     __MOUSE_3_K1__, __MOUSE_3_K2__, __MOUSE_3_K3__, __MOUSE_3_K4__, __MOUSE_3_K5__
 
-
-// WIN NAVIGATION
-
-#define __WIN_NAV_1_K1__ _______
-#define __WIN_NAV_1_K2__ _______
-#define __WIN_NAV_1_K3__ LGUI(KC_UP)
-#define __WIN_NAV_1_K4__ _______
-#define __WIN_NAV_1_K5__ _______
-
-#define __WIN_NAV_2_K1__ _______
-#define __WIN_NAV_2_K2__ LGUI(KC_LEFT)
-#define __WIN_NAV_2_K3__ LGUI(KC_DOWN)
-#define __WIN_NAV_2_K4__ LGUI(KC_RGHT)
-#define __WIN_NAV_2_K5__ _______
-
-#define __________________WIN_NAV_1________________     __WIN_NAV_1_K1__, __WIN_NAV_1_K2__, __WIN_NAV_1_K3__, __WIN_NAV_1_K4__, __WIN_NAV_1_K5__
-#define __________________WIN_NAV_2________________     __WIN_NAV_2_K1__, __WIN_NAV_2_K2__, __WIN_NAV_2_K3__, __WIN_NAV_2_K4__, __WIN_NAV_2_K5__
-
 //                                                      Zoom Home           Add Line            Add Arc            Add Polygon         Add Circle
 #define ___________________KICAD_0_________________     KC_HOME,            LCTL(LSFT(KC_L)),   LCTL(LSFT(KC_A)),  LCTL(LSFT(KC_P)),   LCTL(LSFT(KC_C))
 //                                                      Drag 45 degree      Move Dialog         Flip               Pos Relative        Select Net

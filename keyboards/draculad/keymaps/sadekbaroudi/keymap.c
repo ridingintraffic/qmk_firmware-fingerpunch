@@ -23,7 +23,7 @@ char wpm_as_str[8];
               K33, K34, K35, K36, K37, K38 \
   ) \
   LAYOUT_wrapper( \
-        K01,            K02,            K03,            LT(_FUNCTION, K04), K05,      K06,                LT(_FUNCTION, K07), LT(_WINNAV,K08),  K09,            K0A, \
+        K01,            K02,            K03,            LT(_FUNCTION, K04), K05,      K06,                LT(_FUNCTION, K07), K08,              K09,            K0A, \
         LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),        K15,      LT(_MOUSE, K16),    RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A), \
         K21,            K22,            K23,            K24,                K25,      K26,                K27,                K28,              K29,            K2A, \
                            KC_MUTE,  K33, LT(_NAVIGATION,K34), LT(_FUNCTION,K35),    LT(_MEDIA,K36), LT(_SYMBOLS,K37), K38,  LCTL(KC_BSPC) \
@@ -81,15 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         __________________MOUSE_2__________________, ___________________BLANK___________________,
         __________________MOUSE_3__________________, ___________________BLANK___________________,
            _______, _______, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN3, KC_MS_BTN2, _______, _______
-    ),
-
-    [_WINNAV] = LAYOUT_wrapper(
-        __________________WIN_NAV_1________________, ___________________BLANK___________________,
-        __________________WIN_NAV_2________________, ___________________BLANK___________________,
-        ___________________BLANK___________________, ___________________BLANK___________________,
-                 _______, _______, _______, _______, _______, _______, _______, _______
     )
-
 };
 
 
@@ -215,10 +207,6 @@ static void render_status(void) {
         case _MOUSE:
             oled_write_P(PSTR("Mouse  "), false);
             break;
-        case _WINNAV:
-            oled_write_P(PSTR("Win nav"), false);
-            break;
-
         default:
             oled_write_P(PSTR("Unkn "), false);
             break;

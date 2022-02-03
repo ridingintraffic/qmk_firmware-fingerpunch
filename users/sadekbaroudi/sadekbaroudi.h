@@ -37,7 +37,6 @@ enum userspace_layers {
     _FUNCTION,
     _MEDIA,
     _MOUSE,
-    _WINNAV,
     _KICAD,
     _GAME
 };
