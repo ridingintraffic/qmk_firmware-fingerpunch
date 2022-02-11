@@ -15,12 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef XOIVIOX_PIMORONI
-#define XOIVIOX_PIMORONI
+#ifndef FINGERPUNCH_PIMORONI
+#define FINGERPUNCH_PIMORONI
 #endif
 
-#ifndef XOIVIOX_EC11
-#define XOIVIOX_EC11
+#ifndef FINGERPUNCH_EC11
+#define FINGERPUNCH_EC11
 #endif
 
 #pragma once

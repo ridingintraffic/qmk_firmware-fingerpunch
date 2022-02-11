@@ -15,8 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef XOIVIOX_RGBMATRIX
-#define XOIVIOX_RGBMATRIX
+#ifndef FINGERPUNCH_RGBMATRIX
+#define FINGERPUNCH_RGBMATRIX
 #endif
 
 #pragma once

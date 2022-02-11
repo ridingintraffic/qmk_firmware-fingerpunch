@@ -15,8 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef XOIVIOX_RGBLIGHT
-#define XOIVIOX_RGBLIGHT
+#ifndef FINGERPUNCH_RGBLIGHT
+#define FINGERPUNCH_RGBLIGHT
 #endif
 
 #pragma once
