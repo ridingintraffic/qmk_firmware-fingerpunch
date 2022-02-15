@@ -124,12 +124,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
 
-// SDA, 27, 25
-// 19, 27, 25
-#define ENCODERS_PAD_A {D7, D4, D1}
-// SCL, 28, 26
-// 28, 28, 26
-#define ENCODERS_PAD_B {B4, D6, D0}
+#define ENCODERS_PAD_A {D5, B6, D1}
+#define ENCODERS_PAD_B {B7, F1, D0}
 
 #define ENCODER_RESOLUTION 2
 // Per encoder settings
