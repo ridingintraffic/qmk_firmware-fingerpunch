@@ -91,6 +91,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_rockon
 #endif
 
+// Since luakeeb uses the name LAYOUT_luakeeb instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_luakeeb))
+#    define LAYOUT LAYOUT_luakeeb
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
