@@ -283,7 +283,7 @@ void render_status(void) {
     oled_write_raw_P(pinkiesout_logo_small, sizeof(pinkiesout_logo_small));
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     // If you don't want to display the logo, switch
     if (true) {
         render_status();
@@ -292,6 +292,7 @@ void oled_task_user(void) {
     } else {
         //render_logo_text();
     }
+    return true;
 }
 
 #endif

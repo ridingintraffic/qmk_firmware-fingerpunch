@@ -221,13 +221,14 @@ static void render_status(void) {
     }
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     // If you don't want to display the logo, switch
     if (false) {
         render_status();
     } else {
         render_logo();
     }
+    return true;
 }
 
 #endif

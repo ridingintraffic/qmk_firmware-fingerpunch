@@ -296,7 +296,7 @@ void render_status(void) {
 
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     // If you don't want to display the logo, switch
     if (true) {
         render_status();
@@ -305,6 +305,7 @@ void oled_task_user(void) {
     } else {
         //render_logo_text();
     }
+    return true;
 }
 
 #endif
