@@ -160,6 +160,22 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 #ifdef ENCODER_ENABLE
+
+void press_super_alt_tab(bool shift) {
+    if (shift) {
+        register_code(KC_LSHIFT);
+    }
+    if (!is_alt_tab_active) {
+        is_alt_tab_active = true;
+        register_code(KC_LALT);
+    }
+    alt_tab_timer = timer_read();
+    tap_code(KC_TAB);
+    if (shift) {
+        unregister_code(KC_LSHIFT);
+    }
+}
+
 bool encoder_update_user(uint8_t index, bool clockwise) {
     // default behavior if undefined
     if (index == 0) {
@@ -299,21 +315,4 @@ bool oled_task_user(void) {
     return true;
 }
 
-#endif
-
-#ifdef ENCODER_ENABLE
-void press_super_alt_tab(bool shift) {
-    if (shift) {
-        register_code(KC_LSHIFT);
-    }
-    if (!is_alt_tab_active) {
-        is_alt_tab_active = true;
-        register_code(KC_LALT);
-    }
-    alt_tab_timer = timer_read();
-    tap_code(KC_TAB);
-    if (shift) {
-        unregister_code(KC_LSHIFT);
-    }
-}
 #endif
