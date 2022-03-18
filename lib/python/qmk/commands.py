@@ -1,20 +1,17 @@
 """Helper functions for commands.
 """
-import json
 import os
 import sys
 import shutil
 from pathlib import Path
 from subprocess import DEVNULL
-from time import strftime
 
 from milc import cli
+import jsonschema
 
 import qmk.keymap
 from qmk.constants import QMK_FIRMWARE, KEYBOARD_OUTPUT_PREFIX
-from qmk.json_schema import json_load
-
-time_fmt = '%Y-%m-%d-%H:%M:%S'
+from qmk.json_schema import json_load, validate
 
 
 def _find_make():
@@ -136,37 +133,6 @@ def get_make_parallel_args(parallel=1):
     return parallel_args
 
 
-def create_version_h(skip_git=False, skip_all=False):
-    """Generate version.h contents
-    """
-    if skip_all:
-        current_time = "1970-01-01-00:00:00"
-    else:
-        current_time = strftime(time_fmt)
-
-    if skip_git:
-        git_version = "NA"
-        chibios_version = "NA"
-        chibios_contrib_version = "NA"
-    else:
-        git_version = get_git_version(current_time)
-        chibios_version = get_git_version(current_time, "chibios", "os")
-        chibios_contrib_version = get_git_version(current_time, "chibios-contrib", "os")
-
-    version_h_lines = f"""/* This file was automatically generated. Do not edit or copy.
- */
-
-#pragma once
-
-#define QMK_VERSION "{git_version}"
-#define QMK_BUILDDATE "{current_time}"
-#define CHIBIOS_VERSION "{chibios_version}"
-#define CHIBIOS_CONTRIB_VERSION "{chibios_contrib_version}"
-"""
-
-    return version_h_lines
-
-
 def compile_configurator_json(user_keymap, bootloader=None, parallel=1, **env_vars):
     """Convert a configurator export JSON file into a C file and then compile it.
 
@@ -185,6 +151,10 @@ def compile_configurator_json(user_keymap, bootloader=None, parallel=1, **env_va
 
         A command to run to compile and flash the C file.
     """
+    # In case the user passes a keymap.json from a keymap directory directly to the CLI.
+    # e.g.: qmk compile - < keyboards/clueboard/california/keymaps/default/keymap.json
+    user_keymap["keymap"] = user_keymap.get("keymap", "default_json")
+
     # Write the keymap.c file
     keyboard_filesafe = user_keymap['keyboard'].replace('/', '_')
     target = f'{keyboard_filesafe}_{user_keymap["keymap"]}'
@@ -196,9 +166,6 @@ def compile_configurator_json(user_keymap, bootloader=None, parallel=1, **env_va
 
     keymap_dir.mkdir(exist_ok=True, parents=True)
     keymap_c.write_text(c_text)
-
-    version_h = Path('quantum/version.h')
-    version_h.write_text(create_version_h())
 
     # Return a command that can be run to make the keymap and flash if given
     verbose = 'true' if cli.config.general.verbose else 'false'
@@ -213,7 +180,7 @@ def compile_configurator_json(user_keymap, bootloader=None, parallel=1, **env_va
         '-r',
         '-R',
         '-f',
-        'build_keyboard.mk',
+        'builddefs/build_keyboard.mk',
     ])
 
     if bootloader:
@@ -248,8 +215,15 @@ def compile_configurator_json(user_keymap, bootloader=None, parallel=1, **env_va
 def parse_configurator_json(configurator_file):
     """Open and parse a configurator json export
     """
-    # FIXME(skullydazed/anyone): Add validation here
-    user_keymap = json.load(configurator_file)
+    user_keymap = json_load(configurator_file)
+    # Validate against the jsonschema
+    try:
+        validate(user_keymap, 'qmk.keymap.v1')
+
+    except jsonschema.ValidationError as e:
+        cli.log.error(f'Invalid JSON keymap: {configurator_file} : {e.message}')
+        exit(1)
+
     orig_keyboard = user_keymap['keyboard']
     aliases = json_load(Path('data/mappings/keyboard_aliases.json'))
 
@@ -346,3 +320,20 @@ def in_virtualenv():
     """
     active_prefix = getattr(sys, "base_prefix", None) or getattr(sys, "real_prefix", None) or sys.prefix
     return active_prefix != sys.prefix
+
+
+def dump_lines(output_file, lines, quiet=True):
+    """Handle dumping to stdout or file
+    Creates parent folders if required
+    """
+    generated = '\n'.join(lines) + '\n'
+    if output_file and output_file.name != '-':
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+        if output_file.exists():
+            output_file.replace(output_file.parent / (output_file.name + '.bak'))
+        output_file.write_text(generated)
+
+        if not quiet:
+            cli.log.info(f'Wrote {output_file.name} to {output_file}.')
+    else:
+        print(generated)
