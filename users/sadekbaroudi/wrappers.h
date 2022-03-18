@@ -91,6 +91,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_rockon
 #endif
 
+// Since rockon_bp uses the name LAYOUT_rockon_bp instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_rockon_bp))
+#    define LAYOUT LAYOUT_rockon_bp
+#endif
+
 // Since luakeeb uses the name LAYOUT_luakeeb instead of LAYOUT
 #if (!defined(LAYOUT) && defined(LAYOUT_luakeeb))
 #    define LAYOUT LAYOUT_luakeeb
