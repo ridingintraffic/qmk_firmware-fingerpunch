@@ -53,10 +53,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS2812_PWM_CHANNEL  2      // default: 2
 #define WS2812_PWM_PAL_MODE 1      // Pin "alternate function", see the respective datasheet for the appropriate values for your MCU. default: 2
 #define WS2812_EXTERNAL_PULLUP
-//#define WS2812_PWM_COMPLEMENTARY_OUTPUT // Define for a complementary timer output (TIMx_CHyN); omit for a normal timer output (TIMx_CHy).
 #define WS2812_DMA_STREAM   STM32_DMA1_STREAM7  // DMA Stream for TIMx_UP, see the respective reference manual for the appropriate values for your MCU.
 #define WS2812_DMA_CHANNEL  3
 #define WS2812_PWM_TARGET_PERIOD 800000
+
+/* spi config for eeprom and pmw3360 sensor */
+// disable testing
+// #define SPI_DRIVER                           SPID1
+// #define SPI_SCK_PIN                          B10
+// #define SPI_SCK_PAL_MODE                     5
+// #define SPI_MOSI_PIN                         A10
+// #define SPI_MOSI_PAL_MODE                    5
+// #define SPI_MISO_PIN                         A12
+// #define SPI_MISO_PAL_MODE                    5
+
+/* eeprom config */
+#define EXTERNAL_EEPROM_SPI_SLAVE_SELECT_PIN B12
+#define EXTERNAL_EEPROM_SPI_CLOCK_DIVISOR    64
 
 #ifdef RGBLIGHT_ENABLE
   #define RGBLED_NUM 66
@@ -130,29 +143,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 /* i2c config for oleds */
-#define I2C_DRIVER        I2CD1
-#define I2C1_SCL_PIN      B6
-#define I2C1_SDA_PIN      B7
-#define I2C1_SCL_PAL_MODE 4
-#define I2C1_SDA_PAL_MODE 4
-#define I2C1_CLOCK_SPEED  400000
-#define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
+// disable testing
+// #define I2C_DRIVER        I2CD1
+// #define I2C1_SCL_PIN      B6
+// #define I2C1_SDA_PIN      B7
+// #define I2C1_SCL_PAL_MODE 4
+// #define I2C1_SDA_PAL_MODE 4
+// #define I2C1_CLOCK_SPEED  400000
+// #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 
 /* encoder config */
 #define ENCODERS_PAD_A {B13, B15}
 #define ENCODERS_PAD_B {B14, A8}
 #define ENCODER_RESOLUTION 2
 
-#define CIRQUE_PINNACLE_ADDR 0x2A
-#define POINTING_DEVICE_ROTATION_180
+// disable testing
+// #define CIRQUE_PINNACLE_ADDR 0x2A
+// #define POINTING_DEVICE_ROTATION_180
+// #define POINTING_DEVICE_TASK_THROTTLE_MS 1
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#define CRC8_USE_TABLE
-#define CRC8_OPTIMIZE_SPEED
+// disable testing
+// #define CRC8_USE_TABLE
+// #define CRC8_OPTIMIZE_SPEED
 
 #ifdef OLED_ENABLE
 #define OLED_DISPLAY_128X64

@@ -1,5 +1,5 @@
 # MCU name
-MCU = STM32F411
+MCU = STM32F401
 
 # Bootloader selection
 BOOTLOADER = stm32-dfu
@@ -19,9 +19,11 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 #RGBLIGHT_ENABLE = yes
+#RGBLIGHT_DRIVER = WS2812
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
-WS2812_DRIVER = pwm
+#// disable testing
+#WS2812_DRIVER = pwm
 
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
@@ -33,13 +35,16 @@ OLED_ENABLE = yes
 # EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
 MOUSEKEY_ENABLE = yes
 
-EEPROM_DRIVER = spi
+# disable testing
+# EEPROM_DRIVER = spi
 DEBOUNCE_TYPE = asym_eager_defer_pk
 OPT_DEFS += -DSTM32_DMA_REQUIRED=TRUE
-VPATH += keyboards/gboards
+
+KEYBOARD_SHARED_EP = yes    # Free up some extra endpoints - needed if console+mouse+extra
 
 PIMORONI_TRACKBALL_ENABLE = no
-CIRQUE_ENABLE = yes
+# // disable testing
+CIRQUE_ENABLE = no
 
 DEFERRED_EXEC_ENABLE             = yes
 ENCODER_MAP_ENABLE               = yes
@@ -51,7 +56,7 @@ ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
     OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
 endif
 
-ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-    POINTING_DEVICE_ENABLE = yes
-    POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
-endif
+#ifeq ($(strip $(CIRQUE_ENABLE)), yes)
+#    POINTING_DEVICE_ENABLE = yes
+#    POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
+#endif
