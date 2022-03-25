@@ -22,6 +22,7 @@ ENCODER_ENABLE = yes
 
 ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
     POINTING_DEVICE_ENABLE := yes
+    POINTING_DEVICE_DRIVER := pimoroni_trackball
     SRC += drivers/sensors/pimoroni_trackball.c
     QUANTUM_LIB_SRC += i2c_master.c
     OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
