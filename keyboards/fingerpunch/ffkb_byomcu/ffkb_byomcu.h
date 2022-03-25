@@ -39,7 +39,7 @@
     { K11,   K12,   K13,   K14, K15, K16, K17, K18 }, \
     { K21,   K22,   K23,   K24, K25, K26, K27, K28 }, \
     { KC_NO, KC_NO, K19,   K2A, K0A, K1B, K2B, K0C }, \
-    { KC_NO, KC_3A, K29,   K09, K1A, K0B, K2C, K1C }, \
+    { KC_NO, K3A,   K29,   K09, K1A, K0B, K2C, K1C }, \
     { K3B,   K32,   K39,   K34, K35, K36, K37, K38 } \
 }
 
