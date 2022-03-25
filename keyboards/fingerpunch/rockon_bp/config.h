@@ -158,9 +158,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENCODER_RESOLUTION 2
 
 // disable testing
-// #define CIRQUE_PINNACLE_ADDR 0x2A
-// #define POINTING_DEVICE_ROTATION_180
-// #define POINTING_DEVICE_TASK_THROTTLE_MS 1
+#define CIRQUE_PINNACLE_ADDR 0x2A
+#define POINTING_DEVICE_ROTATION_180
+#define POINTING_DEVICE_TASK_THROTTLE_MS 1
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE

@@ -42,21 +42,22 @@ OPT_DEFS += -DSTM32_DMA_REQUIRED=TRUE
 
 KEYBOARD_SHARED_EP = yes    # Free up some extra endpoints - needed if console+mouse+extra
 
-PIMORONI_TRACKBALL_ENABLE = no
+# PIMORONI_TRACKBALL_ENABLE = no
 # // disable testing
-CIRQUE_ENABLE = no
+CIRQUE_ENABLE = yes
 
 DEFERRED_EXEC_ENABLE             = yes
 ENCODER_MAP_ENABLE               = yes
 
-ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
-    POINTING_DEVICE_ENABLE := yes
-    SRC += drivers/sensors/pimoroni_trackball.c
-    QUANTUM_LIB_SRC += i2c_master.c
-    OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
-endif
+# ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
+#     POINTING_DEVICE_ENABLE := yes
+#     SRC += drivers/sensors/pimoroni_trackball.c
+#     QUANTUM_LIB_SRC += i2c_master.c
+#     OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
+# endif
 
-#ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-#    POINTING_DEVICE_ENABLE = yes
-#    POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
-#endif
+# // disable testing
+ifeq ($(strip $(CIRQUE_ENABLE)), yes)
+   POINTING_DEVICE_ENABLE = yes
+   POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
+endif
