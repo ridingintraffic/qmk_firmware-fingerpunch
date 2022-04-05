@@ -101,6 +101,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_luakeeb
 #endif
 
+// Since sweeeeep uses the name LAYOUT_sweeeeep instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_sweeeeep))
+#    define LAYOUT LAYOUT_sweeeeep
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
