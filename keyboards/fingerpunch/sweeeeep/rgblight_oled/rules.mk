@@ -3,4 +3,4 @@
 #
 RGBLIGHT_ENABLE = yes
 OLED_ENABLE = yes
-OLED_DRIVER_ENABLE = yes
+
