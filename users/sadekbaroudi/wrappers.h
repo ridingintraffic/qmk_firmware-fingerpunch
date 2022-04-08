@@ -409,11 +409,11 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __MOUSE_2_K4__ KC_MS_RIGHT
 #define __MOUSE_2_K5__ KC_MS_WH_RIGHT
 
-#define __MOUSE_3_K1__ KC_MS_ACCEL0
-#define __MOUSE_3_K2__ KC_MS_ACCEL1
-#define __MOUSE_3_K3__ KC_MS_ACCEL2
-#define __MOUSE_3_K4__ _______
-#define __MOUSE_3_K5__ _______
+#define __MOUSE_3_K1__ EEP_RST
+#define __MOUSE_3_K2__ _______
+#define __MOUSE_3_K3__ KC_MS_ACCEL0
+#define __MOUSE_3_K4__ KC_MS_ACCEL1
+#define __MOUSE_3_K5__ KC_MS_ACCEL2
 
 #define __________________MOUSE_1__________________     __MOUSE_1_K1__, __MOUSE_1_K2__, __MOUSE_1_K3__, __MOUSE_1_K4__, __MOUSE_1_K5__
 #define __________________MOUSE_2__________________     __MOUSE_2_K1__, __MOUSE_2_K2__, __MOUSE_2_K3__, __MOUSE_2_K4__, __MOUSE_2_K5__
