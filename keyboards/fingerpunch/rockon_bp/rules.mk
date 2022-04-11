@@ -23,7 +23,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
 #// disable testing
-#WS2812_DRIVER = pwm
+WS2812_DRIVER = pwm
 
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode

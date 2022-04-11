@@ -57,6 +57,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS2812_DMA_CHANNEL  3
 #define WS2812_PWM_TARGET_PERIOD 800000
 
+
+#define I2C1_CLOCK_SPEED  400000
+#define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
+
 /* spi config for eeprom and pmw3360 sensor */
 // disable testing
 // #define SPI_DRIVER                           SPID1
@@ -68,8 +72,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define SPI_MISO_PAL_MODE                    5
 
 /* eeprom config */
-#define EXTERNAL_EEPROM_SPI_SLAVE_SELECT_PIN B12
-#define EXTERNAL_EEPROM_SPI_CLOCK_DIVISOR    64
+//#define EXTERNAL_EEPROM_SPI_SLAVE_SELECT_PIN B12
+//#define EXTERNAL_EEPROM_SPI_CLOCK_DIVISOR    64
 
 #ifdef RGBLIGHT_ENABLE
   #define RGBLED_NUM 66
@@ -160,7 +164,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // disable testing
 #define CIRQUE_PINNACLE_ADDR 0x2A
 #define POINTING_DEVICE_ROTATION_270
-#define POINTING_DEVICE_TASK_THROTTLE_MS 1
+#define POINTING_DEVICE_TASK_THROTTLE_MS 1  // when I removed this, cirque stopped working
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
