@@ -40,9 +40,9 @@
   ) \
   LAYOUT_wrapper( \
     KC_ESC,    KC_1,           KC_2,           KC_3,           KC_4,                KC_5,                   _______,                                               TO(_KICAD),         KC_6,                  KC_7,               KC_8,             KC_9,           KC_0,            KC_BSPC, \
-    KC_TAB,    K01,            K02,            K03,            LT(_FUNCTION, K04),  K05,                    _______,                                               TO(_NAVIGATION),    K06,                   LT(_FUNCTION, K07), K08,            K09,            K0A,             KC_BSLS, \
-    KC_CAPS,   LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,                    _______,                                               TO(_ALPHA),       LT(_MOUSE, K16),       RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A),     KC_QUOT, \
-    KC_LSFT,   K21,            K22,            K23,            K24,                 K25,                    _______,                                               _______,            K26,                   K27,                K28,              K29,            K2A,             KC_ENT, \
+    KC_TAB,    K01,            K02,            K03,            LT(_FUNCTION, K04),  K05,                    KC_MS_BTN3,                                            TO(_NAVIGATION),    K06,                   LT(_FUNCTION, K07), K08,            K09,            K0A,             KC_BSLS, \
+    KC_CAPS,   LCTL_T(K11),    LGUI_T(K12),    LALT_T(K13),    LSFT_T(K14),         K15,                    KC_MS_BTN1,                                            TO(_ALPHA),       LT(_MOUSE, K16),       RSFT_T(K17),        RALT_T(K18),      RGUI_T(K19),    RCTL_T(K1A),     KC_QUOT, \
+    KC_LSFT,   K21,            K22,            K23,            K24,                 K25,                    KC_MS_BTN2,                                            _______,            K26,                   K27,                K28,              K29,            K2A,             KC_ENT, \
                                KC_LCTL,        KC_LGUI,        K33,                 LT(_NAVIGATION,K34),    LT(_FUNCTION,K35),    KC_MUTE,  LCTL(KC_BSPC),         LT(_MEDIA,K36),     LT(_SYMBOLS,K37),      K38,            KC_RGUI,          KC_RCTL \
     )
 
@@ -83,8 +83,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FUNCTION] = LAYOUT_wrapper(
         _______,       _______,       _______,       _______,       _______,       _______,       _______,                              TO(_SYMBOLS),  _______,       _______,       _______,       _______,       _______,       _______,
-        _______,                   ________________SHIFTNAV_1_________________,                   _______,                              TO(_MEDIA),                ________________FUNCTION_1_________________,                   _______,
-        _______,                   ________________SHIFTNAV_2_________________,                   _______,                              _______,                   ________________FUNCTION_2_________________,                   _______,
+        _______,                   ________________SHIFTNAV_1_________________,                   KC_MS_WH_UP,                          TO(_MEDIA),                ________________FUNCTION_1_________________,                   _______,
+        _______,                   ________________SHIFTNAV_2_________________,                   KC_MS_WH_DOWN,                        _______,                   ________________FUNCTION_2_________________,                   _______,
         _______,                   ________________SHIFTNAV_3_________________,                   _______,                              _______,                   ________________FUNCTION_3_________________,                   _______,
                                       _______,       _______,       _______,       _______,       _______,    _______,       _______,   N_DEL_LINE,    KC_SPACE,      _______,       _______,       _______
     ),
