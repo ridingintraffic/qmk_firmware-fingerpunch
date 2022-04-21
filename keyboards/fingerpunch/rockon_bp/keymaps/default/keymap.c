@@ -25,8 +25,9 @@ enum custom_keycodes {
 bool is_caps_lock_on;
 
 
+// NOTE: For the encoder clicks, regardless of which location you put them (under palm or in the center), in the keymap, they are represented by the center two keycodes in the bottom row
+//                           KC_LCTL,   KC_LGUI,   LOWER,     KC_SPC,    KC_LALT, --->  KC_MUTE, LCTL(KC_BSPC), <--- KC_RALT,   KC_SPC,    RAISE,     KC_RGUI,   KC_RCTL
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
 
 [_QWERTY] = LAYOUT_rockon_bp(
     KC_ESC,    KC_1,      KC_2,      KC_3,      KC_4,      KC_5,      KC_LPRN,                            KC_RPRN,   KC_6,      KC_7,      KC_8,      KC_9,      KC_0,      KC_BSPC,
