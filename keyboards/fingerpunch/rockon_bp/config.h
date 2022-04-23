@@ -157,8 +157,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 
 /* encoder config */
-#define ENCODERS_PAD_A {B13, B15}
-#define ENCODERS_PAD_B {B14, A8}
+#define ENCODERS_PAD_A {B15, B13}
+#define ENCODERS_PAD_B {A8, B14}
 #define ENCODER_RESOLUTION 2
 
 // disable testing
