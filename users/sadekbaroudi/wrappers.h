@@ -440,7 +440,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __KICAD_TH_R__ LSFT(KC_DEL)      // Delete track, note that this only deletes the current copper line up to pads or vias
 #define __KICAD_R4_1__ __KICAD_R3_R__
 #define __KICAD_R4_2__ LALT(KC_3)        // 3D Viewer
-#define __KICAD_R4_3__ LCTL(KC_E)        // Edit Footprint
+#define __KICAD_R4_3__ KC_U              // Select track, double press for all connected... // used to be this --> LCTL(KC_E)        // Edit Footprint
 
 #define ___________________GAMES_0_________________     KC_F1,   KC_F2,   KC_C,    KC_V,    KC_G
 #define ___________________GAMES_1_________________     KC_Q,    KC_W,    KC_E,    KC_R,    KC_D
