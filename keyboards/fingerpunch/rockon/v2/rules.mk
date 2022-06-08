@@ -29,6 +29,10 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
 
+# BEGIN PWM driver: uncomment if using STeMcell as it's a better led driver
+# WS2812_DRIVER = pwm
+# END PWM driver: uncomment if using STeMcell as it's a better led driver
+
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
