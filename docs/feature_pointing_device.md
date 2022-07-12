@@ -72,7 +72,6 @@ The Analog Joystick is an analog (ADC) driven sensor.  There are a variety of jo
 |`ANALOG_JOYSTICK_SPEED_MAX`       | (Optional) The maximum value used for motion.                              | `2`           |
 |`ANALOG_JOYSTICK_CLICK_PIN`       | (Optional) The pin wired up to the press switch of the analog stick.       | _not defined_ |
 
-
 ### Cirque Trackpad
 
 To use the Cirque Trackpad sensor, add this to your `rules.mk`:
@@ -90,29 +89,41 @@ POINTING_DEVICE_DRIVER = cirque_pinnacle_spi
 
 This supports the Cirque Pinnacle 1CA027 Touch Controller, which is used in the TM040040, TM035035 and the TM023023 trackpads. These are I2C or SPI compatible, and both configurations are supported.
 
-| Setting                         | Description                                                                     | Default               |
-|---------------------------------|---------------------------------------------------------------------------------|-----------------------|
-|`CIRQUE_PINNACLE_X_LOWER`        | (Optional) The minimum reachable X value on the sensor.                         | `127`                 |
-|`CIRQUE_PINNACLE_X_UPPER`        | (Optional) The maximum reachable X value on the sensor.                         | `1919`                |
-|`CIRQUE_PINNACLE_Y_LOWER`        | (Optional) The minimum reachable Y value on the sensor.                         | `63`                  |
-|`CIRQUE_PINNACLE_Y_UPPER`        | (Optional) The maximum reachable Y value on the sensor.                         | `1471`                |
-|`CIRQUE_PINNACLE_TAPPING_TERM`   | (Optional) Length of time that a touch can be to be considered a tap.           | `TAPPING_TERM`/`200`  |
-|`CIRQUE_PINNACLE_TOUCH_DEBOUNCE` | (Optional) Length of time that a touch can be to be considered a tap.           | `TAPPING_TERM`/`200`  |
+| Setting                         | Description                                                           | Default              |
+|-------------------------------- |-----------------------------------------------------------------------|--------------------- |
+|`CIRQUE_PINNACLE_X_LOWER`        | (Optional) The minimum reachable X value on the sensor.               | `127`                |
+|`CIRQUE_PINNACLE_X_UPPER`        | (Optional) The maximum reachable X value on the sensor.               | `1919`               |
+|`CIRQUE_PINNACLE_Y_LOWER`        | (Optional) The minimum reachable Y value on the sensor.               | `63`                 |
+|`CIRQUE_PINNACLE_Y_UPPER`        | (Optional) The maximum reachable Y value on the sensor.               | `1471`               |
+|`CIRQUE_PINNACLE_ATTENUATION`    | (Optional) Sets the attenuation of the sensor data.                   | `ADC_ATTENUATE_4X`   |
+|`CIRQUE_PINNACLE_TAPPING_TERM`   | (Optional) Length of time that a touch can be to be considered a tap. | `TAPPING_TERM`/`200` |
+|`CIRQUE_PINNACLE_TOUCH_DEBOUNCE` | (Optional) Length of time that a touch can be to be considered a tap. | `TAPPING_TERM`/`200` |
+
+**`CIRQUE_PINNACLE_ATTENUATION`** is a measure of how much data is suppressed in regards to sensitivity. The higher the attenuation, the less sensitive the touchpad will be. 
+
+Default attenuation is set to 4X, although if you are using a thicker overlay (such as the curved overlay) you will want a lower attenuation such as 2X. The possible values are:
+* `ADC_ATTENUATE_4X`: Least sensitive
+* `ADC_ATTENUATE_3X`
+* `ADC_ATTENUATE_2X`
+* `ADC_ATTENUATE_1X`: Most sensitive
 
 | I2C Setting              | Description                                                                     | Default |
 |--------------------------|---------------------------------------------------------------------------------|---------|
 |`CIRQUE_PINNACLE_ADDR`    | (Required) Sets the I2C Address for the Cirque Trackpad                         | `0x2A`  |
 |`CIRQUE_PINNACLE_TIMEOUT` | (Optional) The timeout for i2c communication with the trackpad in milliseconds. | `20`    |
 
-| SPI Setting                   | Description                                                            | Default       |
-|-------------------------------|------------------------------------------------------------------------|---------------|
-|`CIRQUE_PINNACLE_CLOCK_SPEED`  | (Optional) Sets the clock speed that the sensor runs at.               | `1000000`     |
-|`CIRQUE_PINNACLE_SPI_LSBFIRST` | (Optional) Sets the Least/Most Significant Byte First setting for SPI. | `false`       |
-|`CIRQUE_PINNACLE_SPI_MODE`     | (Optional) Sets the SPI Mode for the sensor.                           | `1`           |
-|`CIRQUE_PINNACLE_SPI_DIVISOR`  | (Optional) Sets the SPI Divisor used for SPI communication.            | _varies_      |
-|`CIRQUE_PINNACLE_SPI_CS_PIN`   | (Required) Sets the Cable Select pin connected to the sensor.          | _not defined_ |
+| SPI Setting                   | Description                                                            | Default        |
+|-------------------------------|------------------------------------------------------------------------|----------------|
+|`CIRQUE_PINNACLE_CLOCK_SPEED`  | (Optional) Sets the clock speed that the sensor runs at.               | `1000000`      |
+|`CIRQUE_PINNACLE_SPI_LSBFIRST` | (Optional) Sets the Least/Most Significant Byte First setting for SPI. | `false`        |
+|`CIRQUE_PINNACLE_SPI_MODE`     | (Optional) Sets the SPI Mode for the sensor.                           | `1`            |
+|`CIRQUE_PINNACLE_SPI_DIVISOR`  | (Optional) Sets the SPI Divisor used for SPI communication.            | _varies_       |
+|`CIRQUE_PINNACLE_SPI_CS_PIN`   | (Required) Sets the Cable Select pin connected to the sensor.          | _not defined_  |
 
 Default Scaling/CPI is 1024.
+
+Also see the `POINTING_DEVICE_TASK_THROTTLE_MS`, which defaults to 10ms when using Cirque Pinnacle, which matches the internal update rate of the position registers (in standard configuration). Advanced configuration for pen/stylus usage might require lower values.
+
 
 ### Pimoroni Trackball
 
@@ -134,6 +145,7 @@ The Pimoroni Trackball module is a I2C based breakout board with an RGB enable t
 
 ### PMW 3360 Sensor
 
+This drivers supports multiple sensors _per_ controller, so 2 can be attached at the same side for split keyboards (or unsplit keyboards).
 To use the PMW 3360 sensor, add this to your `rules.mk`
 
 ```make
@@ -145,6 +157,7 @@ The PMW 3360 is an SPI driven optical sensor, that uses a built in IR LED for su
 | Setting                     | Description                                                                                | Default       |
 |-----------------------------|--------------------------------------------------------------------------------------------|---------------|
 |`PMW3360_CS_PIN`                 | (Required) Sets the Cable Select pin connected to the sensor.                              | _not defined_ |
+|`PMW3360_CS_PINS`                | (Alternative) Sets the Cable Select pins connected to multiple sensors.                    | _not defined_ |
 |`PMW3360_CLOCK_SPEED`            | (Optional) Sets the clock speed that the sensor runs at.                                   | `2000000`     |
 |`PMW3360_SPI_LSBFIRST`           | (Optional) Sets the Least/Most Significant Byte First setting for SPI.                     | `false`       |
 |`PMW3360_SPI_MODE`               | (Optional) Sets the SPI Mode for the sensor.                                               | `3`           |
@@ -154,6 +167,36 @@ The PMW 3360 is an SPI driven optical sensor, that uses a built in IR LED for su
 |`PMW3360_FIRMWARE_UPLOAD_FAST`   | (Optional) Skips the 15us wait between firmware blocks.                                    | _not defined_ |
 
 The CPI range is 100-12000, in increments of 100. Defaults to 1600 CPI.
+
+To use multiple sensors, instead of setting `PMW3360_CS_PIN` you need to set `PMW3360_CS_PINS` and also handle and merge the read from this sensor in user code.
+Note that different (per sensor) values of CPI, speed liftoff, rotational angle or flipping of X/Y is not currently supported.
+
+```c
+// in config.h:
+#define PMW3360_CS_PINS { B5, B6 }
+
+// in keyboard.c:
+#ifdef POINTING_DEVICE_ENABLE
+void pointing_device_init_kb(void) {
+    pmw3360_init(1);  // index 1 is the second device.
+    pointing_device_set_cpi(800);  // applies to both sensors
+    pointing_device_init_user();
+}
+
+// Contains report from sensor #0 already, need to merge in from sensor #1
+report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
+    report_pmw3360_t data = pmw3360_read_burst(1);
+    if (data.isOnSurface && data.isMotion) {
+// From quantum/pointing_device_drivers.c
+#define constrain_hid(amt) ((amt) < -127 ? -127 : ((amt) > 127 ? 127 : (amt)))
+        mouse_report.x = constrain_hid(mouse_report.x + data.dx);
+        mouse_report.y = constrain_hid(mouse_report.y + data.dy);
+    }
+    return pointing_device_task_user(mouse_report);
+}
+#endif
+
+```
 
 ### PMW 3389 Sensor
 
@@ -227,6 +270,7 @@ The following configuration options are only available when using `SPLIT_POINTIN
 |`POINTING_DEVICE_ROTATION_270_RIGHT`    | (Optional) Rotates the X and Y data by 270 degrees.                   | _not defined_ |
 |`POINTING_DEVICE_INVERT_X_RIGHT`        | (Optional) Inverts the X axis report.                                 | _not defined_ |
 |`POINTING_DEVICE_INVERT_Y_RIGHT`        | (Optional) Inverts the Y axis report.                                 | _not defined_ |
+|`MOUSE_EXTENDED_REPORT`                 | (Optional) Enables support for extended mouse reports. (-32767 to 32767, instead of just -127 to 127) |
 
 !> If there is a `_RIGHT` configuration option or callback, the [common configuration](feature_pointing_device.md?id=common-configuration) option will work for the left. For correct left/right detection you should setup a [handedness option](feature_split_keyboard?id=setting-handedness), `EE_HANDS` is usually a good option for an existing board that doesn't do handedness by hardware.
 
