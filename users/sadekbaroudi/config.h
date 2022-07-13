@@ -1,6 +1,6 @@
 #pragma once
 
-#define COMBO_COUNT 8
+#define COMBO_COUNT 15
 #define COMBO_TERM 75
 
 #ifdef RGBLIGHT_ENABLE
@@ -92,9 +92,8 @@
 
 #define TAP_CODE_DELAY 25
 
-#define LEADER_TIMEOUT 500
+#define LEADER_TIMEOUT 300
 #define LEADER_PER_KEY_TIMING
 
 #define TAPPING_FORCE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
-

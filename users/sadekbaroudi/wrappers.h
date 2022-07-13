@@ -111,6 +111,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_bigbarobord
 #endif
 
+// Since arachnophobe uses the name LAYOUT_arachnophobe instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_arachnophobe))
+#    define LAYOUT LAYOUT_arachnophobe
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
@@ -172,12 +177,23 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __ALPHA_ALT_THUMBS_5__                              __ALPHA_ALT_THUMB_L1__, __ALPHA_ALT_THUMB_L2__, __ALPHA_ALT_THUMB_R1__, __ALPHA_ALT_THUMB_R2__, __ALPHA_ALT_THUMB_R3__
 #define __ALPHA_ALT_THUMBS_6__                              __ALPHA_ALT_THUMBS_LEFT_3__, __ALPHA_ALT_THUMBS_RIGHT_3__
 
+#define __ALPHA_ALT_L1_K1__ KC_Q
+#define __ALPHA_ALT_L1_K2__ KC_W
+#define __ALPHA_ALT_L1_K3__ KC_F
+#define __ALPHA_ALT_L1_K4__ KC_P
+#define __ALPHA_ALT_L1_K5__ KC_B
 
-#define _________________ALPHA_ALT_L1_________________			KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
+#define __ALPHA_ALT_R1_K1__ KC_J
+#define __ALPHA_ALT_R1_K2__ KC_L
+#define __ALPHA_ALT_R1_K3__ KC_U
+#define __ALPHA_ALT_R1_K4__ KC_Y
+#define __ALPHA_ALT_R1_K5__ KC_SCLN
+
+#define _________________ALPHA_ALT_L1_________________			__ALPHA_ALT_L1_K1__,    __ALPHA_ALT_L1_K2__,    __ALPHA_ALT_L1_K3__,    __ALPHA_ALT_L1_K4__,    __ALPHA_ALT_L1_K5__
 #define _________________ALPHA_ALT_L2_________________			KC_A,    KC_R,    KC_S,    KC_T,    KC_G
 #define _________________ALPHA_ALT_L3_________________			KC_Z,    KC_X,    KC_C,    KC_D,    KC_V
 
-#define _________________ALPHA_ALT_R1_________________			KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN
+#define _________________ALPHA_ALT_R1_________________			__ALPHA_ALT_R1_K1__,    __ALPHA_ALT_R1_K2__,    __ALPHA_ALT_R1_K3__,    __ALPHA_ALT_R1_K4__,    __ALPHA_ALT_R1_K5__
 #define _________________ALPHA_ALT_R2_________________			KC_M,    KC_N,    KC_E,    KC_I,    KC_H
 #define _________________ALPHA_ALT_R3_________________			KC_K,    KC_NO,   KC_COMM, KC_DOT,  KC_SLASH
 
@@ -190,6 +206,18 @@ NOTE: These are all the same length.  If you do a search/replace
 #define _________________ALPHA_ALT_R2_________________			KC_F,    KC_N,    KC_E,    KC_I,    KC_H
 #define _________________ALPHA_ALT_R3_________________			KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH
 */
+
+#define __ALPHA_L1_K1__ KC_Q
+#define __ALPHA_L1_K2__ KC_W
+#define __ALPHA_L1_K3__ KC_F
+#define __ALPHA_L1_K4__ KC_P
+#define __ALPHA_L1_K5__ KC_B
+
+#define __ALPHA_R1_K1__ KC_J
+#define __ALPHA_R1_K2__ KC_L
+#define __ALPHA_R1_K3__ KC_U
+#define __ALPHA_R1_K4__ KC_Y
+#define __ALPHA_R1_K5__ KC_SCLN
 
 // ALPHA
 #define __________________ALPHA_L1____________________			KC_Q,    KC_W,    KC_F,    KC_P,    KC_B
@@ -205,29 +233,26 @@ NOTE: These are all the same length.  If you do a search/replace
 
 // NAVIGATION
 
-#define __META_NAV_1_K1__ KC_ESC
-#define __META_NAV_1_K2__ KC_PGUP
-#define __META_NAV_1_K3__ KC_UP
-#define __META_NAV_1_K4__ KC_PGDN
-#define __META_NAV_1_K5__ _______
+#define __NAV_1_K1__ KC_ESC
+#define __NAV_1_K2__ KC_PGUP
+#define __NAV_1_K3__ KC_UP
+#define __NAV_1_K4__ KC_PGDN
+#define __NAV_1_K5__ _______
 
-#define __META_NAV_2_K1__ KC_HOME
-#define __META_NAV_2_K2__ KC_LEFT
-#define __META_NAV_2_K3__ KC_DOWN
-#define __META_NAV_2_K4__ KC_RGHT
-#define __META_NAV_2_K5__ KC_END
+#define __NAV_2_K1__ KC_HOME
+#define __NAV_2_K2__ KC_LEFT
+#define __NAV_2_K3__ KC_DOWN
+#define __NAV_2_K4__ KC_RGHT
+#define __NAV_2_K5__ KC_END
 
-#define _________________META_NAV_1________________     __META_NAV_1_K1__, __META_NAV_1_K2__, __META_NAV_1_K3__, __META_NAV_1_K4__, __META_NAV_1_K5__
-#define _________________META_NAV_2________________     __META_NAV_2_K1__, __META_NAV_2_K2__, __META_NAV_2_K3__, __META_NAV_2_K4__, __META_NAV_2_K5__
+#define __NAV_3_K1__ KC_ESC
+#define __NAV_3_K2__ KC_PGUP
+#define __NAV_3_K3__ KC_PGDN
+#define __NAV_3_K4__ LCTL(LGUI(KC_LEFT))
+#define __NAV_3_K5__ LCTL(LGUI(KC_RIGHT))
 
-#define __NAV_3_K1__ LCTL(LSFT(KC_TAB))
-#define __NAV_3_K2__ LCTL(KC_TAB)
-#define __NAV_3_K3__ LCTL(LGUI(KC_LEFT))
-#define __NAV_3_K4__ LCTL(LGUI(KC_RIGHT))
-#define __NAV_3_K5__ MOD_MEH
-
-#define ________________NAVIGATION_1_______________			_________________META_NAV_1________________
-#define ________________NAVIGATION_2_______________			_________________META_NAV_2________________
+#define ________________NAVIGATION_1_______________			__NAV_1_K1__, __NAV_1_K2__, __NAV_1_K3__, __NAV_1_K4__, __NAV_1_K5__
+#define ________________NAVIGATION_2_______________			__NAV_2_K1__, __NAV_2_K2__, __NAV_2_K3__, __NAV_2_K4__, __NAV_2_K5__
 #define ________________NAVIGATION_3_______________			__NAV_3_K1__, __NAV_3_K2__, __NAV_3_K3__, __NAV_3_K4__, __NAV_3_K5__
 
 #define __NUMPAD_1_K1__ KC_ASTR
@@ -316,11 +341,11 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __SHIFTNAV_2_K4__ LSFT(KC_RGHT)
 #define __SHIFTNAV_2_K5__ LSFT(KC_END)
 
-#define __SHIFTNAV_3_K1__ LCTL(KC_Z)
-#define __SHIFTNAV_3_K2__ LCTL(KC_X)
-#define __SHIFTNAV_3_K3__ LCTL(KC_C)
-#define __SHIFTNAV_3_K4__ KC_MUTE
-#define __SHIFTNAV_3_K5__ LCTL(KC_V)
+#define __SHIFTNAV_3_K1__ _______
+#define __SHIFTNAV_3_K2__ LSFT(KC_PGUP)
+#define __SHIFTNAV_3_K3__ LSFT(KC_PGDN)
+#define __SHIFTNAV_3_K4__ _______
+#define __SHIFTNAV_3_K5__ _______
 
 #define ________________SHIFTNAV_1_________________			__SHIFTNAV_1_K1__, __SHIFTNAV_1_K2__, __SHIFTNAV_1_K3__, __SHIFTNAV_1_K4__, __SHIFTNAV_1_K5__
 #define ________________SHIFTNAV_2_________________			__SHIFTNAV_2_K1__, __SHIFTNAV_2_K2__, __SHIFTNAV_2_K3__, __SHIFTNAV_2_K4__, __SHIFTNAV_2_K5__
@@ -415,8 +440,8 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __MOUSE_2_K5__ KC_MS_WH_RIGHT
 
 #define __MOUSE_3_K1__ EEP_RST
-#define __MOUSE_3_K2__ _______
-#define __MOUSE_3_K3__ KC_MS_ACCEL0
+#define __MOUSE_3_K2__ KC_MS_WH_UP
+#define __MOUSE_3_K3__ KC_MS_WH_DOWN
 #define __MOUSE_3_K4__ KC_MS_ACCEL1
 #define __MOUSE_3_K5__ KC_MS_ACCEL2
 
