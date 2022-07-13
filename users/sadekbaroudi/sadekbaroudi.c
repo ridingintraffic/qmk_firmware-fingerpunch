@@ -28,11 +28,6 @@ void matrix_scan_leader_key(void) {
     leading = false;
     leader_end();
 
-    SEQ_ONE_KEY(KC_Q) {
-      // Anything you can do in a macro.
-      SEND_STRING("QMK is awesome.");
-    }
-
     // Time shortcuts
     SEQ_TWO_KEYS(KC_H, KC_SLSH) {
       SEND_STRING("1:00");
@@ -105,20 +100,6 @@ void matrix_scan_leader_key(void) {
     }
     SEQ_THREE_KEYS(KC_H, KC_COMM, KC_DOT) {
       SEND_STRING("12:30");
-    }
-
-    // 
-    SEQ_TWO_KEYS(KC_D, KC_D) {
-      SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-    }
-    SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
-      SEND_STRING("https://start.duckduckgo.com\n");
-    }
-    SEQ_TWO_KEYS(KC_A, KC_S) {
-      register_code(KC_LGUI);
-      register_code(KC_S);
-      unregister_code(KC_S);
-      unregister_code(KC_LGUI);
     }
   }
 }

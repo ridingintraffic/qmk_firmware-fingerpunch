@@ -19,8 +19,6 @@ LTO_ENABLE       = no
 SPACE_CADET_ENABLE    = no
 GRAVE_ESC_ENABLE      = no
 
-
-
 ifneq ($(strip $(NO_SECRETS)), yes)
     ifneq ("$(wildcard $(USER_PATH)/secrets.c)","")
         SRC += secrets.c

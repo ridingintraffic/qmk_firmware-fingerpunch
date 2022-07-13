@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAVIGATION] = LAYOUT_wrapper(
                        __META_NAV_1_K2__, __META_NAV_1_K3__, __META_NAV_1_K4__, __META_NAV_1_K5__, __NUMPAD_1_K1__, __NUMPAD_1_K2__, __NUMPAD_1_K3__, __NUMPAD_1_K4__,
-    __META_NAV_1_K1__,                 ________________NAVIGATION_2_______________,                            _________________NUMPAD_2__________________,                __NUMPAD_1_K5__,
+    __NAV_1_K1__,                      ________________NAVIGATION_2_______________,                            _________________NUMPAD_2__________________,                __NUMPAD_1_K5__,
                                        ________________NAVIGATION_3_______________,                            _________________NUMPAD_3__________________,
                                                                                _______, _______, KC_SPACE, KC_DOT
     ),
