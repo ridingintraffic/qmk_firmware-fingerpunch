@@ -82,4 +82,5 @@ fi
 	-e SKIP_GIT="$SKIP_GIT" \
 	-e MAKEFLAGS="$MAKEFLAGS" \
 	qmkfm/qmk_cli \
-	make "$keyboard${keymap:+:$keymap}${target:+:$target}"
+    /bin/bash	
+    #make "$keyboard${keymap:+:$keymap}${target:+:$target}"
