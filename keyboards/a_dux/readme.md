@@ -31,9 +31,9 @@ Make examples for this keyboard (after setting up your build environment):
 
 Enter the bootloader in 3 ways:
 
-* **Bootmagic reset**: Hold down the key at (0,0) in the matrix (usually the top left key or Escape) and plug in the keyboard
-
-* **Physical reset**: Briefly short the RST and GND pins on the microcontroller using tweezers, a paperclip, or any other conductive material.
+* **Bootmagic reset**: Hold down the top left key on the left half (or the top right right key on the right half) and plug in the controller on that side.
+* **Physical reset pins**: Briefly short the RST and GND pins on the microcontroller using tweezers, a paperclip, or any other conductive material.
+* **Keycode in layout**: Press the key mapped to `QK_BOOT` if it is configured.
 
 * **Keycode in layout**: Press the key mapped to `RESET` if it is available
 
