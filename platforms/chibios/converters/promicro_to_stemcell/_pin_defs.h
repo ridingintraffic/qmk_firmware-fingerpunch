@@ -46,6 +46,18 @@
 #define B2 PAL_LINE(GPIOA, 7)
 #define B6 PAL_LINE(GPIOA, 4)
 
+// SADEK BEGIN: Keep this to continue to support elite-c pins on stemcell
+// PR that broke this: https://github.com/qmk/qmk_firmware/pull/18239
+// Elite-c compatible pinout, bottom row
+#define B7 PAL_LINE(GPIOC, 13)
+#define D5 PAL_LINE(GPIOC, 14)
+#define C7 PAL_LINE(GPIOC, 15)
+#define F1 PAL_LINE(GPIOA, 0)
+#define F0 PAL_LINE(GPIOA, 1)
+// SADEK END
+
 // LEDs
-#define D5 PAL_LINE(GPIOA, 8) // User LED
+// SADEK BEGIN: duplicate reference to D5
+// #define D5 PAL_LINE(GPIOA, 8) // User LED
+// SADEK END
 #define B0 PAL_LINE(GPIOA, 9) // unconnected pin
