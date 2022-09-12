@@ -19,6 +19,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = no
 RGB_MATRIX_DRIVER = WS2812
+WS2812_DRIVER = vendor
 
 MIDI_ENABLE = no            # MIDI support
 UNICODE_ENABLE = no         # Unicode
@@ -33,13 +34,22 @@ MOUSEKEY_ENABLE = yes
 SPLIT_KEYBOARD = yes
 SERIAL_DRIVER = vendor
 
-# CIRQUE_ENABLE = no
-# PMW3360_ENABLE = no
 
-# ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-#    POINTING_DEVICE_ENABLE = yes
-#    POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
-# endif
+#HAPTIC FEEDBACK
+HAPTIC_DRIVER = DRV2605L
+HAPTIC_ENABLE = yes
+
+# Audio doesn't work with RP2040 yet :(
+AUDIO_ENABLE = no
+
+CIRQUE_ENABLE = yes
+
+ifeq ($(strip $(CIRQUE_ENABLE)), yes)
+   POINTING_DEVICE_ENABLE = yes
+   POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
+endif
+
+# PMW3360_ENABLE = no
 
 # ifeq ($(strip $(PMW3360_ENABLE)), yes)
 #     POINTING_DEVICE_ENABLE := yes
