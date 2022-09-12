@@ -116,6 +116,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_arachnophobe
 #endif
 
+// Since ximi uses the name LAYOUT_ximi instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_ximi))
+#    define LAYOUT LAYOUT_ximi
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
@@ -427,7 +432,7 @@ NOTE: These are all the same length.  If you do a search/replace
 
 // MOUSE LAYER
 
-#define __MOUSE_1_K1__ RESET
+#define __MOUSE_1_K1__ QK_BOOT
 #define __MOUSE_1_K2__ KC_MS_WH_UP
 #define __MOUSE_1_K3__ KC_MS_UP
 #define __MOUSE_1_K4__ KC_MS_WH_DOWN

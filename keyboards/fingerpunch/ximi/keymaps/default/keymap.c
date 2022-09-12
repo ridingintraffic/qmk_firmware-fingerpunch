@@ -23,9 +23,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|           |------+------+------+------+------+------|
  * | Shft |   Z  |   X  |   C  |   V  |   B  |           |   N  |   M  |   ,  |   .  |   /  | Ctrl |
  * `-----------------------------------------'           `-----------------------------------------'
- *                  ,--------------------.    ,--------------------.
- *                  | LOWER| Enter|  Del |    |BckSpc| Space| RAISE|
- *                  `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | LOWER| Enter|  Del |    |BckSpc| Space| RAISE|
+ *                         `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | Undo | Redo2| Redo |    | Vol- | Mute | Vol+ |    // 3 way thumbwheel
+ *                         `--------------------'    `--------------------.
  */
 
 // Default config uses home row mods. So hold each of the keys on the home row to use ctrl, gui, alt, or shift
@@ -34,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,       LCTL_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D), LSFT_T(KC_F), KC_G,         KC_H,    RSFT_T(KC_J), RALT_T(KC_K), RGUI_T(KC_L), RCTL_T(KC_SCLN), KC_QUOT,
   KC_LSFT,      KC_Z,         KC_X,         KC_C,         KC_V,         KC_B,         KC_N,    KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,         KC_RCTL,
                                             LOWER,        KC_ENT,       KC_DEL,       KC_BSPC, KC_SPC,       RAISE,
-                                            LOWER,        KC_ENT,       KC_DEL,       KC_BSPC, KC_SPC,       RAISE
+                                            C(KC_Z),      C(S(KC_Z)),   C(KC_Y),      KC_VOLD, KC_MUTE,      KC_VOLU
 ),
 
 /* Colemak
@@ -46,9 +49,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|           |------+------+------+------+------+------|
  * | Shft |   Z  |   X  |   C  |   D  |   V  |           |   K  |   H  |   ,  |   .  |   /  | Ctrl |
  * `--------------------+--------------------'           `-----------------------------------------'
- *                  ,--------------------.    ,--------------------.
- *                  | LOWER| Enter|   '  |    |BckSpc| Space| RAISE|
- *                  `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | LOWER| Enter|   '  |    |BckSpc| Space| RAISE|
+ *                         `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | Undo | Redo2| Redo |    | Vol- | Mute | Vol+ |    // 3 way thumbwheel
+ *                         `--------------------'    `--------------------.
  */
 
 // Default config uses home row mods. So hold each of the keys on the home row to use ctrl, gui, alt, or shift
@@ -57,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,       LCTL_T(KC_A), LGUI_T(KC_R), LALT_T(KC_S), LSFT_T(KC_T), KC_G,         KC_M,    RSFT_T(KC_N), RALT_T(KC_E), RGUI_T(KC_I), RCTL_T(KC_O), KC_QUOT,
   KC_LSFT,      KC_Z,         KC_X,         KC_C,         KC_D,         KC_V,         KC_K,    KC_H,         KC_COMM,      KC_DOT,       KC_SLSH,      KC_RCTL,
                                             LOWER,        KC_ENT,       KC_QUOT,      KC_BSPC, KC_SPC,       RAISE,
-                                            LOWER,        KC_ENT,       KC_QUOT,      KC_BSPC, KC_SPC,       RAISE
+                                            C(KC_Z),      C(S(KC_Z)),   C(KC_Y),      KC_VOLD, KC_MUTE,      KC_VOLU
 ),
 
 /* Raise
@@ -69,9 +75,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|           |------+------+------+------+------+------|
  * | ____ |  Ctrl|   `  |  GUI |  Alt |      |           |      |      |      |   \  |   '  | ____ |
  * `-----------------------------------------'           `-----------------------------------------'
- *                  ,--------------------.    ,--------------------.
- *                  | LOWER|      |      |    |      |      | RAISE|
- *                  `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | LOWER|      |      |    |      |      | RAISE|
+ *                         `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | Undo | Redo2| Redo |    | Vol- | Mute | Vol+ |    // 3 way thumbwheel
+ *                         `--------------------'    `--------------------.
  */
 [_RAISE] = LAYOUT_ximi(
   _______,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
@@ -90,9 +99,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|           |------+------+------+------+------+------|
  * | ____ |  Caps|   ~  |      |      |      |           |      |      |      |   |  |   '  | ____ |
  * `-----------------------------------------'           `-----------------------------------------'
- *                  ,--------------------.    ,--------------------.
- *                  | LOWER|      |      |    |  Del |      | RAISE|
- *                  `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | LOWER|      |      |    |  Del |      | RAISE|
+ *                         `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | Undo | Redo2| Redo |    | Vol- | Mute | Vol+ |    // 3 way thumbwheel
+ *                         `--------------------'    `--------------------.
  */
 [_LOWER] = LAYOUT_ximi(
   _______,      KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
@@ -111,9 +123,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|           |------+------+------+------+------+------|
  * | ____ | SPD_D| HUE_D| SAT_D| VAL_D|      |           |  F11 |  F12 |      |      | Reset| ____ |
  * `-----------------------------------------'           `-----------------------------------------'
- *                  ,--------------------.    ,--------------------.
- *                  | LOWER|      |      |    |      |      | RAISE|
- *                  `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | LOWER|      |      |    |      |      | RAISE|
+ *                         `--------------------'    `--------------------.
+ *                         ,--------------------.    ,--------------------.
+ *                         | Undo | Redo2| Redo |    | Vol- | Mute | Vol+ |    // 3 way thumbwheel
+ *                         `--------------------'    `--------------------.
  */
 [_ADJUST] =  LAYOUT_ximi(
   _______,      RGB_TOG, RGB_RMOD, RGB_MOD, _______, TO(_QWERTY),       KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   _______,
