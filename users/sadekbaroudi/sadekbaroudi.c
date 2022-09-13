@@ -232,6 +232,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #if defined(RGBLIGHT_ENABLE)
     state = layer_state_set_rgb_light(state);
 #endif  // RGBLIGHT_ENABLE
+#if defined(HAPTIC_ENABLE)
+    state = layer_state_set_haptic(state);
+#endif  // HAPTIC_ENABLE
     return layer_state_set_keymap(state);
 }
 

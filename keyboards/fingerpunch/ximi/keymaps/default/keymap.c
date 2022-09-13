@@ -1,5 +1,9 @@
 #include QMK_KEYBOARD_H
 
+#ifdef HAPTIC_ENABLE
+#include "drivers/haptic/DRV2605L.h"
+#endif
+
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
     _QWERTY,
@@ -138,3 +142,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, _______, _______,           _______, _______, _______
 )
 };
+
+layer_state_t layer_state_set_keymap(layer_state_t state) {
+    switch(get_highest_layer(state)) {
+        case _QWERTY:
+        case _COLEMAK:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(soft_bump);
+#endif
+            break;
+        case _RAISE:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(sh_dblsharp_tick);
+#endif
+            break;
+        case _LOWER:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(lg_dblclick_str);
+#endif
+            break;
+        case _ADJUST:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(pulsing_sharp);
+#endif
+            break;
+        default:
+            break;
+    }
+
+    return state;
+}

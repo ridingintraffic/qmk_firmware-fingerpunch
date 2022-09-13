@@ -103,6 +103,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define NO_HAPTIC_PUNCTUATION
 #    define NO_HAPTIC_NAV
 #    define NO_HAPTIC_NUMERIC
+#    define NO_HAPTIC_MOD
 #endif
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
