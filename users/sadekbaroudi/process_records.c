@@ -3,6 +3,9 @@
 #if defined(RGBLIGHT_ENABLE)
 #include "rgb_stuff.h"
 #endif
+#ifdef HAPTIC_ENABLE
+#include "drivers/haptic/DRV2605L.h"
+#endif
 
 __attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
 
@@ -175,6 +178,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 #endif
+        case KC_BTN1:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(medium_click1);
+#endif
+            break;
+        case KC_BTN2:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(sh_dblclick_str);
+#endif
+            break;
+        case KC_BTN3:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(lg_dblclick_med);
+#endif
+            break;
         case C_CAPSWORD:
             // NOTE: if you change this behavior, may want to update in keymap.c for COMBO behavior
             #ifdef CASEMODES_ENABLE
