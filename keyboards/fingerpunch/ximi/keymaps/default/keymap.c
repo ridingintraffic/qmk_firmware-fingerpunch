@@ -172,3 +172,30 @@ layer_state_t layer_state_set_keymap(layer_state_t state) {
 
     return state;
 }
+
+bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
+    if (!process_record_user(keycode, record)) {
+        return false;
+    }
+    switch(keycode) {
+        case KC_BTN1:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(medium_click1);
+#endif
+            break;
+        case KC_BTN2:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(sh_dblclick_str);
+#endif
+            break;
+        case KC_BTN3:
+#ifdef HAPTIC_ENABLE
+            DRV_pulse(lg_dblclick_med);
+#endif
+            break;
+        default:
+            break;
+    }
+    
+    return true;
+}
