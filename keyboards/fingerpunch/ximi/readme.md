@@ -1,15 +1,15 @@
-# luakeeb
+# ximi
 
 * Keyboard Maintainer: sadekbaroudi
-* Hardware Supported: luakeeb PCB
+* Hardware Supported: ximi PCB
 
 Make example for this keyboard (after setting up your build environment):
 
-    make fingerpunch/luakeeb:default
+    make fingerpunch/ximi:default
 
 Flashing example for this keyboard ([using the command line](https://docs.qmk.fm/#/newbs_flashing?id=flash-your-keyboard-from-the-command-line)):
 
-    make fingerpunch/luakeeb:default:flash
+    make fingerpunch/ximi:default:flash
 
 See [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) then the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information.
 
