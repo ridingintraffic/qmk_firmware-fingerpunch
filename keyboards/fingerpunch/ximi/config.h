@@ -44,6 +44,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_LEFT
 #define SPLIT_TRANSPORT_MIRROR
 #define SPLIT_POINTING_ENABLE
+#define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_MODS_ENABLE
 #define POINTING_DEVICE_COMBINED
 #define SOFT_SERIAL_PIN GP0
 #define USE_SERIAL
@@ -113,6 +115,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define CIRQUE_PINNACLE_ADDR 0x2A
 #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 #define POINTING_DEVICE_ROTATION_90 // move to cirque specific config
+#define POINTING_DEVICE_ROTATION_90_RIGHT
 #define I2C1_CLOCK_SPEED  400000
 #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 
