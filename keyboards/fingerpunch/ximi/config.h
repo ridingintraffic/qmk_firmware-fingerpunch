@@ -49,6 +49,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define POINTING_DEVICE_COMBINED
 #define SOFT_SERIAL_PIN GP0
 #define USE_SERIAL
+#define SELECT_SOFT_SERIAL_SPEED 0
 
 #define RGB_DI_PIN GP26
 #ifdef RGBLIGHT_ENABLE
@@ -77,10 +78,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEBOUNCE 5
 
 /* audio support */
-#define AUDIO_VOICES
-#define AUDIO_PIN GP4
-
+// Pending https://github.com/qmk/qmk_firmware/pull/17723 and https://github.com/qmk/qmk_firmware/pull/17706
 #ifdef AUDIO_ENABLE
+#    define AUDIO_VOICES
+#    define AUDIO_PIN GP4
+#    define AUDIO_PWM_DRIVER PWMD2
+#    define AUDIO_PWM_CHANNEL RP2040_PWM_CHANNEL_4
 #    define NO_MUSIC_MODE
 #    define STARTUP_SONG SONG(PREONIC_SOUND)
 #    define DEFAULT_LAYER_SONGS \
