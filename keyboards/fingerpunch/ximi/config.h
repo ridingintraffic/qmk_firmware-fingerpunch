@@ -41,8 +41,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DIODE_DIRECTION COL2ROW
 #define MATRIX_ROW_PINS_SR { GP27, GP28, GP29 }
 
+#define MASTER_LEFT
+#define SPLIT_TRANSPORT_MIRROR
+#define SPLIT_POINTING_ENABLE
+#define POINTING_DEVICE_COMBINED
 #define SOFT_SERIAL_PIN GP0
-
 #define USE_SERIAL
 
 #define RGB_DI_PIN GP26
