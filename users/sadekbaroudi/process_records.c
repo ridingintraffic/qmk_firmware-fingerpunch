@@ -208,11 +208,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
             }
             break;
+        case KC_X: // cut
+            if (record->event.pressed) {
+#ifdef HAPTIC_ENABLE
+                if (get_mods() & MOD_MASK_CTRL) {
+                    DRV_pulse(lg_dblclick_str);
+                }
+#endif
+            }
+            break;
         case KC_V: // paste
             if (record->event.pressed) {
 #ifdef HAPTIC_ENABLE
                 if (get_mods() & MOD_MASK_CTRL) {
                     DRV_pulse(soft_bump);
+                }
+#endif
+            }
+            break;
+        case KC_S: // save
+            if (record->event.pressed) {
+#ifdef HAPTIC_ENABLE
+                if (get_mods() & MOD_MASK_CTRL) {
+                    DRV_pulse(pulsing_strong);
                 }
 #endif
             }

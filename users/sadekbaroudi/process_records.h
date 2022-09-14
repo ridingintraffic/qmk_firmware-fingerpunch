@@ -40,6 +40,9 @@ enum userspace_custom_keycodes {
 
 bool process_record_secrets(uint16_t keycode, keyrecord_t *record);
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
+#if defined(MOUSEKEY_ENABLE) || defined(POINTING_DEVICE_ENABLE)
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report);
+#endif
 
 #define KC_SEC1 KC_SECRET_1
 #define KC_SEC2 KC_SECRET_2
