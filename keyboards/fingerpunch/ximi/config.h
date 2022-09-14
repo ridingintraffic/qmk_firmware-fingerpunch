@@ -100,6 +100,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define F_LRA 150 // resonance freq 
 #    define DRV_GREETING  alert_750ms
 #    define NO_HAPTIC_ALPHA
+#    define NO_HAPTIC_LOCKKEYS
 #    define NO_HAPTIC_PUNCTUATION
 #    define NO_HAPTIC_NAV
 #    define NO_HAPTIC_NUMERIC
@@ -117,6 +118,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // cirque trackpad config
 #define CIRQUE_PINNACLE_ADDR 0x2A
+#define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_RELATIVE_MODE
+#define CIRQUE_PINNACLE_TAP_ENABLE
+#define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
 #define POINTING_DEVICE_TASK_THROTTLE_MS 5
 #define POINTING_DEVICE_ROTATION_90 // move to cirque specific config
 #define POINTING_DEVICE_ROTATION_90_RIGHT
