@@ -201,6 +201,17 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
 }
 
 
+
+void keyboard_post_init_kb(void) {
+#ifdef POINTING_DEVICE_COMBINED
+    pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
+    pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
+#else
+    pointing_device_set_cpi(2000);
+#endif
+}
+
+
 #ifdef POINTING_DEVICE_ENABLE
 static bool scrolling_mode = false;
 
@@ -224,7 +235,12 @@ layer_state_t layer_state_set_pointing(layer_state_t state) {
         default:
             if (scrolling_mode) {
                 scrolling_mode = false;
+#ifdef POINTING_DEVICE_COMBINED
+                pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
+                pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
+#else
                 pointing_device_set_cpi(2000);
+#endif
             }
             break;
     }

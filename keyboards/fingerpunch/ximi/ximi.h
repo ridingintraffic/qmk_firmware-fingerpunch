@@ -1,6 +1,8 @@
 #pragma once
 #include "quantum.h"
 
+void pointing_device_set_default_cpi(void);
+
 #define LAYOUT_ximi( \
   K00, K01, K02, K03, K04, K05, K35, K34, K33, K32, K31, K30, \
   K10, K11, K12, K13, K14, K15, K45, K44, K43, K42, K41, K40, \
