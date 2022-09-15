@@ -145,7 +145,7 @@ void keyboard_post_init_user(void) {
 //     keyboard_post_init_rgb_matrix();
 // #endif
 #if defined(POINTING_DEVICE_ENABLE) && defined(POINTING_DEVICE_COMBINED)
-    pointing_device_set_cpi_on_side(true, 200); //Set cpi on left side to a low value for slower scrolling.
+    pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
     pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
 #endif
     keyboard_post_init_keymap();

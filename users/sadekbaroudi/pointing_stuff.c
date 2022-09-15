@@ -16,7 +16,7 @@ layer_state_t layer_state_set_pointing(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case _NAVIGATION:
             scrolling_mode = true;
-            pointing_device_set_cpi(200);
+            pointing_device_set_cpi(50);
             break;
         default:
             if (scrolling_mode) {

@@ -73,3 +73,6 @@ ifeq ($(strip $(HAPTIC_ENABLE)), yes)
     SRC += haptic_stuff.c
 endif
 
+ifeq ($(strip $(POINTING_DEVICE_ENABLE)), yes)
+    SRC += pointing_stuff.c
+endif
