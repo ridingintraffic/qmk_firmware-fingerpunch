@@ -1,4 +1,5 @@
 #include "sadekbaroudi.h"
+#include "pointing_stuff.h"
 
 static bool scrolling_mode = false;
 
@@ -21,7 +22,11 @@ layer_state_t layer_state_set_pointing(layer_state_t state) {
         default:
             if (scrolling_mode) {
                 scrolling_mode = false;
+#ifdef POINTING_DEVICE_COMBINED
+                pointing_device_set_cpi_combined_defaults();
+#else
                 pointing_device_set_cpi(2000);
+#endif
             }
             break;
     }
@@ -35,3 +40,8 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
     left_report.y = 0;
     return pointing_device_combine_reports(left_report, right_report);
 }
+
+void pointing_device_set_cpi_combined_defaults(void) {
+    pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
+    pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
+} 
