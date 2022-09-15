@@ -193,6 +193,42 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
             DRV_pulse(lg_dblclick_med);
 #endif
             break;
+        case KC_C: // copy
+            if (record->event.pressed) {
+#ifdef HAPTIC_ENABLE
+                if (get_mods() & MOD_MASK_CTRL) {
+                    DRV_pulse(lg_dblclick_str);
+                }
+#endif
+            }
+            break;
+        case KC_X: // cut
+            if (record->event.pressed) {
+#ifdef HAPTIC_ENABLE
+                if (get_mods() & MOD_MASK_CTRL) {
+                    DRV_pulse(lg_dblclick_str);
+                }
+#endif
+            }
+            break;
+        case KC_V: // paste
+            if (record->event.pressed) {
+#ifdef HAPTIC_ENABLE
+                if (get_mods() & MOD_MASK_CTRL) {
+                    DRV_pulse(soft_bump);
+                }
+#endif
+            }
+            break;
+        case KC_S: // save
+            if (record->event.pressed) {
+#ifdef HAPTIC_ENABLE
+                if (get_mods() & MOD_MASK_CTRL) {
+                    DRV_pulse(pulsing_strong);
+                }
+#endif
+            }
+            break;
         default:
             break;
     }
@@ -203,11 +239,8 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
 
 
 void keyboard_post_init_kb(void) {
-#ifdef POINTING_DEVICE_COMBINED
-    pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
-    pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
-#else
-    pointing_device_set_cpi(2000);
+#ifdef POINTING_DEVICE_ENABLE
+    pointing_device_set_default_cpi();
 #endif
 }
 
@@ -235,12 +268,7 @@ layer_state_t layer_state_set_pointing(layer_state_t state) {
         default:
             if (scrolling_mode) {
                 scrolling_mode = false;
-#ifdef POINTING_DEVICE_COMBINED
-                pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
-                pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
-#else
-                pointing_device_set_cpi(2000);
-#endif
+                pointing_device_set_default_cpi();
             }
             break;
     }
@@ -256,4 +284,13 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
     return pointing_device_combine_reports(left_report, right_report);
 }
 #endif // POINTING_DEVICE_COMBINED
+
+void pointing_device_set_default_cpi(void) {
+#ifdef POINTING_DEVICE_COMBINED
+    pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
+    pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
+#else
+    pointing_device_set_cpi(2000);
+#endif
+}
 #endif // POINTING_DEVICE_ENABLE
