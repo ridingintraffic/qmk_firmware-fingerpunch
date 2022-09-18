@@ -33,6 +33,7 @@ layer_state_t layer_state_set_pointing(layer_state_t state) {
     return state;
 }
 
+#ifdef POINTING_DEVICE_COMBINED
 report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, report_mouse_t right_report) {
     left_report.h = left_report.x;
     left_report.v = -left_report.y;
@@ -44,4 +45,5 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
 void pointing_device_set_cpi_combined_defaults(void) {
     pointing_device_set_cpi_on_side(true, 50); //Set cpi on left side to a low value for slower scrolling.
     pointing_device_set_cpi_on_side(false, 2000); //Set cpi on right side to a reasonable value for mousing.
-} 
+}
+#endif 
