@@ -64,7 +64,7 @@ jobs:
           all_make_commands=($(bin/fp_build.sh))
           echo "${keyboards}" | while IFS= read -r line ; do
           board_map="default"
-          echo "${all_make_commands[@]}"
+          #echo "${all_make_commands[@]}"
           case "$line" in
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
@@ -73,6 +73,7 @@ jobs:
                 :
                  if [[ $line =~ $per_board_make ]]; then
                         echo "$per_board_make"
+                        $per_board_make
                  fi
               done
               ;;
