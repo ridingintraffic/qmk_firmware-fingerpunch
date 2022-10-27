@@ -52,6 +52,7 @@ jobs:
       #    echo "::set-output name=FILELIST::$(qmk list-keyboards| grep fingerpunch)"
       
       - name: Build firmware
+        shell: bash
         run: |
           keyboards = "$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r line ; do
