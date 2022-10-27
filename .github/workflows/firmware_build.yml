@@ -55,7 +55,7 @@ jobs:
       - name: Build firmware
         shell: bash
         run: |
-          sudo apt-get update && sudo apt-get install jq -y
+          apt-get update && apt-get install jq -y
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r line ; do
           all_make_commands=($(bash bin/fp_build.sh))
