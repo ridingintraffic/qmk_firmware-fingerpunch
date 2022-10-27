@@ -5,6 +5,7 @@ on:
       - main
       - master
       - 'develop**'
+      - github-actions-build 
     #paths:
     #  - 'keyboards/fingerpunch/*'
 jobs:
