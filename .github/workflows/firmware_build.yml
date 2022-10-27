@@ -66,13 +66,16 @@ jobs:
               case "$board" in 
                 *${{ matrix.keyboard }}*)
                   for per_board_make in "${all_make_commands[@]}"
-                    echo $per_board_make
-                    #echo "fp_build.sh -k $board_short -m $per_board_per_map"
+                    if [[ $board == *"$per_board_make"* ]]; then
+                      echo $per_board_make
+                      #echo "fp_build.sh -k $board_short -m $per_board_per_map"
 
-                    #echo "building firmware"
-                    #make "$board:per_board_per_map"
-                    #make "$board:per_board_per_map" CONVERT_TO=kb2040
-                    #make "$board:per_board_per_map" CONVERT_TO=stemcell
+                      #echo "building firmware"
+                      #make "$board:per_board_per_map"
+                      #make "$board:per_board_per_map" CONVERT_TO=kb2040
+                      #make "$board:per_board_per_map" CONVERT_TO=stemcell
+                    fi
+                    done
                   ;;
               esac
               
