@@ -28,7 +28,7 @@ jobs:
   Build:
     needs: gather-keyboards
     runs-on: ubuntu-latest
-    container: qmkfm/qmk_cli
+    #container: qmkfm/qmk_cli
     strategy:
       fail-fast: false
       #matrix:
@@ -55,7 +55,7 @@ jobs:
       - name: Build firmware
         shell: bash
         run: |
-          apt-get update && apt-get install jq -y
+          #apt-get update && apt-get install jq -y
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r line ; do
           all_make_commands=($(bash bin/fp_build.sh))
