@@ -56,8 +56,10 @@ jobs:
         run: |
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r line ; do
-          chmod +x /__w/qmk_firmware-fingerpunch/qmk_firmware-fingerpunch/bin/fp_build.sh
-          all_make_commands=($(/__w/qmk_firmware-fingerpunch/qmk_firmware-fingerpunch/bin/fp_build.sh))
+          echo "$(ls -l)"
+          echo "$pwd"
+          chmod +x /__w/qmk_firmware-fingerpunch/bin/fp_build.sh
+          all_make_commands=($(/__w/qmk_firmware-fingerpunch/bin/fp_build.sh))
           case "$line" in 
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
