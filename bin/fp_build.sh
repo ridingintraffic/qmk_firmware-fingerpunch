@@ -217,6 +217,6 @@ for filename in $FP_KB; do
     	build_keyboard_user_input "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}"
     else
         # build_keyboard_all_combinations "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" "build string" "current param"
-        build_keyboard_all_combinations "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" "\n"
+        build_keyboard_all_combinations "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" ""
     fi
 done
