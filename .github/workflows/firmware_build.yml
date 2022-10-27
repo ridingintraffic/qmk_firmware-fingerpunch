@@ -55,7 +55,7 @@ jobs:
       - name: Build firmware
         shell: bash
         run: |
-          wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux32 -o jq
+          wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -o jq
           chmod +x jq
           #export PATH=$PATH:/
           mv jq /usr/local/sbin/
