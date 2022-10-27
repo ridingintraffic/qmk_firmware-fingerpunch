@@ -68,13 +68,17 @@ jobs:
           case "$line" in
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
-              while read -r per_board_make; do
-                  echo "$per_board_make"
-                  if [[ $line =~ $per_board_make ]]; then
-                          echo "$per_board_make"
-                          $per_board_make
-                  fi
-              done <<< "${all_make_commands}"
+              #while read -r per_board_make; do
+              for ((i = 0; i < ${#all_make_commands[@]}; i++))
+                do
+                    per_board_make=${all_make_commands[$i]}"
+                    echo "$per_board_make"
+                    if [[ $line =~ $per_board_make ]]; then
+                            echo "$per_board_make"
+                            $per_board_make
+                    fi
+                done
+              #done <<< "${all_make_commands[@]}"
 
               ;;
           esac
