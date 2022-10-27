@@ -61,9 +61,9 @@ jobs:
           mv jq /usr/local/sbin/
 
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
+          all_make_commands=($(bin/fp_build.sh))
           echo "${keyboards}" | while IFS= read -r line ; do
           board_map="default"
-          all_make_commands=($(bin/fp_build.sh))
           echo "${all_make_commands[@]}"
           case "$line" in
             *${{ matrix.keyboard }}*)
@@ -71,7 +71,7 @@ jobs:
               for per_board_make in "${all_make_commands[@]}"
               do
                 :
-                 if [[ $line == *"$per_board_make"* ]]; then
+                 if [[ $line =~ $per_board_make ]]; then
                         echo "$per_board_make"
                  fi
               done
