@@ -55,31 +55,33 @@ jobs:
         run: |
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r board ; do
-          #echo $board 
-          #board_map=($(qmk list-keymaps -kb $board))
-          board_map="default"
-          all_make_commands=($(bin/fp_build.sh))
-          for per_board_per_map in "${board_map[@]}"
-          do
-              :
-              board_short=$(echo $board | cut -d "/" -f 2-)
-              case "$board" in 
-                *${{ matrix.keyboard }}*)
-                  for per_board_make in "${all_make_commands[@]}"
-                    if [[ $board == *"$per_board_make"* ]]; then
-                      echo $per_board_make
-                      #echo "fp_build.sh -k $board_short -m $per_board_per_map"
+            #echo $board 
+            #board_map=($(qmk list-keymaps -kb $board))
+            board_map="default"
+            all_make_commands=($(bin/fp_build.sh))
+            for per_board_per_map in "${board_map[@]}" 
+            do
+                :
+                board_short=$(echo $board | cut -d "/" -f 2-)
+                case "$board" in 
+                  *${{ matrix.keyboard }}*)
+                    for per_board_make in "${all_make_commands[@]}"
+                    do
+                      :
+                      if [[ $board == *"$per_board_make"* ]]; then
+                        echo $per_board_make
+                        #echo "fp_build.sh -k $board_short -m $per_board_per_map"
 
-                      #echo "building firmware"
-                      #make "$board:per_board_per_map"
-                      #make "$board:per_board_per_map" CONVERT_TO=kb2040
-                      #make "$board:per_board_per_map" CONVERT_TO=stemcell
-                    fi
+                        #echo "building firmware"
+                        #make "$board:per_board_per_map"
+                        #make "$board:per_board_per_map" CONVERT_TO=kb2040
+                        #make "$board:per_board_per_map" CONVERT_TO=stemcell
+                      fi
                     done
-                  ;;
-              esac
-              
-            done
+                    ;;
+                esac
+                
+              done
           
           done
           
