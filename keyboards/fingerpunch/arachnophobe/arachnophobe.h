@@ -39,3 +39,5 @@
     { K36,   K18,   K29,   K09, K1A, K2A }, \
     { K37,   K28,   K08,   K19, K38, K27 }, \
 }
+
+#include "keyboards/fingerpunch/fp.h"

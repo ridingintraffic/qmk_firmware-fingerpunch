@@ -2,6 +2,7 @@
 #include "rgb_stuff.h"
 #include "eeprom.h"
 
+/* NO USERSPACE RGB
 #ifdef PIMORONI_TRACKBALL_ENABLE
 #include "drivers/sensors/pimoroni_trackball.h"
 #include "pointing_device.h"
@@ -35,7 +36,7 @@ void keyboard_post_init_rgb_light(void) {
 #if defined(RGBLIGHT_STARTUP_ANIMATION)
     is_enabled = rgblight_is_enabled();
     if (userspace_config.rgb_layer_change) {
-        rgblight_enable_noeeprom();
+        USERSPACE_RGBLIGHT_ENABLE_noeeprom();
     }
     if (rgblight_is_enabled()) {
         layer_state_set_rgb_light(layer_state);
@@ -76,7 +77,7 @@ void rgblight_set_hsv_and_mode(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mo
 }
 
 void rgb_set_user_config_from_current_values() {
-#ifdef RGBLIGHT_ENABLE
+#ifdef USERSPACE_RGBLIGHT_ENABLE
     userspace_config.mode = rgblight_get_mode();
     userspace_config.hue = rgblight_get_hue();
     userspace_config.sat = rgblight_get_sat();
@@ -91,7 +92,7 @@ void rgb_set_user_config_from_current_values() {
 __attribute__((weak)) bool rgb_base_layer_keymap(layer_state_t state) { return false; }
 
 layer_state_t layer_state_set_rgb_light(layer_state_t state) {
-#ifdef RGBLIGHT_ENABLE
+#ifdef USER_USERSPACE_RGBLIGHT_ENABLE
     if (userspace_config.rgb_layer_change) {
         //uint8_t mode = layer_state_cmp(state,_MEDIA) ? RGBLIGHT_MODE_BREATHING : RGBLIGHT_MODE_STATIC_LIGHT;
         uint8_t mode = RGBLIGHT_MODE_STATIC_LIGHT;
@@ -100,20 +101,7 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
         #endif
         switch (get_highest_layer(state|default_layer_state)) {
             case _ALPHA:
-                if (is_caps_lock_on) { // If caps lock is enabled, force this setting
-                    uint8_t caps_lock_rgb_hue = 127; // CYAN
-                    uint8_t caps_lock_rgb_mode = mode;
-                    #ifdef CAPS_LOCK_RGB_HUE
-                    caps_lock_rgb_hue = CAPS_LOCK_RGB_HUE;
-                    #endif
-                    #ifdef CAPS_LOCK_RGB_MODE
-                    caps_lock_rgb_mode = CAPS_LOCK_RGB_MODE;
-                    #endif
-                    rgblight_set_hsv_and_mode(caps_lock_rgb_hue, 255, 255, caps_lock_rgb_mode);
-                    #ifdef PIMORONI_TRACKBALL_ENABLE
-                    trackball_set_rgbw(RGB_RED, 0x00);
-                    #endif
-                } else if (userspace_config.rgb_base_layer_override) { // If the base layer override is enabled, use that
+                if (userspace_config.rgb_base_layer_override) { // If the base layer override is enabled, use that
                     rgblight_set_hsv_and_mode(userspace_config.hue, userspace_config.sat, userspace_config.val, userspace_config.mode);
                     #ifdef PIMORONI_TRACKBALL_ENABLE
                     trackball_set_rgbw(RGB_BLUE, 0x00);
@@ -192,7 +180,8 @@ layer_state_t layer_state_set_rgb_light(layer_state_t state) {
                 break;
         }
     }
-#endif  // RGBLIGHT_ENABLE
+#endif  // USERSPACE_RGBLIGHT_ENABLE
 
     return state;
 }
+*/

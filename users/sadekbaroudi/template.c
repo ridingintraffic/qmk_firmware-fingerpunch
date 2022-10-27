@@ -71,9 +71,9 @@ void suspend_wakeup_init_user(void) {
 __attribute__((weak)) void startup_keymap(void) {}
 
 void startup_user(void) {
-#ifdef RGBLIGHT_ENABLE
+#ifdef USERSPACE_RGBLIGHT_ENABLE
     matrix_init_rgb();
-#endif  // RGBLIGHT_ENABLE
+#endif  // USERSPACE_RGBLIGHT_ENABLE
     startup_keymap();
 }
 

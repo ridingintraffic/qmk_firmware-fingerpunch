@@ -2,7 +2,7 @@ SRC += sadekbaroudi.c \
        process_records.c
 
 COMMAND_ENABLE   = no  # Commands for debug and configuration
-CONSOLE_ENABLE = no         # Console for debug
+CONSOLE_ENABLE = yes         # Console for debug
 UNICODE_ENABLE   = no  # Unicode
 SWAP_HANDS_ENABLE= no  # Allow swapping hands of keyboard
 BACKLIGHT_ENABLE = no
@@ -28,11 +28,9 @@ ifneq ($(strip $(NO_SECRETS)), yes)
     endif
 endif
 
-ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
+ifeq ($(strip $(USERSPACE_RGBLIGHT_ENABLE)), yes)
     SRC += rgb_stuff.c
-    ifeq ($(strip $(RGBLIGHT_NOEEPROM)), yes)
-        OPT_DEFS += -DRGBLIGHT_NOEEPROM
-    endif
+    OPT_DEFS += -DUSERSPACE_RGBLIGHT_ENABLE
 endif
 
 # RGB_MATRIX_ENABLE ?= no

@@ -19,3 +19,4 @@ void pointing_device_set_default_cpi(void);
     { K50, K51, K52, K53, K54, K55, K56, K57 } \
   }
 
+#include "keyboards/fingerpunch/fp.h"

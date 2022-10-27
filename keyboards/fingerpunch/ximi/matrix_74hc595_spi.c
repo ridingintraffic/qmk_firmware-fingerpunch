@@ -6,12 +6,11 @@
 #include <unistd.h> /* close */
 #include "quantum.h"
 #include "matrix.h"
-// added for testing with SR_DEBUG_RATIO, remove when done
+#ifdef FP_SR595_MATRIX_DEBUG
 #include <time.h>
 #include <stdlib.h>
-// end testing
-
-#define SR_DEBUG_RATIO 10000
+#define FP_SR595_MATRIX_DEBUG_RATIO 10000
+#endif
 
 #if (!defined(SHIFTREG_MATRIX_COL_CS))
 #    error Missing shift register I/O pin definitions
@@ -55,15 +54,7 @@ bool sr_74hc595_spi_send_byte(uint8_t data) {
     sr_74hc595_spi_start();
     writePinLow(SHIFTREG_MATRIX_COL_CS);
     matrix_io_delay();
-    // spi_status_t spiResponse = spi_write(data);
     spi_write(data);
-    // Status is irrelevant as we don't have a MISO pin to check if it succeeded
-    // if (spiResponse != SPI_STATUS_SUCCESS) {
-    //     xprintf("74hc595 matrix: failed to send data over SPI: response %d\n", spiResponse);
-    //     writePinHigh(SHIFTREG_MATRIX_COL_CS);
-    //     sr_74hc595_spi_stop();
-    //     return false;
-    // }
     matrix_io_delay();
     writePinHigh(SHIFTREG_MATRIX_COL_CS);
     sr_74hc595_spi_stop();
@@ -118,7 +109,11 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
     // reset the current matrix, as we'll be updating and comparing to the old matrix
     memset(current_matrix, 0, matrixArraySize);
 
-    bool debug_output = ((rand() % SR_DEBUG_RATIO) == 1);
+#ifdef FP_SR595_MATRIX_DEBUG
+    bool debug_output = ((rand() % FP_SR595_MATRIX_DEBUG_RATIO) == 1);
+#else
+    bool debug_output = false;
+#endif
     // Loop through the columns, activating one at a time, and read the rows, and place in the new current_matrix
     for (int c = 0; c < SHIFTREG_COLS; c++) {
         if (debug_output) {

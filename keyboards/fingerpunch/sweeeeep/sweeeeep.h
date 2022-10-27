@@ -44,3 +44,5 @@
         { R15, R14, R13, R12, R11 }, \
         { R16, R17, R18, ___, ___ }  \
     }
+
+#include "keyboards/fingerpunch/fp.h"

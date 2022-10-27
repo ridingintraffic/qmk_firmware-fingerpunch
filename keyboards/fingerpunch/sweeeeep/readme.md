@@ -12,13 +12,19 @@ This is a reversible sweep pcb with support for 36 keys, per key leds, oled, and
 
 # Firmware
 
-To build the firmware for this keyboard (after setting up your build environment), select from one of the following, depending on what features you have on your board:
+To build the firmware for this keyboard (after setting up your build environment):
+```
+    make fingerpunch/sweeeeep:default RGBLIGHT_ENABLE=yes ENCODER_ENABLE=yes OLED_ENABLE=yes
+```
 
-    make fingerpunch/sweeeeep/no-features:default
-    make fingerpunch/sweeeeep/oled:default
-    make fingerpunch/sweeeeep/rgblight:default
-    make fingerpunch/sweeeeep/rgblight_oled:default
+Don't forget to add ```CONVERT_TO=stemcell``` if using a stemcell controller.
 
+Options are:
+```
+    RGBLIGHT_ENABLE=yes
+    OLED_ENABLE=yes
+    ENCODER_ENABLE=yes
+```
 
 If using the vial repository, use these:
     make fingerpunch/sweeeeep/no-features:vial

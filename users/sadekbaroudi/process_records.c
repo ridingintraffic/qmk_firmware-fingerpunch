@@ -1,6 +1,6 @@
 #include "sadekbaroudi.h"
 #include "casemodes.h"
-#if defined(RGBLIGHT_ENABLE)
+#if defined(USERSPACE_RGBLIGHT_ENABLE)
 #include "rgb_stuff.h"
 #endif
 #ifdef HAPTIC_ENABLE
@@ -33,7 +33,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // #ifdef RGB_MATRIX_ENABLE
 //         && process_record_user_rgb_matrix(keycode, record)
 // #endif
-#ifdef RGBLIGHT_ENABLE
+#ifdef USERSPACE_RGBLIGHT_ENABLE
         && process_record_user_rgb_light(keycode, record)
 #endif
     && true)) {
@@ -41,15 +41,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
-        case KC_CAPSLOCK:
-            if (record->event.pressed) {
-                if (is_caps_lock_on) {
-                    is_caps_lock_on = false;
-                } else {
-                    is_caps_lock_on = true;
-                }
-            }
-            break;
         // COMMENT TO DISABLE MACROS
         case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
             if (!record->event.pressed) {
@@ -89,49 +80,49 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 
         case KC_RGB_T:  // This allows me to use underglow as layer indication, or as normal
-#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
             if (record->event.pressed) {
                 userspace_config.rgb_layer_change ^= 1;
                 xprintf("rgblight layer change [EEPROM]: %u\n", userspace_config.rgb_layer_change);
                 eeconfig_update_user(userspace_config.raw);
                 if (userspace_config.rgb_layer_change) {
-// #    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
-//                     rgblight_enable_noeeprom();
+// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+//                     USERSPACE_RGBLIGHT_ENABLE_noeeprom();
 // #    endif
                     layer_state_set(layer_state);  // This is needed to immediately set the layer color (looks better)
                 } else {
-// #    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
 //                     rgblight_disable_noeeprom();
 // #    endif
-#    if defined(RGBLIGHT_ENABLE)
+#    if defined(USERSPACE_RGBLIGHT_ENABLE)
                     rgblight_set_hsv_and_mode(userspace_config.hue, userspace_config.sat, userspace_config.val, userspace_config.mode);
 #    endif
                     ;
                 }
             }
-#endif  // RGBLIGHT_ENABLE
+#endif  // USERSPACE_RGBLIGHT_ENABLE
             break;
         case KC_RGB_BLT:  // This enables the base layer as a static color, or allows you to override using RGB
-#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
             if (record->event.pressed) {
                 userspace_config.rgb_base_layer_override ^= 1;
                 xprintf("rgblight base layer override change [EEPROM]: %u\n", userspace_config.rgb_base_layer_override);
                 eeconfig_update_user(userspace_config.raw);
                 if (userspace_config.rgb_base_layer_override) {
-// #    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
-//                     rgblight_enable_noeeprom();
+// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+//                     USERSPACE_RGBLIGHT_ENABLE_noeeprom();
 // #    endif
                     layer_state_set(layer_state);  // This is needed to immediately set the layer color (looks better)
-// #    if defined(RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
+// #    if defined(USERSPACE_RGBLIGHT_ENABLE) && defined(RGB_MATRIX_ENABLE)
 //                 } else {
 //                     rgblight_disable_noeeprom();
 // #    endif
                 }
             }
-#endif  // RGBLIGHT_ENABLE
+#endif  // USERSPACE_RGBLIGHT_ENABLE
             break;
 
-#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+#if defined(USERSPACE_RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
         case RGB_TOG:
             // Split keyboards need to trigger on key-up for edge-case issue
 #    ifndef SPLIT_KEYBOARD
@@ -139,7 +130,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #    else
             if (!record->event.pressed) {
 #    endif
-#    if defined(RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
+#    if defined(USERSPACE_RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
                 rgblight_toggle();
 #    endif
 // #    if defined(RGB_MATRIX_ENABLE) && !defined(RGB_MATRIX_DISABLE_KEYCODES)
@@ -154,7 +145,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 bool is_eeprom_updated = false;
 
                 if (userspace_config.rgb_layer_change) {
-#    if defined(RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
+#    if defined(USERSPACE_RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
                     // For some reason, this breaks setting base layer colors on the draculad, need to comment this line out
                     rgblight_set_hsv_and_mode(userspace_config.hue, userspace_config.sat, userspace_config.val, userspace_config.mode);
 #    endif
@@ -172,69 +163,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             if (!record->event.pressed) {
-#    if defined(RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
+#    if defined(USERSPACE_RGBLIGHT_ENABLE) && !defined(RGBLIGHT_DISABLE_KEYCODES)
                 rgb_set_user_config_from_current_values();
 #    endif
             }
             break;
 #endif
-        case KC_BTN1:
-            if (record->event.pressed) {
-#ifdef HAPTIC_ENABLE
-                DRV_pulse(medium_click1);
-#endif
-            }
-            break;
-        case KC_BTN2:
-            if (record->event.pressed) {
-#ifdef HAPTIC_ENABLE
-                DRV_pulse(sh_dblclick_str);
-#endif
-            }
-            break;
-        case KC_BTN3:
-            if (record->event.pressed) {
-#ifdef HAPTIC_ENABLE
-                // DRV_pulse(lg_dblclick_med);
-#endif
-            }
-            break;
-        case KC_C: // copy
-            if (record->event.pressed) {
-#ifdef HAPTIC_ENABLE
-                if (get_mods() & MOD_MASK_CTRL) {
-                    DRV_pulse(lg_dblclick_str);
-                }
-#endif
-            }
-            break;
-        case KC_X: // cut
-            if (record->event.pressed) {
-#ifdef HAPTIC_ENABLE
-                if (get_mods() & MOD_MASK_CTRL) {
-                    DRV_pulse(lg_dblclick_str);
-                }
-#endif
-            }
-            break;
-        case KC_V: // paste
-            if (record->event.pressed) {
-#ifdef HAPTIC_ENABLE
-                if (get_mods() & MOD_MASK_CTRL) {
-                    DRV_pulse(soft_bump);
-                }
-#endif
-            }
-            break;
-        case KC_S: // save
-            if (record->event.pressed) {
-#ifdef HAPTIC_ENABLE
-                if (get_mods() & MOD_MASK_CTRL) {
-                    DRV_pulse(pulsing_strong);
-                }
-#endif
-            }
-            break;
         case C_CAPSWORD:
             // NOTE: if you change this behavior, may want to update in keymap.c for COMBO behavior
             #ifdef CASEMODES_ENABLE
@@ -256,7 +190,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 enable_xcase();
             }
             #endif
-            break;            
+            break;
         case C_UNDERSCORECASE:
             #ifdef CASEMODES_ENABLE
             if (record->event.pressed) {
@@ -302,13 +236,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 register_code(KC_LSHIFT);
                 SEND_STRING(SS_TAP(X_HOME));
                 unregister_code(KC_LSHIFT);
-            }
-            break;
-        case S_ALT_TAB:
-            if (record->event.pressed) {
-                press_super_alt_tab(false);
-            } else {
-                // when keycode is released
             }
             break;
         case P_ANGBRKT:

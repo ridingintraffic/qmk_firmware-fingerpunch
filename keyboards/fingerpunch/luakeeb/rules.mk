@@ -17,10 +17,19 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
-RGBLIGHT_ENABLE = yes        # Enable keyboard RGB underglow
+RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
-ENCODER_ENABLE = yes
+ENCODER_ENABLE = no
 
 SPLIT_KEYBOARD = yes
 
 LAYOUTS = split_3x5_4
+
+DEFERRED_EXEC_ENABLE = yes
+SRC +=  keyboards/fingerpunch/fp.c \
+		keyboards/fingerpunch/fp_haptic.c \
+        keyboards/fingerpunch/fp_keyhandler.c \
+        keyboards/fingerpunch/fp_pointing.c \
+		keyboards/fingerpunch/fp_rgb_common.c \
+        keyboards/fingerpunch/fp_rgblight.c \
+        keyboards/fingerpunch/fp_rgb_matrix.c

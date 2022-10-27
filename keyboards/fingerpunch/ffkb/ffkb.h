@@ -40,3 +40,5 @@
     { K21,   K22, K23,   K24, K25, K26, K27, K28, K29, K2A, K2B, K2C }, \
     { KC_NO, K32, KC_NO, K34, K35, K36, K37, K38, K39, K3A, K3B, KC_NO } \
 }
+
+#include "keyboards/fingerpunch/fp.h"

@@ -17,7 +17,7 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
 RGBLIGHT_ENABLE = no
-RGB_MATRIX_ENABLE = no
+RGB_MATRIX_ENABLE = no      # not supported yet, but will add
 RGB_MATRIX_DRIVER = WS2812
 WS2812_DRIVER = vendor
 
@@ -27,7 +27,6 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = no
-OLED_DRIVER_ENABLE = no    # this can be yes or no depending on if you have an OLED
 EXTRAFLAGS     += -flto     # macros enable or disable
 MOUSEKEY_ENABLE = yes
 
@@ -36,26 +35,77 @@ SERIAL_DRIVER = vendor
 
 
 #HAPTIC FEEDBACK
+HAPTIC_ENABLE ?= no
 HAPTIC_DRIVER = DRV2605L
-HAPTIC_ENABLE = yes
 
 # Audio doesn't work with RP2040 yet :(
-AUDIO_ENABLE = no
+# Pending https://github.com/qmk/qmk_firmware/pull/17723 and https://github.com/qmk/qmk_firmware/pull/17706
+AUDIO_ENABLE ?= no
 
-CIRQUE_ENABLE = yes
+FP_CIRQUE_BOTH ?= no         # Choose one of (BOTH, LEFT, RIGHT)
+FP_CIRQUE_LEFT ?= no         # Choose one of (BOTH, LEFT, RIGHT)
+FP_CIRQUE_RIGHT ?= no        # Choose one of (BOTH, LEFT, RIGHT)
+CIRQUE_ENABLE = no           # Don't set this one, gets set automatically by FP_CIRQUE_*
 
-ifeq ($(strip $(CIRQUE_ENABLE)), yes)
-   POINTING_DEVICE_ENABLE = yes
-   POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
+ifeq ($(strip $(FP_CIRQUE_BOTH)), yes)
+   CIRQUE_ENABLE := yes
+   OPT_DEFS += -DFP_CIRQUE_BOTH
 endif
 
-# PMW3360_ENABLE = no
+ifeq ($(strip $(FP_CIRQUE_LEFT)), yes)
+   CIRQUE_ENABLE := yes
+   OPT_DEFS += -DFP_CIRQUE_LEFT
+endif
 
-# ifeq ($(strip $(PMW3360_ENABLE)), yes)
-#     POINTING_DEVICE_ENABLE := yes
-#     POINTING_DEVICE_DRIVER = pmw3360
-#     QUANTUM_LIB_SRC += spi_master.c
-# endif
+ifeq ($(strip $(FP_CIRQUE_RIGHT)), yes)
+   CIRQUE_ENABLE := yes
+   OPT_DEFS += -DFP_CIRQUE_RIGHT
+endif
+
+ifeq ($(strip $(CIRQUE_ENABLE)), yes)
+   POINTING_DEVICE_ENABLE := yes
+   POINTING_DEVICE_DRIVER := cirque_pinnacle_i2c
+   OPT_DEFS += -DCIRQUE_ENABLE
+endif
+
+FP_TRACKBALL_BOTH ?= no         # Choose one of (BOTH, LEFT, RIGHT)
+FP_TRACKBALL_LEFT ?= no         # Choose one of (BOTH, LEFT, RIGHT)
+FP_TRACKBALL_RIGHT ?= no        # Choose one of (BOTH, LEFT, RIGHT)
+PMW3360_ENABLE = no             # Don't set this one, gets set automatically by FP_TRACKBALL_*
+
+ifeq ($(strip $(FP_TRACKBALL_BOTH)), yes)
+   PMW3360_ENABLE := yes
+   OPT_DEFS += -DFP_TRACKBALL_BOTH
+endif
+
+ifeq ($(strip $(FP_TRACKBALL_LEFT)), yes)
+   PMW3360_ENABLE := yes
+   OPT_DEFS += -DFP_TRACKBALL_LEFT
+endif
+
+ifeq ($(strip $(FP_TRACKBALL_RIGHT)), yes)
+   PMW3360_ENABLE := yes
+   OPT_DEFS += -DFP_TRACKBALL_RIGHT
+endif
+
+ifeq ($(strip $(PMW3360_ENABLE)), yes)
+   AUDIO_ENABLE := no
+   RGBLIGHT_ENABLE := no
+   RGB_MATRIX_ENABLE := no
+   POINTING_DEVICE_ENABLE := yes
+   POINTING_DEVICE_DRIVER := pmw3360
+   QUANTUM_LIB_SRC += spi_master.c
+   OPT_DEFS += -DFP_TRACKBALL_ENABLE
+endif
+
+DEFERRED_EXEC_ENABLE = yes
+SRC +=  keyboards/fingerpunch/fp.c \
+		keyboards/fingerpunch/fp_haptic.c \
+        keyboards/fingerpunch/fp_keyhandler.c \
+        keyboards/fingerpunch/fp_pointing.c \
+		keyboards/fingerpunch/fp_rgb_common.c \
+        keyboards/fingerpunch/fp_rgblight.c \
+        keyboards/fingerpunch/fp_rgb_matrix.c
 
 
 SRC += matrix_74hc595_spi.c

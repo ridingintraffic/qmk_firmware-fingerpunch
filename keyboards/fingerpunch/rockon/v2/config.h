@@ -19,18 +19,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define DEVICE_VER      0x0002
 
+/* key matrix size */
+/* Rows are doubled up */
+#define MATRIX_ROWS 8
+#define MATRIX_COLS 9
+
+// wiring
+#define MATRIX_ROW_PINS \
+    { B6, F4, B5, B4, B2, B3, B7, D5 }
+#define MATRIX_COL_PINS \
+    { D2, D4, C6, D7, E6, F5, F6, F7, B1 }
+
+
 /* encoder config */
 #define ENCODERS_PAD_A {F0, C7}
 #define ENCODERS_PAD_B {F1, F1}
 #define ENCODER_RESOLUTION 2
 
-// cirque trackpad config
-#define CIRQUE_PINNACLE_ADDR 0x2A
-// If using fingerpunch case
-// #define POINTING_DEVICE_ROTATION_270
-// If using chewiedies case
-#define POINTING_DEVICE_ROTATION_90
-#define POINTING_DEVICE_TASK_THROTTLE_MS 5
+#ifdef CIRQUE_ENABLE
+	// cirque trackpad config
+	#define CIRQUE_PINNACLE_ADDR 0x2A
+	// If using fingerpunch case
+	// #define POINTING_DEVICE_ROTATION_270
+	// If using chewiedies case
+	#define POINTING_DEVICE_ROTATION_90
+	#define POINTING_DEVICE_TASK_THROTTLE_MS 5
+#endif
 
 // BEGIN PWM driver: uncomment if using STeMcell as it's a better led driver
 // #define WS2812_PWM_DRIVER PWMD2  // default: PWMD2
@@ -44,17 +58,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define I2C1_CLOCK_SPEED  400000
 #define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
 
-// #define CIRQUE_PINNACLE_TAPPING_TERM 150
-// #define CIRQUE_PINNACLE_TOUCH_DEBOUNCE 100
-// #define CIRQUE_PINNACLE_X_LOWER 200
-// #define CIRQUE_PINNACLE_X_UPPER 1919
-// #define CIRQUE_PINNACLE_Y_LOWER 200
-// #define CIRQUE_PINNACLE_Y_UPPER 1471
-
-// Known issue with the cirque and AVR, jumpy mouse movements...
-// message from sillyworld 01/31/2022 stating that these improved usability for AVR based MCUs on the cirque
-// https://discord.com/channels/440868230475677696/867530303261114398/937731130440970260
-//#define F_SCL 100000UL
-//#define POINTING_DEVICE_TASK_THROTTLE_MS 5
-
-// Sadek note: tried the above for the cirque fix, and no dice
+#ifdef OLED_ENABLE
+#define OLED_DISPLAY_128X64
+#endif

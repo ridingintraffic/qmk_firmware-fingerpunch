@@ -1,0 +1,5 @@
+- [ ] Add audio features (Ex: sound when capslock or capsword are enabled and disabled)
+- [ ] More haptic features (Ex: capslock/capsword feedback)
+- [ ] (personal item) migrate my capsword to core qmk
+- [ ] add xcase features to fingerpunch
+- [ ] move ximi matrix_74hc595_spi.c logic into the fp_matrix_74hc595_spi.c

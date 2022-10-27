@@ -25,8 +25,8 @@ NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 
 # Either do RGBLIGHT_ENABLE or RGB_MATRIX_ENABLE and RGB_MATRIX_DRIVER
-#RGBLIGHT_ENABLE = yes
-RGB_MATRIX_ENABLE = yes
+RGBLIGHT_ENABLE = no
+RGB_MATRIX_ENABLE = no
 RGB_MATRIX_DRIVER = WS2812
 
 # BEGIN PWM driver: uncomment if using STeMcell as it's a better led driver
@@ -39,6 +39,20 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = no
-OLED_ENABLE = yes
+OLED_ENABLE = no
 # EXTRAFLAGS     += -flto     # macros disabled, if you need the extra space
-MOUSEKEY_ENABLE = no
+
+ifeq ($(strip $(CIRQUE_ENABLE)), yes)
+   MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
+   POINTING_DEVICE_ENABLE := yes
+   POINTING_DEVICE_DRIVER := cirque_pinnacle_i2c
+   OPT_DEFS += -DCIRQUE_ENABLE
+endif
+
+PIMORONI_TRACKBALL_ENABLE = no
+ifeq ($(strip $(PIMORONI_TRACKBALL_ENABLE)), yes)
+    MOUSEKEY_ENABLE := yes  # not required, but enabling for mouse button keys
+    POINTING_DEVICE_ENABLE := yes
+    POINTING_DEVICE_DRIVER := pimoroni_trackball
+    OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
+endif

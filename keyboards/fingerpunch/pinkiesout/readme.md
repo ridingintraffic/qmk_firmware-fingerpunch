@@ -6,14 +6,20 @@ An ergonomic 30% keyboard
 
 Pinkies Out supports vial! If you want to use Vial, go to https://github.com/sadekbaroudi/vial-qmk/keyboards/fingerpunch/pinkiesout/
 
-To build the firmware for this keyboard (after setting up your build environment), select from one of the following, depending on what features you have on your board:
+To build the firmware for this keyboard (after setting up your build environment):
+```
+    make fingerpunch/pinkiesout:default RGBLIGHT_ENABLE=yes OLED_ENABLE=yes
+```
 
-    make fingerpunch/pinkiesout/no-features:default
-    make fingerpunch/pinkiesout/oled:default
-    make fingerpunch/pinkiesout/rgblight:default
-    make fingerpunch/pinkiesout/rgblight-oled:default
-    make fingerpunch/pinkiesout/rgbmatrix:default
-    make fingerpunch/pinkiesout/rgbmatrix-oled:default
+Don't forget to add ```CONVERT_TO=stemcell``` if using a stemcell controller.
+
+Options are:
+```
+    RGBLIGHT_ENABLE=yes
+    RGB_MATRIX_ENABLE=yes
+    OLED_ENABLE=yes
+    PIMORONI_TRACKBALL_ENABLE=yes
+```
 
 If using the vial repository, use these:
     make fingerpunch/pinkiesout/no-features:vial

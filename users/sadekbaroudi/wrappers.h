@@ -121,6 +121,11 @@ expanded before being used as arguments to the LAYOUT_xxx macro.
 #    define LAYOUT LAYOUT_ximi
 #endif
 
+// Since badwings uses the name LAYOUT_badwings instead of LAYOUT
+#if (!defined(LAYOUT) && defined(LAYOUT_badwings))
+#    define LAYOUT LAYOUT_badwings
+#endif
+
 
 // clang-format off
 #define LAYOUT_ergodox_wrapper(...)          LAYOUT_ergodox(__VA_ARGS__)
@@ -334,11 +339,11 @@ NOTE: These are all the same length.  If you do a search/replace
 
 // SHIFT NAVIGATION LAYER
 
-#define __SHIFTNAV_1_K1__ _______
+#define __SHIFTNAV_1_K1__ QK_BOOT
 #define __SHIFTNAV_1_K2__ LSFT(KC_PGUP)
 #define __SHIFTNAV_1_K3__ LSFT(KC_UP)
 #define __SHIFTNAV_1_K4__ LSFT(KC_PGDN)
-#define __SHIFTNAV_1_K5__ _______
+#define __SHIFTNAV_1_K5__ EEP_RST
 
 #define __SHIFTNAV_2_K1__ LSFT(KC_HOME)
 #define __SHIFTNAV_2_K2__ LSFT(KC_LEFT)
@@ -432,7 +437,7 @@ NOTE: These are all the same length.  If you do a search/replace
 
 // MOUSE LAYER
 
-#define __MOUSE_1_K1__ QK_BOOT
+#define __MOUSE_1_K1__ _______
 #define __MOUSE_1_K2__ KC_MS_WH_UP
 #define __MOUSE_1_K3__ KC_MS_UP
 #define __MOUSE_1_K4__ KC_MS_WH_DOWN
@@ -444,7 +449,7 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __MOUSE_2_K4__ KC_MS_RIGHT
 #define __MOUSE_2_K5__ KC_MS_WH_RIGHT
 
-#define __MOUSE_3_K1__ EEP_RST
+#define __MOUSE_3_K1__ _______
 #define __MOUSE_3_K2__ KC_MS_WH_UP
 #define __MOUSE_3_K3__ KC_MS_WH_DOWN
 #define __MOUSE_3_K4__ KC_MS_ACCEL1
@@ -453,6 +458,28 @@ NOTE: These are all the same length.  If you do a search/replace
 #define __________________MOUSE_1__________________     __MOUSE_1_K1__, __MOUSE_1_K2__, __MOUSE_1_K3__, __MOUSE_1_K4__, __MOUSE_1_K5__
 #define __________________MOUSE_2__________________     __MOUSE_2_K1__, __MOUSE_2_K2__, __MOUSE_2_K3__, __MOUSE_2_K4__, __MOUSE_2_K5__
 #define __________________MOUSE_3__________________     __MOUSE_3_K1__, __MOUSE_3_K2__, __MOUSE_3_K3__, __MOUSE_3_K4__, __MOUSE_3_K5__
+
+#define __AMOUSE_1_K1_ _______
+#define __AMOUSE_1_K2_ KC_MS_WH_UP
+#define __AMOUSE_1_K3_ KC_MS_UP
+#define __AMOUSE_1_K4_ KC_MS_WH_DOWN
+#define __AMOUSE_1_K5_ _______
+
+#define __AMOUSE_2_K1_ KC_MS_WH_LEFT
+#define __AMOUSE_2_K2_ KC_BTN3
+#define __AMOUSE_2_K3_ KC_BTN2
+#define __AMOUSE_2_K4_ KC_BTN1
+#define __AMOUSE_2_K5_ KC_MS_WH_RIGHT
+
+#define __AMOUSE_3_K1_ EEP_RST
+#define __AMOUSE_3_K2_ KC_MS_WH_UP
+#define __AMOUSE_3_K3_ KC_MS_WH_DOWN
+#define __AMOUSE_3_K4_ KC_MS_ACCEL1
+#define __AMOUSE_3_K5_ KC_MS_ACCEL2
+
+#define _______________AUTO_MOUSE_1________________     __AMOUSE_1_K1_, __AMOUSE_1_K2_, __AMOUSE_1_K3_, __AMOUSE_1_K4_, __AMOUSE_1_K5_
+#define _______________AUTO_MOUSE_2________________     __AMOUSE_2_K1_, __AMOUSE_2_K2_, __AMOUSE_2_K3_, __AMOUSE_2_K4_, __AMOUSE_2_K5_
+#define _______________AUTO_MOUSE_3________________     __AMOUSE_3_K1_, __AMOUSE_3_K2_, __AMOUSE_3_K3_, __AMOUSE_3_K4_, __AMOUSE_3_K5_
 
 //                                                      Zoom Home           Add Line            Add Arc            Add Polygon         Add Circle
 #define ___________________KICAD_0_________________     KC_HOME,            LCTL(LSFT(KC_L)),   LCTL(LSFT(KC_A)),  LCTL(LSFT(KC_P)),   LCTL(LSFT(KC_C))

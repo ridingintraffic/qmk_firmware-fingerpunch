@@ -1,0 +1,93 @@
+name: Build QMK firmware
+on:
+  push:
+    branches:
+      - main
+      - master
+      - 'develop**'
+    #paths:
+    #  - 'keyboards/fingerpunch/*'
+jobs:
+  gather-keyboards:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - uses: actions/checkout@v2
+    - id: set-matrix
+      run: |
+          content=`cat ./keyboards/fingerpunch/keyboards.json`
+          # the following lines are only required for multi line json
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          # end of optional handling for multi line json
+          echo "::set-output name=matrix::$content"
+
+  Build:
+    needs: gather-keyboards
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
+    strategy:
+      fail-fast: false
+      #matrix:
+      #  keyboard: [ ffkb_byomcu ]
+      matrix: ${{fromJson(needs.gather-keyboards.outputs.matrix)}}  
+    steps:
+      - name: Checkout QMK
+        uses: actions/checkout@v3
+        with:
+          repository: sadekbaroudi/qmk_firmware
+          submodules: recursive
+
+      #- name: Checkout userspace
+      #  uses: actions/checkout@v3
+      #  with:
+      #    path: users/default
+      
+      #- name: Finding files and store to output
+      #  id: finding-files
+      #  run: |
+      #    echo "::set-output name=FILELIST::$(qmk list-keyboards| grep fingerpunch)"
+      
+      - name: Build firmware
+        run: |
+          keyboards="$(qmk list-keyboards| grep fingerpunch)"
+          echo "${keyboards}" | while IFS= read -r board ; do
+          #echo $board 
+          #board_map=($(qmk list-keymaps -kb $board))
+          board_map="default"
+          all_make_commands=($(bin/fp_build.sh))
+          for per_board_per_map in "${board_map[@]}"
+          do
+              :
+              board_short=$(echo $board | cut -d "/" -f 2-)
+              case "$board" in 
+                *${{ matrix.keyboard }}*)
+                  for per_board_make in "${all_make_commands[@]}"
+                    echo $per_board_make
+                    #echo "fp_build.sh -k $board_short -m $per_board_per_map"
+
+                    #echo "building firmware"
+                    #make "$board:per_board_per_map"
+                    #make "$board:per_board_per_map" CONVERT_TO=kb2040
+                    #make "$board:per_board_per_map" CONVERT_TO=stemcell
+                  ;;
+              esac
+              
+            done
+          
+          done
+          
+
+
+      - name: Archive firmware
+        uses: actions/upload-artifact@v3
+        continue-on-error: true
+        with:
+          name: ${{ matrix.file }}_${{ github.actor }}
+          path: |
+            *.hex
+            *.bin
+            *.uf2
+

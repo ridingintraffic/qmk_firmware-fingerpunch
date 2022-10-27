@@ -33,3 +33,5 @@
     { K30,   K29,   K28,   K27,   K26 }, \
     { KC_NO, KC_NO, K38,   K37,   K36 }, \
 }
+
+#include "keyboards/fingerpunch/fp.h"

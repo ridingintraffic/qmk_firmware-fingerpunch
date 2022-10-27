@@ -45,3 +45,5 @@
     { K61, ___, K63, K64, ___, K66, K67, K68, K69 }, \
     { K71, K72, K73, K99, ___, K76, K98, K78, K79 } \
 }
+
+#include "keyboards/fingerpunch/fp.h"

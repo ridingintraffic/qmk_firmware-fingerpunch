@@ -20,22 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 /* USB Device descriptor parameter */
-#define DEVICE_VER      0x0001
+// #define DEVICE_VER      0x0001  // now defined in vx/config.h
 #define VENDOR_ID       0xFEFE
 #define PRODUCT_ID      0xFFBB
 #define MANUFACTURER    sadekbaroudi
 #define PRODUCT         sadekbaroudi ffkb_byomcu
-
-/* key matrix size */
-/* Rows are doubled up */
-#define MATRIX_ROWS 6
-#define MATRIX_COLS 8
-
-// wiring
-#define MATRIX_ROW_PINS \
-    { D2, F4, F5, F6, F7, B1 }
-#define MATRIX_COL_PINS \
-    { B5, B4, E6, D7, C6, D4, B2, B3 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
@@ -51,7 +40,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
-  #define RGBLIGHT_LIMIT_VAL 112 /* The maximum brightness level for RGBLIGHT_ENABLE */
+  #define RGBLIGHT_LIMIT_VAL 150 /* The maximum brightness level for RGBLIGHT_ENABLE */
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
   #define RGBLIGHT_EFFECT_ALTERNATING
   #define RGBLIGHT_EFFECT_BREATHING
@@ -67,7 +56,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGB_MATRIX_ENABLE
   #define DRIVER_LED_TOTAL 42
   #define RGB_MATRIX_CENTER {100, 32}
-  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 112  /* The maximum brightness level for RGB_MATRIX */
+  #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150  /* The maximum brightness level for RGB_MATRIX */
   #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
   #define RGB_MATRIX_KEYPRESSES
   #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
@@ -108,46 +97,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
 
-#define ENCODERS_PAD_A {D5, B6, D1}
-#define ENCODERS_PAD_B {B7, F1, D0}
-
-#ifdef FP_EVQ_UNDER_PALMS
-#define ENCODERS_A_REVERSE
-#define ENCODERS_B_REVERSE
-#endif
-
-#ifdef FP_EC11_UNDER_PALMS
-#define ENCODERS_C_REVERSE
-#endif
-
-#if defined(OLED_ENABLE) || defined(PIMORONI_TRACKBALL_ENABLE)
-#undef ENCODERS_PAD_A
-#define ENCODERS_PAD_A {D5, B6}
-#undef ENCODERS_PAD_B
-#define ENCODERS_PAD_B {B7, F1}
-#endif
-
-#define ENCODER_RESOLUTION 2
-
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-#ifdef PIMORONI_TRACKBALL_ENABLE
-#define PIMORONI_TRACKBALL_ROTATE
-#define PIMORONI_TRACKBALL_CLICK
-#endif
-
-// cirque trackpad config
-#define CIRQUE_PINNACLE_ADDR 0x2A
-#define POINTING_DEVICE_ROTATION_90
-#define CIRQUE_PINNACLE_TAP_ENABLE
-#define POINTING_DEVICE_TASK_THROTTLE_MS 5
-#define I2C1_CLOCK_SPEED  400000
-#define I2C1_DUTY_CYCLE FAST_DUTY_CYCLE_2
-
-// If using encoder type 2, uncomment this
-// #define ENCODERS_B_REVERSE
-
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5

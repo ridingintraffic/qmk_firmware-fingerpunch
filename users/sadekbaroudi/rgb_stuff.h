@@ -1,6 +1,7 @@
 #pragma once
 #include "quantum.h"
 
+/* NO USERSPACE RGB
 bool          process_record_user_rgb_light(uint16_t keycode, keyrecord_t *record);
 void          keyboard_post_init_rgb_light(void);
 void          matrix_scan_rgb_light(void);
@@ -14,3 +15,4 @@ void          rgb_set_user_config_from_current_values(void);
 #if defined(RGBLIGHT_TWINKLE)
 void scan_rgblight_fadeout(void);
 #endif
+*/

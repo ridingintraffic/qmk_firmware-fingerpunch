@@ -4,19 +4,35 @@
 * Hardware Supported: ximi PCB
 
 Make example for this keyboard (after setting up your build environment):
+```
+    make fingerpunch/ximi:default RGBLIGHT_ENABLE=yes FP_CIRQUE_BOTH=yes HAPTIC_ENABLE=yes
+```
 
-    make fingerpunch/ximi:default
+Don't forget to add ```CONVERT_TO=stemcell``` if using a stemcell controller.
 
-Flashing example for this keyboard ([using the command line](https://docs.qmk.fm/#/newbs_flashing?id=flash-your-keyboard-from-the-command-line)):
+Options are:
+```
+    FP_TRACKBALL_BOTH=yes
+    FP_TRACKBALL_LEFT=yes
+    FP_TRACKBALL_RIGHT=yes
+    FP_CIRQUE_BOTH=yes
+    FP_CIRQUE_LEFT=yes
+    FP_CIRQUE_RIGHT=yes
+    RGBLIGHT_ENABLE=yes
+    AUDIO_ENABLE=yes
+    HAPTIC_FEEDBACK=yes
+```
 
-    make fingerpunch/ximi:default:flash
+Notes:
+* Pick one (or none) of FP_TRACKBALL_* only. Pick one (or none) of FP_CIRQUE_* only.
+* If you are using a trackball, you cannot use per key rgb or audio. It will be automatically disabled. The hardware doesn't support them together.
 
 See [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) then the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information.
 
 ## Build Guide
 
 See:
-https://github.com/sadekbaroudi/fingerpunch/blob/master/luakeeb/BUILDGUIDE.md
+https://github.com/sadekbaroudi/fingerpunch/blob/master/ximi/
 
 ## Choosing which board to plug the USB cable into (choosing Master)
 

@@ -1,0 +1,27 @@
+[
+    {
+        "type" : "one-of",
+        "names" : [ "FP_TRACKBALL_BOTH", "FP_TRACKBALL_LEFT", "FP_TRACKBALL_RIGHT" ],
+        "user_input": "Do you have a no trackball, on both sides, left, or right?"
+    },
+    {
+        "type" : "one-of",
+        "names" : [ "FP_CIRQUE_BOTH", "FP_CIRQUE_LEFT", "FP_CIRQUE_RIGHT" ],
+        "user_input": "Do you have a no cirque trackpad, on both sides, left, or right?"
+    },
+    {
+        "type" : "single",
+        "name" : "RGBLIGHT_ENABLE",
+        "user_input": "Do you have RGB?"
+    },
+    {
+        "type" : "single",
+        "name" : "AUDIO_ENABLE",
+        "user_input": "Do you have audio buzzer?"
+    },
+    {
+        "type" : "single",
+        "name" : "HAPTIC_ENABLE",
+        "user_input": "Do you have haptic feedback?"
+    }
+]

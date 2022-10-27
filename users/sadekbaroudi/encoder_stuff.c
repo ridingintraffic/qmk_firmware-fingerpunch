@@ -78,18 +78,18 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
             case _FUNCTION:
-                // super alt tab 
+                // super alt tab
                 if (clockwise) {
                     #ifdef ENCODERS_B_REVERSE
-                    press_super_alt_tab(true);
+                    press_super_tab(true);
                     #else
-                    press_super_alt_tab(false);
+                    press_super_tab(false);
                     #endif
                 } else {
                     #ifdef ENCODERS_B_REVERSE
-                    press_super_alt_tab(false);
+                    press_super_tab(false);
                     #else
-                    press_super_alt_tab(true);
+                    press_super_tab(true);
                     #endif
                 }
                 break;

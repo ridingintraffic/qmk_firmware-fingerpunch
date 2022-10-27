@@ -44,3 +44,5 @@
     { K41,   K42,   K43,   K44, K45, K46, K47, K48, K49 }, \
     { ___,   K3B,   K3C,   K0A, K2B, K1A, K2A, K3A, K4A } \
 }
+
+#include "keyboards/fingerpunch/fp.h"

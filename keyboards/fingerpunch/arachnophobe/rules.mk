@@ -26,6 +26,15 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 ENCODER_ENABLE = no
-OLED_DRIVER_ENABLE = no    # this can be yes or no depending on if you have an OLED
+OLED_ENABLE = no            # this can be yes or no depending on if you have an OLED
 EXTRAFLAGS     += -flto     # macros enable or disable
 MOUSEKEY_ENABLE = yes
+
+DEFERRED_EXEC_ENABLE = yes
+SRC +=  keyboards/fingerpunch/fp.c \
+		keyboards/fingerpunch/fp_haptic.c \
+        keyboards/fingerpunch/fp_keyhandler.c \
+        keyboards/fingerpunch/fp_pointing.c \
+		keyboards/fingerpunch/fp_rgb_common.c \
+        keyboards/fingerpunch/fp_rgblight.c \
+        keyboards/fingerpunch/fp_rgb_matrix.c

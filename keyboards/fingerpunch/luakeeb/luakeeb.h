@@ -22,3 +22,4 @@
 
 #define LAYOUT LAYOUT_split_3x5_4
 
+#include "keyboards/fingerpunch/fp.h"

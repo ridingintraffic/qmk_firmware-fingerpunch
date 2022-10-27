@@ -2,7 +2,7 @@
 #include "raw_hid.h"
 #include <stdbool.h>
 #include <string.h>
-#ifdef RGBLIGHT_ENABLE
+#ifdef USERSPACE_RGBLIGHT_ENABLE
 #include "rgblight.h"
 #endif
 
@@ -11,7 +11,7 @@
 __attribute__((weak)) bool raw_hid_receive_keymap(uint8_t *data, uint8_t length) { return false; }
 
 void raw_hid_receive(uint8_t *data, uint8_t length) {
-	#ifdef RGBLIGHT_ENABLE
+	#ifdef USERSPACE_RGBLIGHT_ENABLE
 	if (raw_hid_receive_keymap(data, length)) {
 		return;
 	}
