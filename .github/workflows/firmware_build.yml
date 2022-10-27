@@ -58,18 +58,19 @@ jobs:
           wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o jq
           chmod +x jq
           export PATH=$PATH:/
-          
+
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r line ; do
+          board_map="default"
           all_make_commands=($(bash bin/fp_build.sh))
           case "$line" in
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
-              for per_board_per_map in "${board_map[@]}"
+              for per_board_make in "${all_make_commands[@]}"
               do
                 :
                  if [[ $line == *"$per_board_make"* ]]; then
-                        echo $per_board_make
+                        echo "$per_board_make"
                  fi
               done
               ;;
