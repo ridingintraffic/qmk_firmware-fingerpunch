@@ -76,8 +76,8 @@ jobs:
               for ((i = 0; i < ${#all_make_commands[@]}; i++))
                 do
                     per_board_make=${all_make_commands[$i]}
-                    echo "$per_board_make"
-                    if [[ $line =~ $per_board_make ]]; then
+                    #echo "$per_board_make"
+                    if [[ $per_board_make =~ $line  ]]; then
                             echo "$per_board_make"
                             $per_board_make
                     fi
