@@ -54,7 +54,7 @@ jobs:
       - name: Build firmware
         shell: bash
         run: |
-          keyboards = "$(qmk list-keyboards| grep fingerpunch)"
+          keyboards="$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r line ; do
           all_make_commands=($(bin/fp_build.sh))
           case "$line" in 
