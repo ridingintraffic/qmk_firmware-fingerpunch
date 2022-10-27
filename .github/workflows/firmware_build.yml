@@ -53,8 +53,11 @@ jobs:
       
       - name: Build firmware
         run: |
-          keyboards="$(qmk list-keyboards| grep fingerpunch)"
-          echo "${keyboards}" | while IFS= read -r board ; do
+          keyboards=($(qmk list-keyboards| grep fingerpunch))
+          for board in "${keyboards[@]}" 
+            do
+                :
+          #echo "${keyboards}" | while IFS= read -r board ; do
             #echo $board 
             #board_map=($(qmk list-keymaps -kb $board))
             board_map="default"
@@ -70,8 +73,8 @@ jobs:
                       :
                       if [[ $board == *"$per_board_make"* ]]; then
                         echo $per_board_make
+                        
                         #echo "fp_build.sh -k $board_short -m $per_board_per_map"
-
                         #echo "building firmware"
                         #make "$board:per_board_per_map"
                         #make "$board:per_board_per_map" CONVERT_TO=kb2040
