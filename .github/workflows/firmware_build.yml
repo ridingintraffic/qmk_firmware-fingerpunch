@@ -62,8 +62,8 @@ jobs:
 
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           #all_make_commands=($(bin/fp_build.sh))
-          #all_make_commands=($(bash fp_build_other.sh))
-          all_make_commands=$(bash fp_build_other.sh)
+          #all_make_commands=($(bash fp_build.sh))
+          all_make_commands=$(bash fp_build.sh)
           readarray -t all_make_commands_array <<<"$x"
 
           echo "${keyboards}" | while IFS= read -r line ; do
