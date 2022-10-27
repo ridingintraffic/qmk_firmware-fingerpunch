@@ -74,7 +74,7 @@ jobs:
                           echo "$per_board_make"
                           $per_board_make
                   fi
-              done <<< "${all_make_commands[@]}"
+              done <<< "${all_make_commands}"
 
               ;;
           esac
