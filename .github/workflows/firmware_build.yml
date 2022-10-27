@@ -53,12 +53,10 @@ jobs:
       
       - name: Build firmware
         shell: bash
-        working-directory: bin
         run: |
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r line ; do
-          chmod +x fp_build.sh
-          all_make_commands=($(./fp_build.sh))
+          all_make_commands=($(bash ${GITHUB_WORKSPACE}/bin/fp_build.sh))
           case "$line" in 
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
