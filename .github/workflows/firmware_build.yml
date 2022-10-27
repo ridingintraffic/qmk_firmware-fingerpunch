@@ -5,7 +5,7 @@ on:
       - main
       - master
       - 'develop**'
-      - github-actions-build 
+      - github-actions-build
     #paths:
     #  - 'keyboards/fingerpunch/*'
 jobs:
@@ -33,24 +33,25 @@ jobs:
       fail-fast: false
       #matrix:
       #  keyboard: [ ffkb_byomcu ]
-      matrix: ${{fromJson(needs.gather-keyboards.outputs.matrix)}}  
+      matrix: ${{fromJson(needs.gather-keyboards.outputs.matrix)}}
     steps:
       - name: Checkout QMK
         uses: actions/checkout@v3
         with:
-          repository: sadekbaroudi/qmk_firmware
+          repository: ridingintraffic/qmk_firmware-fingerpunch
           submodules: recursive
+          ref: github-actions-build
 
       #- name: Checkout userspace
       #  uses: actions/checkout@v3
       #  with:
       #    path: users/default
-      
+
       #- name: Finding files and store to output
       #  id: finding-files
       #  run: |
       #    echo "::set-output name=FILELIST::$(qmk list-keyboards| grep fingerpunch)"
-      
+
       - name: Build firmware
         shell: bash
         run: |
@@ -59,43 +60,43 @@ jobs:
           echo "$(ls -l)"
           bash fp_build_other.sh
           all_make_commands=($(bash fp_build_other.sh))
-          case "$line" in 
+          case "$line" in
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
-              for per_board_per_map in "${board_map[@]}" 
+              for per_board_per_map in "${board_map[@]}"
               do
                 :
                  if [[ $line == *"$per_board_make"* ]]; then
                         echo $per_board_make
-                 fi       
+                 fi
               done
               ;;
           esac
           done
-          
+
           exit 0
-          
+
           keyboards=($(qmk list-keyboards| grep fingerpunch))
-          for board in "${keyboards[@]}" 
+          for board in "${keyboards[@]}"
             do
                 :
           #echo "${keyboards}" | while IFS= read -r board ; do
-            #echo $board 
+            #echo $board
             #board_map=($(qmk list-keymaps -kb $board))
             board_map="default"
             all_make_commands=($(bin/fp_build.sh))
-            for per_board_per_map in "${board_map[@]}" 
+            for per_board_per_map in "${board_map[@]}"
             do
                 :
                 board_short=$(echo $board | cut -d "/" -f 2-)
-                case "$board" in 
+                case "$board" in
                   *${{ matrix.keyboard }}*)
                     for per_board_make in "${all_make_commands[@]}"
                     do
                       :
                       if [[ $board == *"$per_board_make"* ]]; then
                         echo $per_board_make
-                        
+
                         #echo "fp_build.sh -k $board_short -m $per_board_per_map"
                         #echo "building firmware"
                         #make "$board:per_board_per_map"
@@ -105,11 +106,11 @@ jobs:
                     done
                     ;;
                 esac
-                
+
               done
-          
+
           done
-          
+
 
 
       - name: Archive firmware
