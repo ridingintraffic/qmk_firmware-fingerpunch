@@ -55,14 +55,15 @@ jobs:
       - name: Build firmware
         shell: bash
         run: |
-          wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o jq
+          wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux32 -o jq
           chmod +x jq
-          export PATH=$PATH:/
+          #export PATH=$PATH:/
+          mv jq /usr/local/sbin/
 
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           echo "${keyboards}" | while IFS= read -r line ; do
           board_map="default"
-          all_make_commands=($(bash bin/fp_build.sh))
+          all_make_commands=($(bin/fp_build.sh))
           echo "$all_make_commands"
           case "$line" in
             *${{ matrix.keyboard }}*)
