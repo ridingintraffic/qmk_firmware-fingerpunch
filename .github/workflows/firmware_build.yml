@@ -63,6 +63,7 @@ jobs:
           echo "${keyboards}" | while IFS= read -r line ; do
           board_map="default"
           all_make_commands=($(bash bin/fp_build.sh))
+          echo "$all_make_commands"
           case "$line" in
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
