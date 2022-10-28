@@ -79,15 +79,13 @@ jobs:
 
           echo "${keyboards}" | while IFS= read -r line ; do
           board_map="default"
-          #echo "${all_make_commands[@]}"
+          echo "${all_make_commands[@]}"
           case "$line" in
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
-              while read -r per_board_make; do
-              #for ((i = 0; i < ${#all_make_commands[@]}; i++))
-                #do
-                    #per_board_make=${all_make_commands[$i]}
-                    #echo "$per_board_make"
+                for per_board_make in "${all_make_commands[@]}"
+                  do
+                    :              
                     echo "$line"
                     echo "*************************************"
                     echo "$per_board_make"
@@ -97,9 +95,7 @@ jobs:
                             echo "$per_board_make"
                             #$per_board_make
                     fi
-                #done
-              done <<< "${all_make_commands[@]}"
-
+                  done
               ;;
           esac
           done
