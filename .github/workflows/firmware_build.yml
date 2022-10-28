@@ -35,7 +35,7 @@ jobs:
         ref: ${{ github.ref }}
     - id: set-matrix
       run: |
-          content=$(bash bin/fp_build.sh -l |  jq -Rsc '. / "\n" - [""]')
+          content=$(bash bin/fp_build.sh -l | sed s~keyboards/fingerpunch/~~|  jq -Rsc '. / "\n" - [""]')
           content="{\"keyboard\":$content}"
           echo "::set-output name=matrix::$content"
   #gather-keyboards:
