@@ -62,7 +62,7 @@ jobs:
                     per_board_make_specifc=$(echo "$per_board_make"|awk -F ' ' '{print $2}'|cut -d ":" -f 1)
                     echo "$per_board_make_specifc"
                     #if echo "$per_board_make" | grep -q "$line"; then
-                    if [[ "$per_board_make_specifc" == "$line" ]]; then
+                    if [[ "$per_board_make_specifc" == "${{ matrix.keyboard }}" ]]; then
                       echo "MAKE command run:"
                       echo "$per_board_make"
                       #$per_board_make
