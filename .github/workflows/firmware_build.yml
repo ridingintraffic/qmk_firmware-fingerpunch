@@ -6,24 +6,7 @@ on:
       - master
       - 'develop**'
       - github-actions-build
-    #paths:
-    #  - 'keyboards/fingerpunch/*'
 jobs:
-  #gather-keyboards:
-  #  runs-on: ubuntu-latest
-  #  outputs:
-  #    matrix: ${{ steps.set-matrix.outputs.matrix }}
-  #  steps:
-  #  - uses: actions/checkout@v2
-  #  - id: set-matrix
-  #    run: |
-  #        content=`cat ./keyboards/fingerpunch/keyboards.json`
-          # the following lines are only required for multi line json
-  #        content="${content//'%'/'%25'}"
-  #        content="${content//$'\n'/'%0A'}"
-  #        content="${content//$'\r'/'%0D'}"
-          # end of optional handling for multi line json
-  #        echo "::set-output name=matrix::$content"
   gather-keyboards:
     runs-on: ubuntu-latest
     outputs:
@@ -38,14 +21,6 @@ jobs:
           content=$(bash bin/fp_build.sh -l | sed s~keyboards/fingerpunch/~~|  jq -Rsc '. / "\n" - [""]')
           content="{\"keyboard\":$content}"
           echo "::set-output name=matrix::$content"
-  #gather-keyboards:
-  #  runs-on: ubuntu-latest
-  #  outputs:
-  #    matrix: ${{ steps.set-matrix.outputs.matrix }}
-  #  steps:
-  #    - uses: actions/checkout@v2
-  #    - id: set-matrix
-  #      run: echo "::set-output name=matrix::$(bin/fp_build.sh -l |  jq -Rsc '. / \"\n\" - [\"\"]')"
 
   Build:
     needs: gather-keyboards
@@ -53,73 +28,34 @@ jobs:
     container: qmkfm/qmk_cli
     strategy:
       fail-fast: false
-      #matrix:
-      #  keyboard: [ ffkb_byomcu ]
       matrix: ${{fromJson(needs.gather-keyboards.outputs.matrix)}}
     steps:
       - name: Checkout QMK
         uses: actions/checkout@v3
         with:
-          repository: ridingintraffic/qmk_firmware-fingerpunch
+          repository: ${{ github.repository}}
+          ref: ${{ github.ref }}
           submodules: recursive
-          ref: github-actions-build
-
-      #- name: Checkout userspace
-      #  uses: actions/checkout@v3
-      #  with:
-      #    path: users/default
-
-      #- name: Finding files and store to output
-      #  id: finding-files
-      #  run: |
-      #    echo "::set-output name=FILELIST::$(qmk list-keyboards| grep fingerpunch)"
 
       - name: Build firmware
         shell: bash
         run: |
           wget -q https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O jq
           chmod +x jq
-          #export PATH=$PATH:/
           mv jq /usr/local/sbin/
 
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
-          #all_make_commands=($(bin/fp_build.sh))
-          #all_make_commands=($(bash bin/fp_build.sh))
           all_make_commands_raw=$(bash bin/fp_build.sh)
-          #echo "RAWWWWW"
-          #echo "*************************************"
-          #echo "$all_make_commands_raw"
-          echo "*************************************"
           
-          #IFS=$'\n'
-          #read -a all_make_commands <<< "$all_make_commands_raw"
-          #echo "${all_make_commands[@]}"
           readarray -t all_make_commands <<<"$all_make_commands_raw"
 
-          #printf “%s” “${all_make_commands[@]}”
-          
-          
           echo "${keyboards}" | while IFS= read -r line ; do
             board_map="default"
             case "$line" in
               *${{ matrix.keyboard }}*)
-                #echo "building firmware"
                 for per_board_make in "${all_make_commands[@]}"
                   do
-                    :              
-                    #echo "json file: $line"
-                    #echo "*************************************"
-                    #echo "script output: $per_board_make"
-                    #echo "*************************************"
-                    
-                    #case "$per_board_make" in
-                    #  *$line*)
-                    #  echo "MAKE command run:"
-                    #  echo "$per_board_make"
-                    #  #$per_board_make
-                    #;;
-                    #esac
-                    
+                    :             
                     if echo "$per_board_make" | grep -q "$line"; then
                       echo "MAKE command run:"
                       echo "$per_board_make"
@@ -129,45 +65,6 @@ jobs:
               ;;
             esac
           done
-
-          exit 0
-
-          keyboards=($(qmk list-keyboards| grep fingerpunch))
-          for board in "${keyboards[@]}"
-            do
-                :
-          #echo "${keyboards}" | while IFS= read -r board ; do
-            #echo $board
-            #board_map=($(qmk list-keymaps -kb $board))
-            board_map="default"
-            all_make_commands=($(bin/fp_build.sh))
-            for per_board_per_map in "${board_map[@]}"
-            do
-                :
-                board_short=$(echo $board | cut -d "/" -f 2-)
-                case "$board" in
-                  *${{ matrix.keyboard }}*)
-                    for per_board_make in "${all_make_commands[@]}"
-                    do
-                      :
-                      if [[ $board == *"$per_board_make"* ]]; then
-                        echo $per_board_make
-
-                        #echo "fp_build.sh -k $board_short -m $per_board_per_map"
-                        #echo "building firmware"
-                        #make "$board:per_board_per_map"
-                        #make "$board:per_board_per_map" CONVERT_TO=kb2040
-                        #make "$board:per_board_per_map" CONVERT_TO=stemcell
-                      fi
-                    done
-                    ;;
-                esac
-
-              done
-
-          done
-
-
 
       - name: Archive firmware
         uses: actions/upload-artifact@v3
