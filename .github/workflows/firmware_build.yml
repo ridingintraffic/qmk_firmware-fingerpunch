@@ -58,6 +58,7 @@ jobs:
                   do
                     :             
                     echo "line to build $line"
+                    echo "matrix keyboard ${{ matrix.keyboard }}"
                     #echo "per board to make $per_board_make"
                     per_board_make_specifc=$(echo "$per_board_make"|awk -F ' ' '{print $2}'|cut -d ":" -f 1)
                     echo "$per_board_make_specifc"
