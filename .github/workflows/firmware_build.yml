@@ -29,9 +29,19 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v2
-      - id: set-matrix
-        run: echo "::set-output name=matrix::$(bin/fp_build.sh -l |  jq -Rsc '. / \"\n\" - [\"\"]')"
+    - uses: actions/checkout@v2
+    - id: set-matrix
+      run: |
+          content=$(bin/fp_build.sh -l |  jq -Rsc '. / "\n" - [""]')
+          echo "::set-output name=matrix::$content"
+  #gather-keyboards:
+  #  runs-on: ubuntu-latest
+  #  outputs:
+  #    matrix: ${{ steps.set-matrix.outputs.matrix }}
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #    - id: set-matrix
+  #      run: echo "::set-output name=matrix::$(bin/fp_build.sh -l |  jq -Rsc '. / \"\n\" - [\"\"]')"
 
   Build:
     needs: gather-keyboards
