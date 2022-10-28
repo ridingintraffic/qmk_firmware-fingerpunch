@@ -69,7 +69,7 @@ jobs:
           #echo "$all_make_commands_raw"
           echo "*************************************"
           
-          IFS='\n'
+          IFS=$'\n'
           read -a all_make_commands <<< "$all_make_commands_raw"
 
           #all_make_commands=()
