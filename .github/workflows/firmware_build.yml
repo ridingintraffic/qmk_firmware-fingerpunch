@@ -45,7 +45,7 @@ jobs:
           mv jq /usr/local/sbin/
 
           #keyboards="$(qmk list-keyboards| grep fingerpunch)"
-          keyboards="$(bash bin/fp_build.sh -l)"
+          keyboards=$(bash bin/fp_build.sh -l| sed s~keyboards/~~)
           all_make_commands_raw=$(bash bin/fp_build.sh)
           
           readarray -t all_make_commands <<<"$all_make_commands_raw"
