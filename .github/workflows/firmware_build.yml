@@ -74,7 +74,7 @@ jobs:
           #echo "${all_make_commands[@]}"
           readarray -t all_make_commands <<<"$all_make_commands_raw"
 
-          printf “’%s’” “${all_make_commands[@]}”
+          #printf “%s” “${all_make_commands[@]}”
           
           
           echo "${keyboards}" | while IFS= read -r line ; do
@@ -89,12 +89,20 @@ jobs:
                     echo "*************************************"
                     echo "script output: $per_board_make"
                     echo "*************************************"
-                    if [[ "*$line*" == "$per_board_make" ]]; then
+                    #if [[ "*$line*" == "$per_board_make" ]]; then
+                    case "$line" in
+                      *$per_board_make*)
+                      echo "MAKE command run:"
+                      echo "$per_board_make"
+                      #$per_board_make
+                    ;;
+                    esac
+                    done
                     #if [[ $per_board_make =~ $line  ]]; then
                             echo "MAKE command run:"
                             echo "$per_board_make"
                             #$per_board_make
-                    fi
+                    #fi
                   done
               ;;
           esac
