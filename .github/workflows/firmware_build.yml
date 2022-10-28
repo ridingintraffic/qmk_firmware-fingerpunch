@@ -70,16 +70,18 @@ jobs:
           echo "*************************************"
           
           IFS=$'\n'
-          read -a all_make_commands <<< "${all_make_commands_raw[@]}"
-
+          read -a all_make_commands <<< "${all_make_commands_raw}"
+          #echo "${all_make_commands[@]}"
+          printf “’%s’” “${all_make_commands[@]}”
+          
           #all_make_commands=()
           #while read -r line; do
           #  all_make_commands+=("$line")
           #done <<< "$all_make_commands_raw"
-
+          
+          
           echo "${keyboards}" | while IFS= read -r line ; do
           board_map="default"
-          echo "${all_make_commands[@]}"
           case "$line" in
             *${{ matrix.keyboard }}*)
               #echo "building firmware"
