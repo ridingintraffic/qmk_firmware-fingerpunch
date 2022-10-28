@@ -68,7 +68,7 @@ jobs:
           while IFS='' read -r value; do
               arr1+=("$value")
           done <<-EOT
-          $(printf $all_make_commands_raw)
+          $(echo "$all_make_commands_raw")
           EOT
 
           echo "${keyboards}" | while IFS= read -r line ; do
