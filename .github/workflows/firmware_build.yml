@@ -33,6 +33,7 @@ jobs:
     - id: set-matrix
       run: |
           content=$(bash bin/fp_build.sh -l |  jq -Rsc '. / "\n" - [""]')
+          echo "$content"
           echo "::set-output name=matrix::$content"
   #gather-keyboards:
   #  runs-on: ubuntu-latest
