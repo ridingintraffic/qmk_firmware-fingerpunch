@@ -63,8 +63,13 @@ jobs:
           keyboards="$(qmk list-keyboards| grep fingerpunch)"
           #all_make_commands=($(bin/fp_build.sh))
           #all_make_commands=($(bash bin/fp_build.sh))
-          all_make_commands=$(bash bin/fp_build.sh)
-          readarray -t all_make_commands_array <<<"$x"
+          all_make_commands_raw=$(bash bin/fp_build.sh)
+          i=0; all_make_commands=()
+          while IFS='' read -r value; do
+              arr1+=("$value")
+          done <<-EOT
+          $(printf $all_make_commands_raw)
+          EOT
 
           echo "${keyboards}" | while IFS= read -r line ; do
           board_map="default"
