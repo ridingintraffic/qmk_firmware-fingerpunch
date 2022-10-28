@@ -55,7 +55,7 @@ jobs:
       - name: Build firmware
         shell: bash
         run: |
-          wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O jq
+          wget -q https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O jq
           chmod +x jq
           #export PATH=$PATH:/
           mv jq /usr/local/sbin/
@@ -69,15 +69,12 @@ jobs:
           #echo "$all_make_commands_raw"
           echo "*************************************"
           
-          IFS=$'\n'
-          read -a all_make_commands <<< "${all_make_commands_raw}"
+          #IFS=$'\n'
+          #read -a all_make_commands <<< "$all_make_commands_raw"
           #echo "${all_make_commands[@]}"
+          readarray -t all_make_commands <<<"$all_make_commands_raw"
+
           printf “’%s’” “${all_make_commands[@]}”
-          
-          #all_make_commands=()
-          #while read -r line; do
-          #  all_make_commands+=("$line")
-          #done <<< "$all_make_commands_raw"
           
           
           echo "${keyboards}" | while IFS= read -r line ; do
