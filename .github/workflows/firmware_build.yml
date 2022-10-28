@@ -32,7 +32,7 @@ jobs:
     - uses: actions/checkout@v2
     - id: set-matrix
       run: |
-          content=$(bin/fp_build.sh -l |  jq -Rsc '. / "\n" - [""]')
+          content=$(bash bin/fp_build.sh -l |  jq -Rsc '. / "\n" - [""]')
           echo "::set-output name=matrix::$content"
   #gather-keyboards:
   #  runs-on: ubuntu-latest
