@@ -78,10 +78,10 @@ jobs:
           
           
           echo "${keyboards}" | while IFS= read -r line ; do
-          board_map="default"
-          case "$line" in
-            *${{ matrix.keyboard }}*)
-              #echo "building firmware"
+            board_map="default"
+            case "$line" in
+              *${{ matrix.keyboard }}*)
+                #echo "building firmware"
                 for per_board_make in "${all_make_commands[@]}"
                   do
                     :              
@@ -89,6 +89,7 @@ jobs:
                     echo "*************************************"
                     echo "script output: $per_board_make"
                     echo "*************************************"
+                    
                     #if [[ "*$line*" == "$per_board_make" ]]; then
                     case "$line" in
                       *$per_board_make*)
@@ -97,15 +98,9 @@ jobs:
                       #$per_board_make
                     ;;
                     esac
-                    done
-                    #if [[ $per_board_make =~ $line  ]]; then
-                            echo "MAKE command run:"
-                            echo "$per_board_make"
-                            #$per_board_make
-                    #fi
                   done
               ;;
-          esac
+            esac
           done
 
           exit 0
