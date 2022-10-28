@@ -64,13 +64,14 @@ jobs:
           #all_make_commands=($(bin/fp_build.sh))
           #all_make_commands=($(bash bin/fp_build.sh))
           all_make_commands_raw=$(bash bin/fp_build.sh)
-          echo "RAWWWWW"
-          echo "*************************************"
-          echo "$all_make_commands_raw"
+          #echo "RAWWWWW"
+          #echo "*************************************"
+          #echo "$all_make_commands_raw"
           echo "*************************************"
           
-          IFS=$'\n' read -rd '' -a all_make_commands <<<"$all_make_commands_raw"
-          
+          IFS='\n'
+          read -a all_make_commands <<< "$all_make_commands_raw"
+
           #all_make_commands=()
           #while read -r line; do
           #  all_make_commands+=("$line")
