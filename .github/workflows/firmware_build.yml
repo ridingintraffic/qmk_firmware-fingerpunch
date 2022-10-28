@@ -85,14 +85,13 @@ jobs:
                 for per_board_make in "${all_make_commands[@]}"
                   do
                     :              
-                    echo "json file: $line"
-                    echo "*************************************"
-                    echo "script output: $per_board_make"
-                    echo "*************************************"
+                    #echo "json file: $line"
+                    #echo "*************************************"
+                    #echo "script output: $per_board_make"
+                    #echo "*************************************"
                     
-                    #if [[ "*$line*" == "$per_board_make" ]]; then
-                    case "$line" in
-                      *$per_board_make*)
+                    case "$per_board_make" in
+                      *$line*)
                       echo "MAKE command run:"
                       echo "$per_board_make"
                       #$per_board_make
