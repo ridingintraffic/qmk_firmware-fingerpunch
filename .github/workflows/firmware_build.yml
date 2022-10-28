@@ -64,12 +64,10 @@ jobs:
           #all_make_commands=($(bin/fp_build.sh))
           #all_make_commands=($(bash bin/fp_build.sh))
           all_make_commands_raw=$(bash bin/fp_build.sh)
-          i=0; all_make_commands=()
-          while IFS='' read -r value; do
-              arr1+=("$value")
-          done <<-EOT
-          $(echo "$all_make_commands_raw")
-          EOT
+          all_make_commands=()
+          while read -r line; do
+            all_make_commands+=("$line")
+          done <<< "$all_make_commands_raw"
 
           echo "${keyboards}" | while IFS= read -r line ; do
           board_map="default"
