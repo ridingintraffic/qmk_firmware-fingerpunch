@@ -11,6 +11,7 @@ Help()
 {
 	echo "Usage: $0 -k <keyboard> -m <keymap> -c <convert_to controller> -r -h"
 	echo ""
+    echo "  -l list valid keyboards (optional, overrides all other options)"
 	echo "  -k keyboard directory (optional, default is all fingerpunch keyboards)"
 	echo "  -m keymap (optional, defaults to the 'default' keymap)"
 	echo "  -c add CONVERT_TO parameter for a controller (eg -c stemcell)"
@@ -184,8 +185,10 @@ Keymap="default"
 RunBuild="no"
 ConvertTo="no"
 Interactive="no"
-while getopts "k:m:c:rhi" option; do
+ListKeyboards="no"
+while getopts "k:m:c:rhil" option; do
     case $option in
+        l) ListKeyboards="yes";;
         k) Keyboard=${OPTARG};;
         m) Keymap=${OPTARG};;
 		c) ConvertTo=${OPTARG};;
@@ -201,7 +204,7 @@ done
 # set up variables
 FP_KB_DIR="keyboards/fingerpunch"
 FP_KB=("${Keyboard}")
-if [[ -z "${Keyboard}" ]]; then
+if [[ -z "${Keyboard}" || "${ListKeyboards}" == "yes" ]]; then
 	FP_KB=$(get_valid_keyboards "${FP_KB_DIR}")
 else
 	FP_KB=("${FP_KB_DIR}/${FP_KB}")
@@ -211,12 +214,17 @@ else
 	fi
 fi;
 
-for filename in $FP_KB; do
-	if [[ "${Interactive}" == "yes" ]]; then
-	    echo "Running for ${filename}"
-    	build_keyboard_user_input "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}"
-    else
-        # build_keyboard_all_combinations "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" "build string" "current param"
-        build_keyboard_all_combinations "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" ""
-    fi
-done
+if [[ "${ListKeyboards}" == "yes" ]]; then
+    # remove last space from FP_KB and convert spaces to newlines
+    echo "${FP_KB%?}" | tr " " "\n"
+else
+    for filename in $FP_KB; do
+        if [[ "${Interactive}" == "yes" ]]; then
+            echo "Running for ${filename}"
+            build_keyboard_user_input "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}"
+        else
+            # build_keyboard_all_combinations "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" "build string" "current param"
+            build_keyboard_all_combinations "${filename}" "${FP_KB_DIR}" "${Keymap}" "${RunBuild}" "${ConvertTo}" ""
+        fi
+    done
+fi
