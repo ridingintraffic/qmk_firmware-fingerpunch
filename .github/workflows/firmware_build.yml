@@ -90,13 +90,19 @@ jobs:
                     #echo "script output: $per_board_make"
                     #echo "*************************************"
                     
-                    case "$per_board_make" in
-                      *$line*)
+                    #case "$per_board_make" in
+                    #  *$line*)
+                    #  echo "MAKE command run:"
+                    #  echo "$per_board_make"
+                    #  #$per_board_make
+                    #;;
+                    #esac
+                    
+                    if echo "$per_board_make" | grep -q "$line"; then
                       echo "MAKE command run:"
                       echo "$per_board_make"
                       #$per_board_make
-                    ;;
-                    esac
+                    fi
                   done
               ;;
             esac
